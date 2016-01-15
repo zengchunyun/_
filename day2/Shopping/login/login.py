@@ -34,7 +34,7 @@ class Login(object):
     def register(self, user, pwd, ):  # 注册用户
         self.user = user
         self.pwd = pwd
-        if self.checkUser(self.user):
+        if self.checkUser(self.user) and self.pwd:  # 如果用户名不存在,且密码不为空
             try:
                 with open(self.db, 'a+') as writeInfo:
                     writeInfo.writelines("%s\t%s\n" % (self.user, self.pwd))

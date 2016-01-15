@@ -43,7 +43,7 @@ def registerCheck(fb):  # 传入一个密码文件
         user = str(input('用户名:'))
         pwd = str(getpass('请设置密码:'))
         rePwd = str(getpass('请确认密码:'))
-        if pwd == rePwd:
+        if pwd == rePwd and pwd:
             if Login(fb).register(user=user, pwd=pwd):
                 os.system('clear')
                 print('注册成功')
@@ -52,6 +52,8 @@ def registerCheck(fb):  # 传入一个密码文件
                 return True
             elif user:
                 print('用户已存在,如果忘记密码,请联系管理员找回')
+        elif not pwd:
+            print('密码不能为空 !!!')
         else:
             print('两次输入密码不一致,请重新输入')
         retryCount += 1
