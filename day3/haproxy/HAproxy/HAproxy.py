@@ -13,17 +13,41 @@ class HAproxy(object):
         self.re_match = re.compile('\w+.*$')
         self.re_match_line = re.compile('^\w+.*$')  # 针对行查找非空白特殊字符
         self.file = fb  # 传入一个文件
+        self.file_bak = '%s.bak' % self.file  # 备份的文件名
+        self.file_tmp = None  # 临时存储文件名
         self.args = None
         self.file_list = []  # 将文件读出后存入的列表
         self.main_list = []  # 将文件第一列的非空行开头内容写入这个列表
         self.add_list = []
         self.ref_list = []  # 用于参照排序的列表
+        self.ref_list_bak = []  # 临时变量存储传入列表
         self.new_dict = {}  # 存储更新后的文件字典数据
+        self.new_dict_bak = {}  # 存储临时写入文件的字典数据
         self.flag = False  # 设置标志位,用于辅助判断条件用
 
+    def backup_conf(self):  # 备份配置文件
+        self.flag = True
+        self.ref_list = self.main_conf()
+        self.new_dict = self.format_dict()
+        self.file_tmp = self.file
+        self.file = self.file_bak
+        self.format_write(self.file_bak, self.ref_list, **self.new_dict)
+        self.ref_list = list(self.ref_list_bak)
+        self.new_dict = self.new_dict_bak
+        self.file = self.file_tmp
+        self.format_write(*self.ref_list, **self.new_dict)
+        return True
+
     def format_write(self, *ref_list, **new_dict):
-        self.ref_list = list(ref_list)
-        self.new_dict = new_dict
+        if not self.flag:
+            self.ref_list_bak = ref_list
+            self.new_dict_bak = new_dict
+            self.backup_conf()
+        if len(ref_list) > 1:
+            if type(ref_list[1]) == list:
+                self.ref_list = ref_list[1]
+        # self.ref_list = list(ref_list)
+        # self.new_dict = new_dict
         temp_keys = list(self.new_dict.keys())
         deff_keys = set(self.ref_list).symmetric_difference(temp_keys)
         with open(self.file, 'w') as wr:

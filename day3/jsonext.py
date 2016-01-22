@@ -45,4 +45,15 @@ Created on 2016年1月9日
 # # ddd = json.loads(str(result3))
 # print(ddd)
 
-['        server 100.1.7.9 100.1.7.9 weight 20 maxconn 3000\n', '\n', 'server 100.1.7.999 100.1.7.999 weight 20 maxconn 30\n']
+# ['        server 100.1.7.9 100.1.7.9 weight 20 maxconn 3000\n', '\n', 'server 100.1.7.999 100.1.7.999 weight 20 maxconn 30\n']
+
+
+
+
+def foo(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+a=['11','88']
+
+foo(33,a)
