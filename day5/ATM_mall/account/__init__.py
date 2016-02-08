@@ -157,6 +157,23 @@ class UserInfo(object):
         self.user_auth_info[self.user].update(self.user_info)
         return self.user_auth_info
 
+    def delete_account(self, *args, **kwargs):  # 删除用户,如果没有字典形式的用户名,则取第一个参数作为用户名
+        self.user_info = kwargs
+        self.account_info = args
+        if self.user_info.get('user'):
+            self.user = self.user_info['user']
+        else:
+            try:
+                self.user = self.account_info[0]
+            except IndexError:
+                print("必须传入一个参数作为用户名使用,或者字典包含键'user")
+                return False
+        if self._user_exist():  # 检查用户是否存在,存在则删除
+            self.user_auth_info.pop(self.user)
+            return self.user_auth_info
+        else:
+            return False
+
     def _user_exist(self):  # 内部调用方法,用来检查该用户是否存在
         if self.user_auth_info.get(self.user):
             return True
