@@ -91,6 +91,7 @@ def add_extra_info(register_func):  # 添加扩展信息的装饰器
             add_user_info = add_common_info(is_admin)  # 针对该用户添加额外的补充用户信息
             if len(database) == 1 and is_admin:  # 当系统为第一次使用时,自动把权限提升为超级管理员级别
                 add_user_info['level'] = "0"
+            print("用户[%s]注册成功 !" % list(update_user)[0])
             return change_account_info(database, list(update_user)[0], add_user_info)
         else:
             return False
@@ -116,6 +117,10 @@ def search_account_info(database, user):  # 返回指定用户的具体信息,�
     get_info = UserInfo(**database).change_info(user)
     if get_info:
         return get_info[user]
+
+
+def change_password(database, user_name, password, new_password):  # 修改密码
+    return UserInfo(**database).change_password(user=user_name, password=password, new_password=new_password)
 
 
 def change_common_info():  # 修改扩展信息
@@ -155,7 +160,7 @@ def is_super_admin(database, admin_name=None):  # 判断用户是不是超级管
     if admin_name and database[admin_name]['level'] == "0":
         return True
     else:
-        print("普通管理员[%s]没有权限修改管理员帐号信息" % admin_name)
+        print("普通管理员[%s]没有权限修改管理员账号信息" % admin_name)
         return False
 
 
@@ -178,19 +183,19 @@ def is_last_super_admin(database):  # 传入一个字典,含有level的键值,
 
 
 def delete_account(database):
-    select_user = str(input("请输入要删除的帐户:"))
+    select_user = str(input("请输入要删除的用户名:"))
     delete_check = UserInfo(**database).delete_account(select_user)
     if delete_check:
         if not is_last_super_admin(delete_check):
             wait_choose = str(input("确认删除[%s]吗 y/n:" % select_user))
             if wait_choose.lower() in ["y", "yes", ]:
-                print("帐号[%s]已被删除" % select_user)
+                print("用户[%s]已被删除" % select_user)
                 return delete_check
             else:
                 print("操作未改变 !!!")
                 return False
         else:
-            print("管理员[%s]是最后一个具有超级管理权限的帐号,操作不允许" % select_user)
+            print("管理员[%s]是最后一个具有超级管理权限的账号,操作不允许" % select_user)
             return False
 
 
@@ -221,3 +226,12 @@ def change_admin_permission(database, admin_name):  # 更改管理员帐号权�
             else:
                 print("操作未改变 !!!")
                 return False
+
+
+def change_admin_password(database, admin_name):
+    if is_super_admin(database, admin_name):
+        select_user = str(input("请输入要更改的用户名:"))
+        account_info = search_account_info(database, select_user)
+        if account_info:
+            old_password = account_info['password']
+

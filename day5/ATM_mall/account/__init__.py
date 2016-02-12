@@ -132,7 +132,10 @@ class UserInfo(object):
         except IndexError:
             print("必须传入一个参数作为新密码使用,或者字典包含键'new_password'")
             return False
-        if self.login(self.user, self.password):  # 如果老密码验证成功,则进行修改新密码
+        if len(self.password) == 32:
+            if self.user_auth_info[self.user]['password'] == self.password:
+                self.user_auth_info[self.user]['password'] = self.encode_password(self.new_password)
+        elif self.login(self.user, self.password):  # 如果老密码验证成功,则进行修改新密码
             self.user_auth_info[self.user]['password'] = self.encode_password(self.new_password)
             return self.user_auth_info  # 返回更新后的用户字典信息
 
@@ -172,6 +175,7 @@ class UserInfo(object):
             self.user_auth_info.pop(self.user)
             return self.user_auth_info
         else:
+            print('该用户不存在 !!!')
             return False
 
     def _user_exist(self):  # 内部调用方法,用来检查该用户是否存在
