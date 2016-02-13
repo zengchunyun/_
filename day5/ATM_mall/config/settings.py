@@ -1,16 +1,19 @@
 user_info = {
-    "my_shop": {
+    "user_bank": {
+        "root": {
+            "password": "2cd1301392cf8e584232886a9eb9e1d4", "en_name": "", "cn_name": "", "birthday": "", "age": "", "mail": "", "contact": ""
+            }
         }
     , "admin_bank": {
         "admin": {
-            "contact": "", "cn_name": "", "en_name": "", "level": "0", "age": "", "mail": "", "password": "ca09b0783e7dd733b45f5908ec79f040", "birthday": ""
+            "password": "ca09b0783e7dd733b45f5908ec79f040", "en_name": "", "contact": "", "cn_name": "", "birthday": "", "age": "", "mail": "", "level": "0"
             }
         , "root": {
-            "contact": "", "cn_name": "", "en_name": "", "level": "1", "age": "", "mail": "", "password": "a2258c4e7b326f9c7d13e5a675a68811", "birthday": ""
+            "password": "c551575542cec5d1b11f809139c76c89", "en_name": "", "contact": "", "cn_name": "", "birthday": "", "age": "", "mail": "", "level": "1"
             }
         }
     , "account_info": {
         }
-    , "my_bank": {
+    , "my_shop": {
         }
     }

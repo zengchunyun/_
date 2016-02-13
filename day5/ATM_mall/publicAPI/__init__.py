@@ -37,14 +37,33 @@ def valid_code(code_func):  # 传入一个验证码功能和登陆授权功能�
 
 @valid_code(valid)  # 对登录模块增加一个验证码功能
 def auth_account(database, is_admin=False):
-    user = str(input("请输入用户名:"))
+    count = 1
+    retry_count = 0
+    temp_user = None
+    while not is_admin:
+        user = str(input("请输入用户名:"))
+        if temp_user == user and user:
+            count += 1
+        else:
+            temp_user = user
+        password = str(input("请输入密码:"))
+        if count > 3:
+            print("密码错误超过三次,已锁定,请联系管理员解锁 !")
+            break
+        if UserInfo(**database).login(user, password):
+            return True
+        else:
+            print("用户名或密码错误 !!!")
+        retry_count += 1
+    else:
+        user = str(input("请输入用户名:"))
     password = str(input("请输入密码:"))
     if is_admin:
         admin_name = user
     else:
         admin_name = None
     login_check = UserInfo(**database).login(user, password)
-    if login_check:
+    if login_check and is_admin:  # 如果登陆成功,且是管理员身份登陆,则返回当前管理员用户名
         return admin_name
     else:
         return login_check
@@ -233,38 +252,46 @@ def change_admin_permission(database, admin_name):  # 更改管理员帐号权�
         return False
 
 
-def change_admin_password(database, admin_name):
-    if is_super_admin(database, admin_name):
-        select_user = str(input("请输入要更改的用户名:"))
-        account_info = search_account_info(database, select_user)
-        if account_info:
-            new_password = str(input("请输入新密码:"))
-            repeat_password = str(input("请再次输入新密码:"))
-            if new_password == repeat_password and new_password != "":
-                old_password = account_info['password']
-                change_admin_password_check = change_password(database, select_user, old_password, new_password)
-                if change_admin_password_check:
-                    print("用户[%s]密码修改成功 !" % select_user)
-                    return change_admin_password_check
-            else:
-                if new_password == "":
-                    print("密码不能为空 !!!")
-                else:
-                    print("两次输入不一致")
-                return False
-    else:
-        old_password = str(input("请输入当前密码:"))
+def for_super_admin_change_password(database):
+    select_user = str(input("请输入要更改的用户名:"))
+    account_info = search_account_info(database, select_user)
+    if account_info:
         new_password = str(input("请输入新密码:"))
-        repeat_password = str(input("请再次确认新密码:"))
+        repeat_password = str(input("请再次输入新密码:"))
         if new_password == repeat_password and new_password != "":
-            change_admin_password_check = change_password(database, admin_name, old_password, new_password)
+            old_password = account_info['password']
+            change_admin_password_check = change_password(database, select_user, old_password, new_password)
             if change_admin_password_check:
-                print("用户[%s]密码修改成功 !" % admin_name)
+                print("用户[%s]密码修改成功 !" % select_user)
                 return change_admin_password_check
         else:
             if new_password == "":
                 print("密码不能为空 !!!")
             else:
-                print("两次输入不一致 !!!")
+                print("两次输入不一致")
             return False
+
+
+def for_owner_change_password(database, user_name):
+    old_password = str(input("请输入当前密码:"))
+    new_password = str(input("请输入新密码:"))
+    repeat_password = str(input("请再次确认新密码:"))
+    if new_password == repeat_password and new_password != "":
+        change_admin_password_check = change_password(database, user_name, old_password, new_password)
+        if change_admin_password_check:
+            print("用户[%s]密码修改成功 !" % user_name)
+            return change_admin_password_check
+    else:
+        if new_password == "":
+            print("密码不能为空 !!!")
+        else:
+            print("两次输入不一致 !!!")
+        return False
+
+
+def change_admin_password(database, admin_name):
+    if is_super_admin(database, admin_name):
+        return for_super_admin_change_password(database)
+    else:
+        return for_owner_change_password(database, admin_name)
 

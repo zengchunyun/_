@@ -3,6 +3,7 @@
 from publicAPI import auth_account, register_account, change_admin_password
 from publicAPI import modify_admin_account_info, add_admin_account, delete_account, change_admin_permission
 from config.settings import user_info
+from publicAPI import register_account, for_super_admin_change_password
 
 
 def update_info(user_info_dict):  # 接收一个字典字符串,然后写入到文件,把一个字典类型参数写入文件
@@ -46,16 +47,17 @@ def atm_self_service(quit_atm_self_service=False):  # ATM自助服务系统
 
 
 def public_login(quit_public_login=False):
-    count = 0  # 用于限制登录次数的计数器
-    login_pass = auth_account(user_info['my_bank'])
-    if not login_pass and str(login_pass) != str(None):
-        count += 1
-        print('登陆失败 !!!')
-    elif login_pass:
-        count = 0  # 重置计数器
-        print('欢迎登录')
-    if count > 3:
-        print("操作过于频繁,请稍后再试")
+    count = 1  # 用于限制登录次数的计数器
+    while not quit_public_login:
+        login_pass = auth_account(user_info['user_bank'])
+        if not login_pass and str(login_pass) != str(None):
+            count += 1
+            print('登陆失败 !!!')
+        elif login_pass:
+            count = 0  # 重置计数器
+            print('欢迎登录')
+        if count > 3:
+            print("操作过于频繁,请稍后再试")
     return quit_public_login
 
 
@@ -101,14 +103,27 @@ def admin_bank_system(quit_admin_bank=False):  # 银行管理人员操作平台
 
 def admin_management(admin_name, quit_admin_management=False):  # 管理员登陆成功后的账号操作
     while not quit_admin_management:
+        try:
+            user_database = user_info["user_bank"]
+        except KeyError:
+            user_info["user_bank"] = {}
+            user_database = user_info["user_bank"]
         print("""中国建都银行    管理中心    [%s]已登陆
-        查询帐户(1)  修改帐户(2)  解锁帐户(3)  管理员帐户管理(4)
+        开户(1)  修改密码(2)  存钱(3)  取钱(4)  销户(5)  管理员帐户管理(6)
         注销(b)  退出(q)
         """ % admin_name)
         wait_choose = str(input("请选择操作:"))
         if wait_choose == "1":
-            pass
-        elif wait_choose == "4":
+            get_database = register_account(user_database)
+            if get_database:
+                user_info["user_bank"] = get_database
+                update_info(user_info)
+        elif wait_choose == "2":
+            get_database = for_super_admin_change_password(user_database)
+            if get_database:
+                user_info["user_bank"] = get_database
+                update_info(user_info)
+        elif wait_choose == "6":
             quit_admin_management = management_admin_account(admin_name, quit_admin_management)  # 对管理员账号进行操作
         elif str(wait_choose).lower() in ['q', 'quit', ]:
             quit_admin_management = True
