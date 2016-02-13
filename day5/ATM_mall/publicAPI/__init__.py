@@ -240,13 +240,17 @@ def change_admin_password(database, admin_name):
         if account_info:
             new_password = str(input("请输入新密码:"))
             repeat_password = str(input("请再次输入新密码:"))
-            if new_password == repeat_password:
+            if new_password == repeat_password and new_password != "":
                 old_password = account_info['password']
                 change_admin_password_check = change_password(database, select_user, old_password, new_password)
-                print("用户[%s]密码修改成功 !" % select_user)
-                return change_admin_password_check
+                if change_admin_password_check:
+                    print("用户[%s]密码修改成功 !" % select_user)
+                    return change_admin_password_check
             else:
-                print("两次输入不一致")
+                if new_password == "":
+                    print("密码不能为空 !!!")
+                else:
+                    print("两次输入不一致")
                 return False
     else:
         old_password = str(input("请输入当前密码:"))
@@ -254,9 +258,13 @@ def change_admin_password(database, admin_name):
         repeat_password = str(input("请再次确认新密码:"))
         if new_password == repeat_password and new_password != "":
             change_admin_password_check = change_password(database, admin_name, old_password, new_password)
-            print("用户[%s]密码修改成功 !" % admin_name)
-            return change_admin_password_check
+            if change_admin_password_check:
+                print("用户[%s]密码修改成功 !" % admin_name)
+                return change_admin_password_check
         else:
-            print("密码修改不成功 !")
+            if new_password == "":
+                print("密码不能为空 !!!")
+            else:
+                print("两次输入不一致 !!!")
             return False
 

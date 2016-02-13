@@ -136,9 +136,13 @@ class UserInfo(object):
             if self.user_auth_info[self.user]['password'] == self.password:
                 self.user_auth_info[self.user]['password'] = self.encode_password(self.new_password)
                 return self.user_auth_info  # 返回更新后的用户字典信息
-        elif self.login(self.user, self.password):  # 如果老密码验证成功,则进行修改新密码
-            self.user_auth_info[self.user]['password'] = self.encode_password(self.new_password)
-            return self.user_auth_info  # 返回更新后的用户字典信息
+        else:
+            if self.login(self.user, self.password):  # 如果老密码验证成功,则进行修改新密码
+                self.user_auth_info[self.user]['password'] = self.encode_password(self.new_password)
+                return self.user_auth_info  # 返回更新后的用户字典信息
+            else:
+                print("原密码不正确 !!!")
+                return False
 
     def change_info(self, *args, **kwargs):  # 只变更用户的普通信息,不包括用户名密码,变更信息只能是字典格式
         self.user_info = kwargs  # 初始化新用户信息
