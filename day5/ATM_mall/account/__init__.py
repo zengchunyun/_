@@ -135,6 +135,7 @@ class UserInfo(object):
         if len(self.password) == 32:
             if self.user_auth_info[self.user]['password'] == self.password:
                 self.user_auth_info[self.user]['password'] = self.encode_password(self.new_password)
+                return self.user_auth_info  # 返回更新后的用户字典信息
         elif self.login(self.user, self.password):  # 如果老密码验证成功,则进行修改新密码
             self.user_auth_info[self.user]['password'] = self.encode_password(self.new_password)
             return self.user_auth_info  # 返回更新后的用户字典信息

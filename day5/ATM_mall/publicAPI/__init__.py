@@ -160,7 +160,6 @@ def is_super_admin(database, admin_name=None):  # 判断用户是不是超级管
     if admin_name and database[admin_name]['level'] == "0":
         return True
     else:
-        print("普通管理员[%s]没有权限修改管理员账号信息" % admin_name)
         return False
 
 
@@ -169,6 +168,9 @@ def add_admin_account(database, admin_name, is_admin=False):  # 添加管理员�
         register_check = register_account(database, is_admin)
         if register_check:
             return register_check
+    else:
+        print("普通管理员[%s]没有权限修改管理员账号信息" % admin_name)
+        return False
 
 
 def is_last_super_admin(database):  # 传入一个字典,含有level的键值,
@@ -226,6 +228,9 @@ def change_admin_permission(database, admin_name):  # 更改管理员帐号权�
             else:
                 print("操作未改变 !!!")
                 return False
+    else:
+        print("普通管理员[%s]没有权限修改管理员账号信息" % admin_name)
+        return False
 
 
 def change_admin_password(database, admin_name):
@@ -233,5 +238,25 @@ def change_admin_password(database, admin_name):
         select_user = str(input("请输入要更改的用户名:"))
         account_info = search_account_info(database, select_user)
         if account_info:
-            old_password = account_info['password']
+            new_password = str(input("请输入新密码:"))
+            repeat_password = str(input("请再次输入新密码:"))
+            if new_password == repeat_password:
+                old_password = account_info['password']
+                change_admin_password_check = change_password(database, select_user, old_password, new_password)
+                print("用户[%s]密码修改成功 !" % select_user)
+                return change_admin_password_check
+            else:
+                print("两次输入不一致")
+                return False
+    else:
+        old_password = str(input("请输入当前密码:"))
+        new_password = str(input("请输入新密码:"))
+        repeat_password = str(input("请再次确认新密码:"))
+        if new_password == repeat_password and new_password != "":
+            change_admin_password_check = change_password(database, admin_name, old_password, new_password)
+            print("用户[%s]密码修改成功 !" % admin_name)
+            return change_admin_password_check
+        else:
+            print("密码修改不成功 !")
+            return False
 
