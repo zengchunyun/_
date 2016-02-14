@@ -5,6 +5,7 @@
 """
 
 from account import UserInfo
+from record_log import Logger
 
 
 def valid(code_length):  # 生存一个验证码,验证码长度由传入参数决定
@@ -23,11 +24,11 @@ def valid(code_length):  # 生存一个验证码,验证码长度由传入参数�
 
 def valid_code(code_func):  # 传入一个验证码功能和登陆授权功能的函数
     def valid_account(public_func):  # 传入添加了装饰器的函数名
-        def login_auth(database=None, is_admin=False):  # 将上面函数所需要的参数放在这里
+        def login_auth(database=None, is_admin=False, log_file=None):  # 将上面函数所需要的参数放在这里
             temp_code = code_func(4)
             wait_code = str(input("请输入验证码:"))
             if str(wait_code).lower() == str(temp_code).lower():
-                return public_func(database, is_admin)
+                return public_func(database, is_admin, log_file)
             else:
                 print('验证码输入错误 !!!')
                 return None
@@ -36,27 +37,8 @@ def valid_code(code_func):  # 传入一个验证码功能和登陆授权功能�
 
 
 @valid_code(valid)  # 对登录模块增加一个验证码功能
-def auth_account(database, is_admin=False):
-    count = 1
-    retry_count = 0
-    temp_user = None
-    while not is_admin:
-        user = str(input("请输入用户名:"))
-        if temp_user == user and user:
-            count += 1
-        else:
-            temp_user = user
-        password = str(input("请输入密码:"))
-        if count > 3:
-            print("密码错误超过三次,已锁定,请联系管理员解锁 !")
-            break
-        if UserInfo(**database).login(user, password):
-            return True
-        else:
-            print("用户名或密码错误 !!!")
-        retry_count += 1
-    else:
-        user = str(input("请输入用户名:"))
+def auth_account(database, is_admin=False, log_file=None):
+    user = str(input("请输入用户名:"))
     password = str(input("请输入密码:"))
     if is_admin:
         admin_name = user
@@ -64,9 +46,16 @@ def auth_account(database, is_admin=False):
         admin_name = None
     login_check = UserInfo(**database).login(user, password)
     if login_check and is_admin:  # 如果登陆成功,且是管理员身份登陆,则返回当前管理员用户名
+        Logger(log_file).write_log(user=user, status=True, event="管理员登陆成功")
         return admin_name
     else:
-        return login_check
+        if login_check:
+            Logger(log_file).write_log(user=user, status=True, event="用户登陆成功")
+            return True
+        else:
+            print("用户名或密码错误")
+            Logger(log_file).write_log(user=user, status=False, event="用户登陆失败")
+            return False
 
 
 def add_admin_level():  # 添加管理级别定义,默认非字符串0级别的权限都是普通管理员
@@ -101,7 +90,7 @@ def change_account_info(database, user, common_info):  # 变更用户的除用�
 
 
 def add_extra_info(register_func):  # 添加扩展信息的装饰器
-    def add_info(database, is_admin=False):  # 传入的参数是一个字典
+    def add_info(database, is_admin=False, log_file=None):  # 传入的参数是一个字典
         before = database
         after = register_func(database)  # 得到增加用户后的字典
         if after:
@@ -111,14 +100,16 @@ def add_extra_info(register_func):  # 添加扩展信息的装饰器
             if len(database) == 1 and is_admin:  # 当系统为第一次使用时,自动把权限提升为超级管理员级别
                 add_user_info['level'] = "0"
             print("用户[%s]注册成功 !" % list(update_user)[0])
+            Logger(log_file).write_log(user=list(update_user)[0], status=True, event="用户注册成功")
             return change_account_info(database, list(update_user)[0], add_user_info)
         else:
+            Logger(log_file).write_log(status=False, event="用户注册失败")
             return False
     return add_info
 
 
 @add_extra_info  # 增加额外的扩展信息
-def register_account(database):  # 传入一个字典的键值,也可以是一个空字典
+def register_account(database, is_admin=False, log_file=None):  # 传入一个字典的键值,也可以是一个空字典
     new_user = str(input("请输入新用户:"))
     new_password = str(input("请输入新密码:"))
     repeat_password = str(input("请再次输入密码:"))
