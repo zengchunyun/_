@@ -39,15 +39,18 @@ def valid_code(code_func):  # 传入一个验证码功能和登陆授权功能�
 @valid_code(valid)  # 对登录模块增加一个验证码功能
 def auth_account(database, is_admin=False, log_file=None):
     user = str(input("请输入用户名:"))
+
     password = str(input("请输入密码:"))
-    error_count = Logger(log_file).read_log(user=user, status=False)
-    print(error_count)
-    if not is_admin and error_count > 2:
-        print(error_count)
     if is_admin:
         admin_name = user
     else:
         admin_name = None
+        get_database = search_account_info(database, user)
+        if type(get_database) == dict:
+            if get_database.get("user_status"):
+                if get_database["user_status"] == "0":
+                    print("该用户已被锁定,请联系工作人员解锁 !!")
+                    return False
     login_check = UserInfo(**database).login(user, password)
     if login_check and is_admin:  # 如果登陆成功,且是管理员身份登陆,则返回当前管理员用户名
         Logger(log_file).write_log(user=user, status=True, event="管理员登陆成功")
@@ -59,7 +62,30 @@ def auth_account(database, is_admin=False, log_file=None):
         else:
             print("用户名或密码错误")
             Logger(log_file).write_log(user=user, status=False, event="用户登陆失败")
+            if not is_admin:
+                get_database = search_account_info(database, user)
+                if type(get_database) == dict:
+                    unlock_time = get_database.get("status_time")
+                    if unlock_time:
+                        error_count = Logger(log_file).get_match_count(user=user, status=False, start_time=unlock_time)
+                    else:
+                        error_count = Logger(log_file).get_match_count(user=user, status=False)
+                    if error_count > 2:
+                        get_database = lock_account(database, user, log_file=log_file)
+                        return get_database
             return False
+
+
+def lock_account(database, user, log_file=None):  # 锁定账户
+    Logger(log_file).write_log(user=user, status="lock", event="用户已锁定")
+    return UserInfo(**database).change_info(user, user_status="0")
+
+
+def unlock_account(database, user, log_file=None):  # 解锁账户
+    import time
+    cur_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    Logger(log_file).write_log(user=user, status="unlock", event="用户解锁成功")
+    return UserInfo(**database).change_info(user=user, user_status="1", status_time=cur_time)
 
 
 def add_admin_level():  # 添加管理级别定义,默认非字符串0级别的权限都是普通管理员
@@ -299,4 +325,16 @@ def change_admin_password(database, admin_name, log_file=None):
         return for_super_admin_change_password(database, admin_name, log_file=log_file)
     else:
         return for_owner_change_password(database, admin_name, log_file=log_file)
+
+
+def for_admin_unlock_account(database, admin_name, log_file=None):
+    select_user = str(input("请选择需要解锁的用户:"))
+    get_database = unlock_account(database, select_user, log_file=log_file)
+    if get_database:
+        print("用户[%s]解锁成功" % select_user)
+        Logger(log_file).write_log(user=admin_name, status=True, event="用户%s解锁成功" % select_user)
+        return get_database
+    else:
+        Logger(log_file).write_log(user=admin_name, status=False, event="用户%s不存在,解锁失败" % select_user)
+        return False
 

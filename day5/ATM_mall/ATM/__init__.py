@@ -3,7 +3,7 @@
 from publicAPI import auth_account, register_account, change_admin_password
 from publicAPI import modify_admin_account_info, add_admin_account, delete_account, change_admin_permission
 from config.settings import user_info
-from publicAPI import register_account, for_super_admin_change_password
+from publicAPI import register_account, for_super_admin_change_password, for_admin_unlock_account
 from record_log import Logger
 bank_log_file = "china_bank.log"
 
@@ -53,9 +53,29 @@ def atm_self_service(quit_atm_self_service=False):  # ATM自助服务系统
 
 def public_login(log_file, quit_public_login=False):
     while not quit_public_login:
-        login_pass = auth_account(user_info['user_bank'], log_file=log_file)
-        if login_pass:
-            print('欢迎登录')
+        print("""欢迎进入    中国建都银行    用户中心
+        用户登陆(1)
+        返回(b)  退出(q)
+        """)
+        wait_choose = str(input("请选择操作:"))
+        if wait_choose == "1":
+            user_database = user_info['user_bank']
+            login_check = auth_account(user_database, log_file=log_file)
+            print(login_check)
+            if login_check and login_check != str(True):
+                user_info["user_bank"] = login_check
+                update_info(user_info)
+            elif login_check:
+                print('欢迎登录')
+        elif str(wait_choose).lower() in ['q', 'quit', ]:
+            quit_public_login = True
+            print("谢谢使用,再见 !")
+            Logger(log_file).write_log(status=True, event="退出")
+            break
+        elif str(wait_choose).lower() in ['b', 'back', ]:
+            break
+        else:
+            print("操作有误 !!!")
     return quit_public_login
 
 
@@ -106,7 +126,7 @@ def admin_management(admin_name, quit_admin_management=False, log_file=None):  #
             user_info["user_bank"] = {}
             user_database = user_info["user_bank"]
         print("""中国建都银行    管理中心    [%s]已登陆
-        开户(1)  修改密码(2)  存钱(3)  取钱(4)  销户(5)  管理员帐户管理(6)
+        开户(1)  修改密码(2)  存钱(3)  取钱(4)  销户(5)  解锁(6)  管理员帐户管理(7)
         注销(b)  退出(q)
         """ % admin_name)
         wait_choose = str(input("请选择操作:"))
@@ -121,6 +141,11 @@ def admin_management(admin_name, quit_admin_management=False, log_file=None):  #
                 user_info["user_bank"] = get_database
                 update_info(user_info)
         elif wait_choose == "6":
+            get_database = for_admin_unlock_account(user_database, admin_name, log_file=log_file)
+            if get_database:
+                user_info["user_bank"] = get_database
+                update_info(user_info)
+        elif wait_choose == "7":
             quit_admin_management = management_admin_account(
                 admin_name, quit_admin_management, log_file=log_file)  # 对管理员账号进行操作
         elif str(wait_choose).lower() in ['q', 'quit', ]:
