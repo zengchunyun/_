@@ -3,7 +3,21 @@
 """
 @author: zengchunyun
 """
-
+import time
+print(time.time())
+print(time.altzone)
+print(time.clock())
+print(time.ctime())
+print(time.daylight)
+print(time.gmtime())
+print(time.localtime())
+print(time.monotonic())
+print(time.timezone)
+print(time.tzset())
+print(time.tzname)
+print(time.process_time())
+print(time.struct_time)
+print(time.perf_counter())
 #
 #
 # def write_to_database(filename, string):

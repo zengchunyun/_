@@ -39,26 +39,24 @@ def valid_code(code_func):  # 传入一个验证码功能和登陆授权功能�
 @valid_code(valid)  # 对登录模块增加一个验证码功能
 def auth_account(database, is_admin=False, log_file=None):
     user = str(input("请输入用户名:"))
-
     password = str(input("请输入密码:"))
-    if is_admin:
-        admin_name = user
-    else:
-        admin_name = None
+    if not is_admin:
         get_database = search_account_info(database, user)
         if type(get_database) == dict:
             if get_database.get("user_status"):
                 if get_database["user_status"] == "0":
-                    print("该用户已被锁定,请联系工作人员解锁 !!")
+                    print("该用户已被冻结,请联系工作人员解锁 !!")
                     return False
+        else:
+            return False
     login_check = UserInfo(**database).login(user, password)
     if login_check and is_admin:  # 如果登陆成功,且是管理员身份登陆,则返回当前管理员用户名
         Logger(log_file).write_log(user=user, status=True, event="管理员登陆成功")
-        return admin_name
+        return user
     else:
         if login_check:
             Logger(log_file).write_log(user=user, status=True, event="用户登陆成功")
-            return True
+            return user
         else:
             print("用户名或密码错误")
             Logger(log_file).write_log(user=user, status=False, event="用户登陆失败")
@@ -72,13 +70,18 @@ def auth_account(database, is_admin=False, log_file=None):
                         error_count = Logger(log_file).get_match_count(user=user, status=False)
                     if error_count > 2:
                         get_database = lock_account(database, user, log_file=log_file)
+                        print("该用户已被冻结,请联系工作人员解锁 !!")
                         return get_database
             return False
 
 
 def lock_account(database, user, log_file=None):  # 锁定账户
-    Logger(log_file).write_log(user=user, status="lock", event="用户已锁定")
-    return UserInfo(**database).change_info(user, user_status="0")
+    get_database = UserInfo(**database).change_info(user, user_status="0")
+    if get_database:
+        Logger(log_file).write_log(user=user, status="lock", event="用户已被冻结")
+        return get_database
+    else:
+        return False
 
 
 def unlock_account(database, user, log_file=None):  # 解锁账户
@@ -157,6 +160,8 @@ def search_account_info(database, user):  # 返回指定用户的具体信息,�
     get_info = UserInfo(**database).change_info(user)
     if get_info:
         return get_info[user]
+    else:
+        return False
 
 
 def change_password(database, user_name, password, new_password):  # 修改密码
@@ -216,6 +221,8 @@ def add_admin_account(database, admin_name, is_admin=False, log_file=None):  # �
 
 def is_last_super_admin(database):  # 传入一个字典,含有level的键值,
     super_count = 0
+    if not database:
+        return True
     for level in database.values():
         if level['level'] == "0":
             super_count += 1
@@ -225,23 +232,22 @@ def is_last_super_admin(database):  # 传入一个字典,含有level的键值,
         return False
 
 
-def delete_account(database, admin_name, log_file=None):
+def delete_account(database, admin_name, is_admin=False, log_file=None):
     select_user = str(input("请输入要删除的用户名:"))
-    delete_check = UserInfo(**database).delete_account(select_user)
-    if delete_check:
-        if not is_last_super_admin(delete_check):
-            wait_choose = str(input("确认删除[%s]吗 y/n:" % select_user))
-            if wait_choose.lower() in ["y", "yes", ]:
-                print("用户[%s]已被删除" % select_user)
-                Logger(log_file).write_log(user=admin_name, status=True, event="用户%s删除成功" % select_user)
-                return delete_check
-            else:
-                print("操作未改变 !!!")
-                return False
+    delete_check = UserInfo(**database).delete_account(select_user)  # 如果返回的不是字典,则说明不存在该用户
+    if not is_last_super_admin(delete_check) or (not is_admin and type(delete_check) == dict):
+        wait_choose = str(input("确认删除[%s]吗 y/n:" % select_user))
+        if wait_choose.lower() in ["y", "yes", ]:
+            print("用户[%s]已被删除" % select_user)
+            Logger(log_file).write_log(user=admin_name, status=True, event="用户%s删除成功" % select_user)
+            return delete_check
         else:
-            print("管理员[%s]是最后一个具有超级管理权限的账号,操作不允许" % select_user)
-            Logger(log_file).write_log(user=admin_name, status=False, event="用户%s删除失败" % select_user)
+            print("操作未改变 !!!")
             return False
+    elif type(delete_check) == dict:
+        print("管理员[%s]是最后一个具有超级管理权限的账号,操作不允许" % select_user)
+        Logger(log_file).write_log(user=admin_name, status=False, event="用户%s删除失败" % select_user)
+        return False
 
 
 def level_define(level):  # 将定义的数字级别功能转换成文字显示
@@ -338,3 +344,14 @@ def for_admin_unlock_account(database, admin_name, log_file=None):
         Logger(log_file).write_log(user=admin_name, status=False, event="用户%s不存在,解锁失败" % select_user)
         return False
 
+
+def for_admin_lock_account(database, admin_name, log_file=None):
+    select_user = str(input("请选择需要挂失的用户:"))
+    get_database = lock_account(database=database, user=select_user, log_file=log_file)
+    if get_database:
+        print("用户[%s]挂失成功" % select_user)
+        Logger(log_file).write_log(user=admin_name, status=True, event="用户%s挂失成功" % select_user)
+        return get_database
+    else:
+        Logger(log_file).write_log(user=admin_name, status=False, event="用户%s不存在,挂失失败" % select_user)
+        return False
