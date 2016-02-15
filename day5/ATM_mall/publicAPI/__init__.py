@@ -40,6 +40,10 @@ def valid_code(code_func):  # 传入一个验证码功能和登陆授权功能�
 def auth_account(database, is_admin=False, log_file=None):
     user = str(input("请输入用户名:"))
     password = str(input("请输入密码:"))
+    error_count = Logger(log_file).read_log(user=user, status=False)
+    print(error_count)
+    if not is_admin and error_count > 2:
+        print(error_count)
     if is_admin:
         admin_name = user
     else:
@@ -157,12 +161,13 @@ def change_common_info():  # 修改扩展信息
     return common_info  # 只返回需要更改的信息,以字典形式返回
 
 
-def modify_admin_account_info(database):  # 任何管理员都能修改普通信息
+def modify_admin_account_info(database, admin_name, log_file):  # 任何管理员都能修改普通信息
     select_user = str(input("请输入要更改的用户名:"))
     if search_account_info(database, select_user):
         common_info = change_common_info()
         change_check = change_account_info(database, select_user, common_info)
         if change_check:
+            Logger(log_file).write_log(user=admin_name, status=True, event="用户%s信息修改成功" % select_user)
             return change_check
 
 
@@ -173,9 +178,9 @@ def is_super_admin(database, admin_name=None):  # 判断用户是不是超级管
         return False
 
 
-def add_admin_account(database, admin_name, is_admin=False):  # 添加管理员帐号
+def add_admin_account(database, admin_name, is_admin=False, log_file=None):  # 添加管理员帐号
     if is_super_admin(database, admin_name):
-        register_check = register_account(database, is_admin)
+        register_check = register_account(database, is_admin, log_file=log_file)
         if register_check:
             return register_check
     else:
@@ -194,7 +199,7 @@ def is_last_super_admin(database):  # 传入一个字典,含有level的键值,
         return False
 
 
-def delete_account(database):
+def delete_account(database, admin_name, log_file=None):
     select_user = str(input("请输入要删除的用户名:"))
     delete_check = UserInfo(**database).delete_account(select_user)
     if delete_check:
@@ -202,12 +207,14 @@ def delete_account(database):
             wait_choose = str(input("确认删除[%s]吗 y/n:" % select_user))
             if wait_choose.lower() in ["y", "yes", ]:
                 print("用户[%s]已被删除" % select_user)
+                Logger(log_file).write_log(user=admin_name, status=True, event="用户%s删除成功" % select_user)
                 return delete_check
             else:
                 print("操作未改变 !!!")
                 return False
         else:
             print("管理员[%s]是最后一个具有超级管理权限的账号,操作不允许" % select_user)
+            Logger(log_file).write_log(user=admin_name, status=False, event="用户%s删除失败" % select_user)
             return False
 
 
@@ -219,7 +226,7 @@ def level_define(level):  # 将定义的数字级别功能转换成文字显示
     return level
 
 
-def change_admin_permission(database, admin_name):  # 更改管理员帐号权限
+def change_admin_permission(database, admin_name, log_file=None):  # 更改管理员帐号权限
     if is_super_admin(database, admin_name):
         select_user = str(input("请输入要更改的用户名:"))
         if search_account_info(database, select_user):
@@ -230,20 +237,23 @@ def change_admin_permission(database, admin_name):  # 更改管理员帐号权�
                 if change_level_check:
                     if is_last_super_admin(change_level_check):
                         print("管理员[%s]是最后一个具有超级管理权限的帐号,操作不允许" % select_user)
+                        Logger(log_file).write_log(user=admin_name, status=False, event="用户%s权限修改失败" % select_user)
                         change_account_info(database, select_user, {'level': "0"})  # 回退权限
                         return False
                     else:
                         print("管理员[%s]级别已修改为[%s]" % (select_user, level_define(level)))
+                        Logger(log_file).write_log(user=admin_name, status=True, event="用户%s权限修改成功,级别已修改为[%s]" % (select_user,level_define(level)))
                         return change_level_check
             else:
                 print("操作未改变 !!!")
                 return False
     else:
         print("普通管理员[%s]没有权限修改管理员账号信息" % admin_name)
+        Logger(log_file).write_log(user=admin_name, status=False, event="操作不允许")
         return False
 
 
-def for_super_admin_change_password(database):
+def for_super_admin_change_password(database, admin_name, log_file=None):
     select_user = str(input("请输入要更改的用户名:"))
     account_info = search_account_info(database, select_user)
     if account_info:
@@ -254,16 +264,18 @@ def for_super_admin_change_password(database):
             change_admin_password_check = change_password(database, select_user, old_password, new_password)
             if change_admin_password_check:
                 print("用户[%s]密码修改成功 !" % select_user)
+                Logger(log_file).write_log(user=admin_name, status=True, event="用户%s密码修改成功" % select_user)
                 return change_admin_password_check
         else:
             if new_password == "":
                 print("密码不能为空 !!!")
             else:
                 print("两次输入不一致")
+            Logger(log_file).write_log(user=admin_name, status=False, event="用户%s密码修改失败" % select_user)
             return False
 
 
-def for_owner_change_password(database, user_name):
+def for_owner_change_password(database, user_name, log_file=None):
     old_password = str(input("请输入当前密码:"))
     new_password = str(input("请输入新密码:"))
     repeat_password = str(input("请再次确认新密码:"))
@@ -271,18 +283,20 @@ def for_owner_change_password(database, user_name):
         change_admin_password_check = change_password(database, user_name, old_password, new_password)
         if change_admin_password_check:
             print("用户[%s]密码修改成功 !" % user_name)
+            Logger(log_file).write_log(user=user_name, status=False, event="用户%s密码修改失败" % user_name)
             return change_admin_password_check
     else:
         if new_password == "":
             print("密码不能为空 !!!")
         else:
             print("两次输入不一致 !!!")
+        Logger(log_file).write_log(user=user_name, status=False, event="用户%s密码修改失败" % user_name)
         return False
 
 
-def change_admin_password(database, admin_name):
+def change_admin_password(database, admin_name, log_file=None):
     if is_super_admin(database, admin_name):
-        return for_super_admin_change_password(database)
+        return for_super_admin_change_password(database, admin_name, log_file=log_file)
     else:
-        return for_owner_change_password(database, admin_name)
+        return for_owner_change_password(database, admin_name, log_file=log_file)
 

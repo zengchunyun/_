@@ -116,12 +116,13 @@ def admin_management(admin_name, quit_admin_management=False, log_file=None):  #
                 user_info["user_bank"] = get_database
                 update_info(user_info)
         elif wait_choose == "2":
-            get_database = for_super_admin_change_password(user_database)
+            get_database = for_super_admin_change_password(user_database, admin_name, log_file=log_file)
             if get_database:
                 user_info["user_bank"] = get_database
                 update_info(user_info)
         elif wait_choose == "6":
-            quit_admin_management = management_admin_account(admin_name, quit_admin_management)  # 对管理员账号进行操作
+            quit_admin_management = management_admin_account(
+                admin_name, quit_admin_management, log_file=log_file)  # 对管理员账号进行操作
         elif str(wait_choose).lower() in ['q', 'quit', ]:
             quit_admin_management = True
             Logger(log_file).write_log(user=admin_name, status=True, event="管理员退出")
@@ -135,7 +136,7 @@ def admin_management(admin_name, quit_admin_management=False, log_file=None):  #
     return quit_admin_management
 
 
-def management_admin_account(admin_name, quit_management_account):
+def management_admin_account(admin_name, quit_management_account, log_file=None):
     while not quit_management_account:
         admin_database = user_info['admin_bank']
         print("""中国建都银行    管理中心    [%s]已登陆
@@ -144,32 +145,33 @@ def management_admin_account(admin_name, quit_management_account):
         """ % admin_name)
         wait_choose = str(input("请选择操作:"))
         if wait_choose == "1":
-            get_database = add_admin_account(admin_database, admin_name, is_admin=True)
+            get_database = add_admin_account(admin_database, admin_name, is_admin=True, log_file=log_file)
             if get_database:
                 user_info['admin_bank'] = get_database  # 更新数据库信息
                 update_info(user_info)
         elif wait_choose == "2":
-            get_database = delete_account(admin_database)
+            get_database = delete_account(admin_database, admin_name, log_file=log_file)
             if get_database:
                 user_info['admin_bank'] = get_database  # 更新数据库信息
                 update_info(user_info)
         elif wait_choose == "3":
-            get_database = change_admin_permission(admin_database, admin_name)
+            get_database = change_admin_permission(admin_database, admin_name, log_file=log_file)
             if get_database:
                 user_info['admin_bank'] = get_database  # 更新数据库信息
                 update_info(user_info)
         elif wait_choose == "4":
-            get_database = modify_admin_account_info(admin_database)
+            get_database = modify_admin_account_info(admin_database, admin_name, log_file=log_file)
             if get_database:
                 user_info['admin_bank'] = get_database  # 更新数据库信息
                 update_info(user_info)
         elif wait_choose == "5":
-            get_database = change_admin_password(admin_database, admin_name)
+            get_database = change_admin_password(admin_database, admin_name, log_file=log_file)
             if get_database:
                 user_info['admin_bank'] = get_database  # 更新数据库信息
                 update_info(user_info)
         elif str(wait_choose).lower() in ['q', 'quit', ]:
             quit_management_account = True
+            Logger(log_file).write_log(user=admin_name, status=True, event="管理员退出")
             print("谢谢使用,再见 !")
             break
         elif str(wait_choose).lower() in ['b', 'back', ]:
