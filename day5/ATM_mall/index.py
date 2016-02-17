@@ -2,12 +2,20 @@
 
 
 def main(quit_atm):  # 程序入口
+    """
+    :param quit_atm: 退出条件
+    :return:
+    """
     from ATM import atm_self_service  # 导入自助服务系统平台
     from mall import shop_mall  # 导入商城服务系统
     while not quit_atm:
         print("""欢迎使用一站式购物平台
-        ATM自助服务(1)  商城购物(2)""")
-        wait_choose = str(input("\n请选择操作:"))
+        ============================
+        ATM自助服务(1)  商城购物(2)
+        退出(q)
+        ============================
+        """)
+        wait_choose = str(input("\n请选择操作:")).strip()
         if wait_choose == "1":
             quit_atm = atm_self_service(quit_atm)  # 进入ATM自助服务系统
         elif wait_choose == "2":

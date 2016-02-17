@@ -6,6 +6,7 @@
 
 from account import UserInfo
 from record_log import Logger
+from calc_credit import get_diff_days
 
 
 def valid(code_length):  # 生存一个验证码,验证码长度由传入参数决定
@@ -26,7 +27,7 @@ def valid_code(code_func):  # 传入一个验证码功能和登陆授权功能�
     def valid_account(public_func):  # 传入添加了装饰器的函数名
         def login_auth(database=None, is_admin=False, log_file=None):  # 将上面函数所需要的参数放在这里
             temp_code = code_func(4)
-            wait_code = str(input("请输入验证码:"))
+            wait_code = str(input("请输入验证码:")).strip()
             if str(wait_code).lower() == str(temp_code).lower():
                 return public_func(database, is_admin, log_file)
             else:
@@ -38,14 +39,37 @@ def valid_code(code_func):  # 传入一个验证码功能和登陆授权功能�
 
 @valid_code(valid)  # 对登录模块增加一个验证码功能
 def auth_account(database, is_admin=False, log_file=None):
-    user = str(input("请输入用户名:"))
-    password = str(input("请输入密码:"))
+    user = str(input("请输入用户名:")).strip()
+    password = str(input("请输入密码:")).strip()
+    import time
+    today = time.strftime("%Y-%m-%d", time.localtime())
+    start_time = None
+    last_login_time = None
     if not is_admin:
         get_database = search_account_info(database, user)
         if type(get_database) == dict:
             if get_database.get("user_status"):
-                if get_database["user_status"] == "0":
+                if get_database["user_status"] == "1":
                     print("该用户已被冻结,请联系工作人员解锁 !!")
+                    Logger(log_file).write_log(user=user, status=False, event="用户登陆失败")
+                    return False
+                if get_database.get("status_time"):  # 尝试获取最后一次解锁时间
+                    start_time = get_database["status_time"]
+                get_match_list = Logger(log_file).get_match_log(user=user, status="login")  # 获取登陆成功的日志
+                if get_match_list:
+                    last_login = get_match_list[-1]
+                    last_login_time = " ".join(last_login.split()[0:2])  # 获取最后一次登陆成功的时间
+                if start_time and last_login_time:  # 当既有解锁时间,又有成功登陆时间,则比较大小
+                    if start_time < last_login_time:  # 如果登陆时间比解锁时间晚,则登陆时间赋值start_time
+                        start_time = last_login_time
+                elif last_login_time:  # 否则,如果只有登陆时间,则也赋值给start_time
+                    start_time = last_login_time
+                if start_time and start_time < today:
+                    start_time = today
+                if get_database["user_status"] == "0" and Logger(log_file).get_match_count(
+                        user=user, status=False, start_time=start_time) > 2:
+                    print("该用户已被锁定,请联系工作人员解锁,或第二天再次尝试!")
+                    Logger(log_file).write_log(user=user, status=False, event="用户登陆失败")
                     return False
         else:
             return False
@@ -55,7 +79,7 @@ def auth_account(database, is_admin=False, log_file=None):
         return user
     else:
         if login_check:
-            Logger(log_file).write_log(user=user, status=True, event="用户登陆成功")
+            Logger(log_file).write_log(user=user, status="login", event="用户登陆成功")
             return user
         else:
             print("用户名或密码错误")
@@ -63,20 +87,16 @@ def auth_account(database, is_admin=False, log_file=None):
             if not is_admin:
                 get_database = search_account_info(database, user)
                 if type(get_database) == dict:
-                    unlock_time = get_database.get("status_time")
-                    if unlock_time:
-                        error_count = Logger(log_file).get_match_count(user=user, status=False, start_time=unlock_time)
-                    else:
-                        error_count = Logger(log_file).get_match_count(user=user, status=False)
+                    error_count = Logger(log_file).get_match_count(user=user, status=False, start_time=start_time)
                     if error_count > 2:
                         get_database = lock_account(database, user, log_file=log_file)
-                        print("该用户已被冻结,请联系工作人员解锁 !!")
+                        print("该用户已被锁定,请联系工作人员解锁,或第二天再次尝试!")
                         return get_database
             return False
 
 
-def lock_account(database, user, log_file=None):  # 锁定账户
-    get_database = UserInfo(**database).change_info(user, user_status="0")
+def lock_account(database, user, log_file=None, user_status="0"):  # 锁定账户
+    get_database = UserInfo(**database).change_info(user, user_status=user_status)
     if get_database:
         Logger(log_file).write_log(user=user, status="lock", event="用户已被冻结")
         return get_database
@@ -88,27 +108,69 @@ def unlock_account(database, user, log_file=None):  # 解锁账户
     import time
     cur_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     Logger(log_file).write_log(user=user, status="unlock", event="用户解锁成功")
-    return UserInfo(**database).change_info(user=user, user_status="1", status_time=cur_time)
+    return UserInfo(**database).change_info(user=user, user_status="2", status_time=cur_time)
 
 
 def add_admin_level():  # 添加管理级别定义,默认非字符串0级别的权限都是普通管理员
-    level = str(input("请输入管理级别\n有两个级别\n\t1 代表普通管理员\n\t0 代表超级管理员\n\t默认为普通管理级别\n请输入:"))
+    level = str(input("请输入管理级别\n有两个级别\n\t1 代表普通管理员\n\t0 代表超级管理员\n\t默认为普通管理级别\n请输入:")).strip()
     if level != "0":
         level = "1"
     return level
 
 
-def add_common_info(is_admin):  # 额外的扩展信息
+def add_credit_limit():
+    credit_limit = 0
+    while True:
+        credit_limit = str(input("请输入该用户信用额度:")).strip()
+        if credit_limit.isdigit():
+            break
+        else:
+            print("输入错误,金额只能是数字形式")
+    return credit_limit
+
+
+def add_statement_date(string="账单日"):
+    import time
+    while True:
+        statement_date = time.strftime("%m-%d", time.localtime())
+        try:
+            statement_date = str(input("请输入%s\n格式:%s\n请输入:" % (string, statement_date))).strip()
+            time.strptime(statement_date, "%m-%d")
+            return statement_date
+        except ValueError:
+            continue
+
+
+def add_common_info(is_admin=False):  # 额外的扩展信息
     common_info = {}  # 初始化一个空字典,存储用户基本信息
     if is_admin:  # 如果新建的用户是管理员,则增加级别功能定义
         common_info['level'] = add_admin_level()
     print("以下信息可选添加,如果不想输入,直接回车即可")
-    mail = str(input("E-mail:"))
-    age = str(input("Age:"))
-    cn_name = str(input("中文姓名:"))
-    en_name = str(input("English Name:"))
-    birthday = str(input("出生年月:"))
-    contact = str(input("手机号码:"))
+    mail = str(input("Email地址:")).strip()
+    age = str(input("年龄:")).strip()
+    cn_name = str(input("中文姓名:")).strip()
+    en_name = str(input("English Name:")).strip()
+    birthday = str(input("出生年月:")).strip()
+    contact = str(input("手机号码:")).strip()
+    if not is_admin:
+        common_info["credit_limit"] = add_credit_limit()  # 信用额度
+        common_info["company"] = str(input("单位全称:")).strip()
+        user_status = str(input("是否激活账户\n\t1\t不激活\n\t2\t激活\n默认激活\n请选择: ")).strip()
+        if user_status not in ["1", "2"]:
+            user_status = "2"
+        common_info["user_status"] = user_status  # 用户状态
+        common_info["available_credit"] = common_info["credit_limit"]  # 可用额度
+        common_info["cash_advance_limit"] = str(round(float(common_info["credit_limit"]) / 2, 2))  # 可借现金
+        common_info["statement_date"] = str(add_statement_date("账单日"))  # 账单日
+        common_info["payment_due_date"] = str(add_statement_date("到期还款日"))  # 到期还款日
+        common_info["new_balance"] = "0.00"  # 本期还款总额
+        common_info["balance"] = "0.00"  # 上期账单金额
+        common_info["payment"] = "0.00"  # 上期还款金额
+        common_info["new_charges"] = "0.00"  # 本期账单金额
+        common_info["adjustment"] = "0.00"  # 本期调整金额
+        common_info["interest"] = "0.00"  # 循环利息
+        common_info["current_balance"] = "0.00"  # 本期应还金额
+        common_info["minimum_payment"] = "0.00"  # 最低还款额
     common_info['mail'] = mail
     common_info['age'] = age
     common_info['cn_name'] = cn_name
@@ -143,9 +205,9 @@ def add_extra_info(register_func):  # 添加扩展信息的装饰器
 
 @add_extra_info  # 增加额外的扩展信息
 def register_account(database, is_admin=False, log_file=None):  # 传入一个字典的键值,也可以是一个空字典
-    new_user = str(input("请输入新用户:"))
-    new_password = str(input("请输入新密码:"))
-    repeat_password = str(input("请再次输入密码:"))
+    new_user = str(input("请输入新用户:")).strip()
+    new_password = str(input("请输入新密码:")).strip()
+    repeat_password = str(input("请再次输入密码:")).strip()
     if new_password == repeat_password and new_password != "":  # 当两次输入密码一致,且密码不为空,才会进入数据库读取注册操作
         return UserInfo(**database).register(new_user, new_password)  # 调用公共的用户信息管理方法处理
     else:
@@ -168,15 +230,19 @@ def change_password(database, user_name, password, new_password):  # 修改密�
     return UserInfo(**database).change_password(user=user_name, password=password, new_password=new_password)
 
 
-def change_common_info():  # 修改扩展信息
+def change_common_info(is_admin=False):  # 修改扩展信息
     common_info = {}
     print("如果对于不想修改的信息,直接回车即可")
-    mail = str(input("E-mail:"))
-    age = str(input("Age:"))
-    cn_name = str(input("中文姓名:"))
-    en_name = str(input("English Name:"))
-    birthday = str(input("出生年月:"))
-    contact = str(input("手机号码:"))
+    mail = str(input("Email地址:")).strip()
+    age = str(input("年龄:")).strip()
+    cn_name = str(input("中文姓名:")).strip()
+    en_name = str(input("English Name:")).strip()
+    birthday = str(input("出生年月:")).strip()
+    contact = str(input("手机号码:")).strip()
+    if not is_admin:
+        company = str(input("单位全称:")).strip()
+        if company:
+            common_info["company"] = company
     if mail:
         common_info['mail'] = mail
     if age:
@@ -192,10 +258,10 @@ def change_common_info():  # 修改扩展信息
     return common_info  # 只返回需要更改的信息,以字典形式返回
 
 
-def modify_admin_account_info(database, admin_name, log_file):  # 任何管理员都能修改普通信息
-    select_user = str(input("请输入要更改的用户名:"))
+def modify_admin_account_info(database, admin_name, is_admin=False, log_file=None):  # 任何管理员都能修改普通信息
+    select_user = str(input("请输入要更改的用户名:")).strip()
     if search_account_info(database, select_user):
-        common_info = change_common_info()
+        common_info = change_common_info(is_admin)
         change_check = change_account_info(database, select_user, common_info)
         if change_check:
             Logger(log_file).write_log(user=admin_name, status=True, event="用户%s信息修改成功" % select_user)
@@ -224,8 +290,9 @@ def is_last_super_admin(database):  # 传入一个字典,含有level的键值,
     if not database:
         return True
     for level in database.values():
-        if level['level'] == "0":
-            super_count += 1
+        if type(level) == dict:
+            if level.get('level') and level["level"] == "0":
+                super_count += 1
     if super_count < 1:
         return True
     else:
@@ -233,10 +300,10 @@ def is_last_super_admin(database):  # 传入一个字典,含有level的键值,
 
 
 def delete_account(database, admin_name, is_admin=False, log_file=None):
-    select_user = str(input("请输入要删除的用户名:"))
+    select_user = str(input("请输入要删除的用户名:")).strip()
     delete_check = UserInfo(**database).delete_account(select_user)  # 如果返回的不是字典,则说明不存在该用户
     if not is_last_super_admin(delete_check) or (not is_admin and type(delete_check) == dict):
-        wait_choose = str(input("确认删除[%s]吗 y/n:" % select_user))
+        wait_choose = str(input("确认删除[%s]吗 y/n:" % select_user)).strip()
         if wait_choose.lower() in ["y", "yes", ]:
             print("用户[%s]已被删除" % select_user)
             Logger(log_file).write_log(user=admin_name, status=True, event="用户%s删除成功" % select_user)
@@ -258,12 +325,22 @@ def level_define(level):  # 将定义的数字级别功能转换成文字显示
     return level
 
 
+def user_status_define(status):
+    if str(status) == "1":
+        status = "未激活"
+    elif str(status) == "2":
+        status = "激活"
+    else:
+        status = "锁定"
+    return status
+
+
 def change_admin_permission(database, admin_name, log_file=None):  # 更改管理员帐号权限
     if is_super_admin(database, admin_name):
-        select_user = str(input("请输入要更改的用户名:"))
+        select_user = str(input("请输入要更改的用户名:")).strip()
         if search_account_info(database, select_user):
             level = add_admin_level()
-            wait_choose = str(input("确认修改[%s]权限修改为[%s]吗: y/n " % (select_user, level_define(level))))
+            wait_choose = str(input("确认修改[%s]权限修改为[%s]吗: y/n " % (select_user, level_define(level)))).strip()
             if wait_choose.lower() in ["y", "yes", ]:
                 change_level_check = change_account_info(database, select_user, {'level': level})
                 if change_level_check:
@@ -285,12 +362,25 @@ def change_admin_permission(database, admin_name, log_file=None):  # 更改管�
         return False
 
 
+def change_user_credit_line(database, admin_name, log_file=None):
+    select_user = str(input("请输入要修改信用额度的用户名: ")).strip()
+    credit_limit = add_credit_limit()
+    get_database = change_account_info(database, select_user, {"credit_line": credit_limit})
+    if get_database:
+        print("用户额度修改成功,目前该用户额度为[%s]" % credit_limit)
+        Logger(log_file).write_log(user=admin_name, status=True, event="用户%s额度修改成功,额度已修改为[%s]" % (select_user, credit_limit))
+        return get_database
+    else:
+        Logger(log_file).write_log(user=admin_name, status=False, event="用户%s不存在,修改额度失败" % select_user)
+        return False
+
+
 def for_super_admin_change_password(database, admin_name, log_file=None):
-    select_user = str(input("请输入要更改的用户名:"))
+    select_user = str(input("请输入要更改的用户名:")).strip()
     account_info = search_account_info(database, select_user)
     if account_info:
-        new_password = str(input("请输入新密码:"))
-        repeat_password = str(input("请再次输入新密码:"))
+        new_password = str(input("请输入新密码:")).strip()
+        repeat_password = str(input("请再次输入新密码:")).strip()
         if new_password == repeat_password and new_password != "":
             old_password = account_info['password']
             change_admin_password_check = change_password(database, select_user, old_password, new_password)
@@ -308,9 +398,9 @@ def for_super_admin_change_password(database, admin_name, log_file=None):
 
 
 def for_owner_change_password(database, user_name, log_file=None):
-    old_password = str(input("请输入当前密码:"))
-    new_password = str(input("请输入新密码:"))
-    repeat_password = str(input("请再次确认新密码:"))
+    old_password = str(input("请输入当前密码:")).strip()
+    new_password = str(input("请输入新密码:")).strip()
+    repeat_password = str(input("请再次确认新密码:")).strip()
     if new_password == repeat_password and new_password != "":
         change_admin_password_check = change_password(database, user_name, old_password, new_password)
         if change_admin_password_check:
@@ -334,7 +424,7 @@ def change_admin_password(database, admin_name, log_file=None):
 
 
 def for_admin_unlock_account(database, admin_name, log_file=None):
-    select_user = str(input("请选择需要解锁的用户:"))
+    select_user = str(input("请选择需要解锁的用户:")).strip()
     get_database = unlock_account(database, select_user, log_file=log_file)
     if get_database:
         print("用户[%s]解锁成功" % select_user)
@@ -346,8 +436,8 @@ def for_admin_unlock_account(database, admin_name, log_file=None):
 
 
 def for_admin_lock_account(database, admin_name, log_file=None):
-    select_user = str(input("请选择需要挂失的用户:"))
-    get_database = lock_account(database=database, user=select_user, log_file=log_file)
+    select_user = str(input("请选择需要挂失的用户:")).strip()
+    get_database = lock_account(database=database, user=select_user, log_file=log_file, user_status="1")
     if get_database:
         print("用户[%s]挂失成功" % select_user)
         Logger(log_file).write_log(user=admin_name, status=True, event="用户%s挂失成功" % select_user)
@@ -355,3 +445,132 @@ def for_admin_lock_account(database, admin_name, log_file=None):
     else:
         Logger(log_file).write_log(user=admin_name, status=False, event="用户%s不存在,挂失失败" % select_user)
         return False
+
+
+def show_account_info(database, user_name, is_admin=False, log_file=None):
+    if type(database) != dict:
+        Logger(log_file).write_log(user=user_name, status=False, event="查询失败")
+        return False
+    if is_admin:
+        select_user = str(input("请输入要查询的用户信息: ")).strip()
+    else:
+        select_user = user_name
+    get_database = search_account_info(database, select_user)
+    if type(get_database) == dict:
+        try:
+            cn_name = get_database['cn_name']
+            en_name = get_database['en_name']
+            age = get_database['age']
+            mail = get_database['mail']
+            birthday = get_database['birthday']
+            mobile = get_database['contact']
+            company = get_database['company']
+            user_status = user_status_define(get_database['user_status'])
+            cash_advance_limit = get_database['cash_advance_limit']
+            credit_limit = get_database['credit_limit']
+            available_credit_limit = get_database['available_credit']
+            statement_date = get_database['statement_date']
+            payment_due_date = get_database["payment_due_date"]
+            new_charges = get_database["new_charges"]
+            current_balance = get_database["current_balance"]
+            minimum_payment = get_database["minimum_payment"]
+        except KeyError:
+            pass
+        print("""
+    用户[%s]信息如下
+    账户信息
+    ====================================================
+    用户名                %s
+    中文名                %s
+    英文名                %s
+    年龄                  %s
+    邮箱                  %s
+    生日                  %s
+    手机号码               %s
+    单位全称               %s
+    用户状态               %s
+    信用额度               ￥%s
+    可用额度               ￥%s
+    未出账分期本金          ￥%s
+    预借现金可用额度         ￥%s
+    每月账单日              %s日
+
+    还款信息
+    ====================================================
+    自动还款              未开通
+    本期到期还款日          %s日
+    本期账单金额          ￥%s
+    本期剩余应还金额       ￥%s
+    本期剩余最低还款金额    ￥%s
+    ====================================================
+    """
+    % (select_user, select_user, cn_name, en_name, age, mail, birthday, mobile, company,
+       user_status, credit_limit, available_credit_limit, 0, cash_advance_limit,
+       statement_date, payment_due_date, new_charges, current_balance, minimum_payment))
+
+
+def transfer_cash(database, user_name, log_file):
+    count = 0
+    user_database = search_account_info(database, user_name)
+    user_money = user_database["credit_limit"]
+    while count < 3:
+        select_user = str(input("请输入需要转账的卡号:"))
+        if select_user == user_name:
+            print("不能给自己转账")
+            continue
+        get_select_user_database = search_account_info(database, select_user)
+        if type(get_select_user_database) == dict:
+            current_money = get_select_user_database["credit_limit"]
+            money = str(input("请输入需要转账金额:"))
+            if not str(money).isdigit():
+                print("输入错误, 请重新输入!")
+                continue
+            if float(money) > float(user_money):
+                print("余额不足,请重新输入")
+                continue
+            while True:
+                wait_choose = str(input("是否需要验证对方信息\n\t默认验证\nyes/no: "))
+                if wait_choose.lower() in ["n", "no"]:
+                    break
+                wait_choose = str(input("请输入对方姓名:"))
+                if wait_choose == get_select_user_database["cn_name"]:
+                    break
+                else:
+                    print("验证未通过")
+            wait_choose = str(input("确认转账?\n您将给用户[%s]转账金额为%s元\n请确认 yes/no: " % (select_user, money)))
+            if wait_choose.lower() in ["y", "yes"]:
+                user_database["credit_limit"] = str(float(user_money) - float(money))
+                get_select_user_database["credit_limit"] = str(float(current_money) + float(money))
+                Logger(log_file).write_log(user=user_name, status="transfer", event="给用户[%s]转账成功,转账金额为[%s]" % (select_user, money))
+                return database
+            else:
+                print("操作取消 !!")
+                break
+            break
+        count += 1
+    return False
+
+
+def select_date(string="开始时间"):
+    import time
+    while True:
+        statement_date = time.strftime("%Y-%m-%d", time.localtime())
+        try:
+            statement_date = str(input("请输入%s\n格式:%s\n请输入:" % (string, statement_date))).strip()
+            time.strptime(statement_date, "%Y-%m-%d")
+            return statement_date
+        except ValueError:
+            continue
+
+
+def search_history_log(user_name, log_file):
+    start_date = select_date("开始日期")
+    end_date = select_date("结束日期")
+    check_date = get_diff_days(start_date, end_date)
+    if check_date and int(check_date) >= 0:
+        Logger(log_file).get_match_log(user=user_name, start_time=start_date, end_time=end_date, print_log=True)
+        return True
+    else:
+        print("日期范围输入有误!!!")
+        return False
+

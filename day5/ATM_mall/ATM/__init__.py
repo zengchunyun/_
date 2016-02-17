@@ -5,6 +5,8 @@ from publicAPI import modify_admin_account_info, add_admin_account, delete_accou
 from config.settings import user_info
 from publicAPI import register_account, for_super_admin_change_password, for_admin_unlock_account, for_admin_lock_account
 from record_log import Logger
+from publicAPI import change_user_credit_line, show_account_info, for_owner_change_password
+from publicAPI import transfer_cash, search_history_log
 bank_log_file = "china_bank.log"
 
 
@@ -29,10 +31,12 @@ def update_info(user_info_dict):  # 接收一个字典字符串,然后写入到�
 def atm_self_service(quit_atm_self_service=False):  # ATM自助服务系统
     while not quit_atm_self_service:
         print("""欢迎使用    中国建都银行    自助服务系统
+        ============================================
         普通客户大众版平台(1)    银行前台专业版管理中心(2)
         返回(b)    退出(q)
+        ============================================
         """)
-        wait_choose = str(input("请选择操作:"))
+        wait_choose = str(input("请选择操作:")).strip()
         if wait_choose == "1":
             Logger(bank_log_file).write_log(status=True, event="进入普通客户大众版平台")
             quit_atm_self_service = public_login(bank_log_file, quit_atm_self_service)  # 进入大众版登陆系统
@@ -59,16 +63,25 @@ def public_login(log_file, quit_public_login=False):
             user_info["user_bank"] = {}
             user_database = user_info["user_bank"]
         print("""欢迎进入    中国建都银行    用户中心
+        =========================================
         用户登陆(1)
         返回(b)  退出(q)
+        =========================================
         """)
-        wait_choose = str(input("请选择操作:"))
+        wait_choose = str(input("请选择操作:")).strip()
         if wait_choose == "1":
             get_user = auth_account(user_database, log_file=log_file)
             if type(get_user) == dict:  # 如果有数据返回,且不是True,则该账户被锁定,写入数据
                 user_info["user_bank"] = get_user
                 update_info(user_info)
             elif get_user:
+                try:
+                    user_status = user_info["user_bank"][get_user]["user_status"]
+                    if user_status == "0":  # 当登陆成功后,重置用户登陆错误状态
+                        user_info["user_bank"][get_user]["user_status"] = "2"
+                        update_info(user_info)
+                except KeyError:
+                    pass
                 quit_public_login = public_user_system(get_user, quit_public_login, log_file)
         elif str(wait_choose).lower() in ['q', 'quit', ]:
             quit_public_login = True
@@ -84,13 +97,31 @@ def public_login(log_file, quit_public_login=False):
 
 def public_user_system(user, quit_user_system=False, log_file=None):
     while not quit_user_system:
+        user_database = user_info["user_bank"]
         print("""欢迎使用    中国建都银行    用户[%s]已登陆
-        查询额度(1)
-        返回(b)  退出(q)
+        ===============================================
+        个人信息(1)  修改密码(2)
+        转账(3)  取现(4)  还款(5)
+        交易记录(6)  操作日志(7)
+        账单查询(8)
+        注销(b)  退出(q)
+        ===============================================
         """ % user)
-        wait_choose = str(input("请选择操作:"))
+        wait_choose = str(input("请选择操作:")).strip()
         if wait_choose == "1":
-            pass
+            show_account_info(user_database, user, is_admin=False, log_file=log_file)
+        elif wait_choose == "2":
+            get_database = for_owner_change_password(user_database, user, log_file=log_file)
+            if type(get_database) == dict:
+                user_info["user_bank"] = get_database
+                update_info(user_info)
+        elif wait_choose == "3":
+            get_database = transfer_cash(user_database, user, log_file=log_file)
+            if type(get_database) == dict:
+                user_info["user_bank"] = get_database
+                update_info(user_info)
+        if wait_choose == "6":
+            search_history_log(user, log_file)
         elif str(wait_choose).lower() in ['q', 'quit', ]:
             quit_user_system = True
             print("谢谢使用,再见 !")
@@ -117,10 +148,12 @@ def admin_bank_system(log_file, quit_admin_bank=False):  # 银行管理人员操
         else:
             open_login, open_register = open_register, True
         print("""欢迎进入    中国建都银行    管理平台
+        ============================================
         %s
         返回(b)    退出(q)
-            """ % open_login)
-        wait_choose = str(input("请选择操作:"))
+        ============================================
+        """ % open_login)
+        wait_choose = str(input("请选择操作:")).strip()
         if wait_choose == "1" and not open_register:
             get_admin = auth_account(admin_database, is_admin=True, log_file=log_file)  # 调用登陆模块
             if get_admin:
@@ -152,14 +185,16 @@ def admin_management(admin_name, quit_admin_management=False, log_file=None):  #
         if not user_info["admin_bank"].get(admin_name):
             break
         print("""中国建都银行    管理中心    [%s]已登陆
-        开户(1)  修改密码(2)
+        ===========================================
+        开户(1)  修改密码(2)  查询账户(s)
         存钱(3)  取钱(4)
-        销户(5)  解锁(6)
-        挂失(7)
-        管理员帐户管理(8)
+        额度(5)  解锁(6)
+        挂失(7)  销户(8)
+        管理员帐户管理(9)
         注销(b)  退出(q)
+        ===========================================
         """ % admin_name)
-        wait_choose = str(input("请选择操作:"))
+        wait_choose = str(input("请选择操作:")).strip()
         if wait_choose == "1":
             get_database = register_account(user_database, log_file=log_file)
             if type(get_database) == dict:
@@ -170,8 +205,10 @@ def admin_management(admin_name, quit_admin_management=False, log_file=None):  #
             if type(get_database) == dict:
                 user_info["user_bank"] = get_database
                 update_info(user_info)
+        elif wait_choose.lower() == "s":
+            show_account_info(user_database, admin_name, is_admin=True, log_file=log_file)
         elif wait_choose == "5":
-            get_database = delete_account(user_database, admin_name, is_admin=False, log_file=log_file)
+            get_database = change_user_credit_line(user_database, admin_name, log_file=log_file)
             if type(get_database) == dict:
                 user_info['user_bank'] = get_database  # 更新数据库信息
                 update_info(user_info)
@@ -186,6 +223,11 @@ def admin_management(admin_name, quit_admin_management=False, log_file=None):  #
                 user_info["user_bank"] = get_database
                 update_info(user_info)
         elif wait_choose == "8":
+            get_database = delete_account(user_database, admin_name, is_admin=False, log_file=log_file)
+            if type(get_database) == dict:
+                user_info['user_bank'] = get_database  # 更新数据库信息
+                update_info(user_info)
+        elif wait_choose == "9":
             quit_admin_management = management_admin_account(
                 admin_name, quit_admin_management, log_file=log_file)  # 对管理员账号进行操作
         elif str(wait_choose).lower() in ['q', 'quit', ]:
@@ -207,10 +249,16 @@ def management_admin_account(admin_name, quit_management_account, log_file=None)
         if not admin_database.get(admin_name):
             break
         print("""中国建都银行    管理中心    [%s]已登陆
-        添加管理账号(1)  删除管理账号(2)  更改账号权限(3)  更改账号信息(4)  修改管理员密码(5)
+        ===========================================
+        添加管理账号(1)
+        删除管理账号(2)
+        更改账号权限(3)
+        更改账号信息(4)
+        修改管理员密码(5)
         返回(b)  退出(q)
+        ===========================================
         """ % admin_name)
-        wait_choose = str(input("请选择操作:"))
+        wait_choose = str(input("请选择操作:")).strip()
         if wait_choose == "1":
             get_database = add_admin_account(admin_database, admin_name, is_admin=True, log_file=log_file)
             if type(get_database) == dict:
@@ -227,7 +275,7 @@ def management_admin_account(admin_name, quit_management_account, log_file=None)
                 user_info['admin_bank'] = get_database  # 更新数据库信息
                 update_info(user_info)
         elif wait_choose == "4":
-            get_database = modify_admin_account_info(admin_database, admin_name, log_file=log_file)
+            get_database = modify_admin_account_info(admin_database, admin_name, is_admin=True, log_file=log_file)
             if type(get_database) == dict:
                 user_info['admin_bank'] = get_database  # 更新数据库信息
                 update_info(user_info)
