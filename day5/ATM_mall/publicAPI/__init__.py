@@ -185,9 +185,18 @@ def change_account_info(database, user, common_info):  # 变更用户的除用�
 
 
 def add_extra_info(register_func):  # 添加扩展信息的装饰器
-    def add_info(database, is_admin=False, log_file=None):  # 传入的参数是一个字典
+    def add_info(database, is_admin=False, log_file=None, is_shop_user=False):  # 传入的参数是一个字典
+        """
+        :param database: 含有用户信息的字典
+        :param is_admin: 是否是管理员
+        :param log_file: 日志文件名
+        :param is_shop_user: 是否商城用户
+        :return:
+        """
         before = database
         after = register_func(database)  # 得到增加用户后的字典
+        if is_shop_user:  # 如果是商城用户注册,直接返回
+            return after
         if after:
             database = after
             update_user = set(before).symmetric_difference(set(after))  # 把增加的用户提取出来,更新
@@ -204,7 +213,7 @@ def add_extra_info(register_func):  # 添加扩展信息的装饰器
 
 
 @add_extra_info  # 增加额外的扩展信息
-def register_account(database, is_admin=False, log_file=None):  # 传入一个字典的键值,也可以是一个空字典
+def register_account(database, is_admin=False, log_file=None, is_shop_user=False):  # 传入一个字典的键值,也可以是一个空字典
     new_user = str(input("请输入新用户:")).strip()
     new_password = str(input("请输入新密码:")).strip()
     repeat_password = str(input("请再次输入密码:")).strip()
@@ -365,11 +374,21 @@ def change_admin_permission(database, admin_name, log_file=None):  # 更改管�
 def change_user_credit_line(database, admin_name, log_file=None):
     select_user = str(input("请输入要修改信用额度的用户名: ")).strip()
     credit_limit = add_credit_limit()
-    get_database = change_account_info(database, select_user, {"credit_line": credit_limit})
-    if get_database:
-        print("用户额度修改成功,目前该用户额度为[%s]" % credit_limit)
-        Logger(log_file).write_log(user=admin_name, status=True, event="用户%s额度修改成功,额度已修改为[%s]" % (select_user, credit_limit))
-        return get_database
+    current_info = search_account_info(database, select_user)
+    if type(current_info) == dict:
+        current_credit_limit = database[select_user]["credit_limit"]
+        current_available_credit = database[select_user]["available_credit"]
+        current_cash_advance_limit = database[select_user]["cash_advance_limit"]
+        if current_credit_limit == current_available_credit:
+            current_available_credit = credit_limit
+            current_cash_advance_limit = str(float(credit_limit) / 2)
+        get_database = change_account_info(database, select_user, {"credit_limit": credit_limit,
+                                                                   "cash_advance_limit": current_cash_advance_limit,
+                                                                   "available_credit": current_available_credit})
+        if get_database:
+            print("用户额度修改成功,目前该用户额度为[%s]" % credit_limit)
+            Logger(log_file).write_log(user=admin_name, status=True, event="用户%s额度修改成功,额度已修改为[%s]" % (select_user, credit_limit))
+            return get_database
     else:
         Logger(log_file).write_log(user=admin_name, status=False, event="用户%s不存在,修改额度失败" % select_user)
         return False
@@ -503,16 +522,16 @@ def show_account_info(database, user_name, is_admin=False, log_file=None):
     本期剩余应还金额       ￥%s
     本期剩余最低还款金额    ￥%s
     ====================================================
-    """
-    % (select_user, select_user, cn_name, en_name, age, mail, birthday, mobile, company,
-       user_status, credit_limit, available_credit_limit, 0, cash_advance_limit,
-       statement_date, payment_due_date, new_charges, current_balance, minimum_payment))
+    """ % (select_user, select_user, cn_name, en_name, age, mail, birthday, mobile, company,
+           user_status, credit_limit, available_credit_limit, 0, cash_advance_limit,
+           statement_date, payment_due_date, new_charges, current_balance, minimum_payment))
 
 
-def transfer_cash(database, user_name, log_file):
+def transfer_cash(database, user_name, log_file, sold_log=None):
     count = 0
     user_database = search_account_info(database, user_name)
     user_money = user_database["credit_limit"]
+    import time
     while count < 3:
         select_user = str(input("请输入需要转账的卡号:"))
         if select_user == user_name:
@@ -541,36 +560,139 @@ def transfer_cash(database, user_name, log_file):
             if wait_choose.lower() in ["y", "yes"]:
                 user_database["credit_limit"] = str(float(user_money) - float(money))
                 get_select_user_database["credit_limit"] = str(float(current_money) + float(money))
-                Logger(log_file).write_log(user=user_name, status="transfer", event="给用户[%s]转账成功,转账金额为[%s]" % (select_user, money))
+                current_time = time.strftime("%Y/%m/%d %H:%M:%S", time.localtime())
+                Logger(sold_log).write_log(user=user_name, status="%s" % money,
+                                           event="给用户[%s]转账成功,转账金额为[%s]" % (select_user, money), cur_time=current_time)
+                Logger(log_file).write_log(user=user_name, status="transfer",
+                                           event="给用户[%s]转账成功,转账金额为[%s]" % (select_user, money),)
                 return database
             else:
                 print("操作取消 !!")
                 break
-            break
         count += 1
     return False
 
 
-def select_date(string="开始时间"):
+def select_date(string="开始时间", is_sold=False):
+    """
+    :param string: 自定义提示内容
+    :param is_sold: 是否是查询交易日志格式
+    :return: 输入正确的日期格式
+    """
     import time
-    while True:
-        statement_date = time.strftime("%Y-%m-%d", time.localtime())
+    date_format = "%Y-%m-%d"
+    if is_sold:
+        date_format = "%Y/%m/%d"
+    count = 0
+    while count < 3:
+        statement_date = time.strftime(date_format, time.localtime())
         try:
+            count += 1
             statement_date = str(input("请输入%s\n格式:%s\n请输入:" % (string, statement_date))).strip()
-            time.strptime(statement_date, "%Y-%m-%d")
+            time.strptime(statement_date, date_format)
             return statement_date
         except ValueError:
+            print("格式输入错误")
             continue
 
 
-def search_history_log(user_name, log_file):
-    start_date = select_date("开始日期")
-    end_date = select_date("结束日期")
+def show_format_log(log_list, is_sold=False):
+    if type(log_list) == list:
+        first = "操作日期"
+        second = "时间"
+        third = "操作事件"
+        fourth = "操作状态"
+        fifth = "用户"
+        if is_sold:
+            first = "交易日"
+            second = "记账日"
+            third = "交易摘要"
+            fourth = "人民币金额"
+            fifth = "卡号"
+        title = "%s%s%s%s%s" % (first.ljust(12), second.ljust(12), third.ljust(50), fourth.ljust(14), fifth.ljust(12))
+        print(title)
+        for log in log_list:
+            record_list = str(log).split(maxsplit=4)
+            if len(record_list) == 5:
+                sold = record_list[0]
+                posted = record_list[1]
+                description = record_list[4]
+                rmb_amount = record_list[3]
+                card_num = record_list[2]
+                if is_sold:
+                    posted = sold
+                length_sold = myljust(first.ljust(12), sold)
+                length_posted = myljust(second.ljust(12), posted)
+                length_description = myljust(third.ljust(50), description)
+                length_rmb_amount = myljust(fourth.ljust(14), rmb_amount)
+                length_card_num = myljust(fifth.ljust(12), card_num)
+                print("%s%s%s%s%s" % (str(sold).ljust(length_sold),
+                                      str(posted).ljust(length_posted),
+                                      str(description).ljust(length_description),
+                                      str(rmb_amount).ljust(length_rmb_amount),
+                                      str(card_num).ljust(length_card_num)))
+
+
+def myljust(column, string):
+    length_column = len(str(column))
+    length_string = len(str(string).encode("gbk"))
+    if length_string > length_column:
+        length_string -= length_string - length_column
+    elif length_string < length_column:
+        length_string += length_column - length_string
+    else:
+        length_string -= 2
+    return length_string
+
+
+def search_history_log(user_name, log_file, sold_log=None, is_sold=False):
+    """
+    :param user_name: 操作的用户名
+    :param log_file: 银行基本日志文件
+    :param sold_log: 银行交易日志文件
+    :param is_sold: 是否查询交易日志
+    :return:
+    """
+    start_date = select_date("开始日期", is_sold=is_sold)
+    end_date = select_date("结束日期", is_sold=is_sold)
     check_date = get_diff_days(start_date, end_date)
+    if is_sold and sold_log:
+        Logger(log_file).write_log(user=user_name, status="True", event="查询交易记录日志")
+        log_file = sold_log
     if check_date and int(check_date) >= 0:
-        Logger(log_file).get_match_log(user=user_name, start_time=start_date, end_time=end_date, print_log=True)
+        get_match_list = Logger(log_file).get_match_log(user=user_name, start_time=start_date, end_time=end_date)
+        show_format_log(get_match_list, is_sold=is_sold)
         return True
     else:
         print("日期范围输入有误!!!")
         return False
 
+
+def for_admin_withdraw_money(database, user_name, log_file, sold_log, is_admin=False):
+    if is_admin:
+        select_user = str(input("请输入需要取现的用户名: "))
+    else:
+        select_user = user_name
+    get_select_user_db = search_account_info(database, select_user)
+    if type(get_select_user_db) == dict:
+        while True:
+            current_money = get_select_user_db["cash_advance_limit"]
+            wait_choose = str(input("请输入取现金额:"))
+            try:
+                get_money = float(wait_choose)
+                current_money = float(current_money)
+                if current_money < get_money:
+                    print("取现金额不足,请重新输入")
+                    continue
+                elif get_money % 100 != 0:
+                    print("取现金额只能为100整数")
+                    continue
+                break
+            except ValueError:
+                print("输入错误,金额不能是非数字类型")
+        reduce_money = current_money - get_money
+        get_select_user_db["cash_advance_limit"] = reduce_money
+        print("您已取现[%s],剩余可用现金额度[%s]元" % (get_money, reduce_money))
+        Logger(log_file).write_log(user=user_name, status="True", event="取现成功,取现金额[%s]元,剩余[%s]元" % (get_money, reduce_money))
+        Logger(sold_log).write_log(user=user_name, status=get_money, event="取现成功,取现金额[%s]元,剩余[%s]元" % (get_money, reduce_money), date_format="/")
+        return database

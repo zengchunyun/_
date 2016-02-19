@@ -20,11 +20,14 @@ class Logger(object):
         self.end_time = None  # 初始化结束查询时间
         self.match_list = []  # 初始化一个匹配条件列表
 
-    def write_log(self, user=None, status=None, event=None, cur_time=None):  # 写入日志
+    def write_log(self, user=None, status=None, event=None, cur_time=None, date_format="-"):  # 写入日志
         self.user = user
         self.status = status
         self.event = event
-        self.cur_time = self.time.strftime("%Y-%m-%d %H:%M:%S", self.time.localtime())  # 获取当前时间
+        datetime_format = "%Y-%m-%d %H:%M:%S"
+        import re
+        datetime_format = re.sub("[-]+", str(date_format), str(datetime_format))
+        self.cur_time = self.time.strftime(datetime_format, self.time.localtime())  # 获取当前时间
         if cur_time:
             self.cur_time = cur_time
         self.open_file = open(self.log_file, mode="a+")
@@ -64,16 +67,18 @@ class Logger(object):
         self.count = len(self.match_list)
         return self.count
 
-    def get_match_log(self, user="", status="", start_time=None, end_time=None, print_log=False):  # 返回匹配列表
+    def get_match_log(self, user="", status="", start_time=None, end_time=None, print_log=False, date_format="-"):  # 返回匹配列表
         self.user = user
         self.status = status
         self.start_time = str(start_time)
         self.end_time = str(end_time)
         self.match_list = []
+        datetime_format = "%Y-%m-%d"
+        date_format = datetime_format.replace("-", date_format)
         if self.start_time == str(None):
-            self.start_time = self.time.strftime("%Y-%m-%d", self.time.localtime())
+            self.start_time = self.time.strftime(date_format, self.time.localtime())
         if self.end_time == str(None):
-            self.end_time = self.time.strftime("%Y-%m-%d", self.time.localtime())
+            self.end_time = self.time.strftime(date_format, self.time.localtime())
         if len(self.start_time.split()) == 2:
             start_day = self.start_time.split()[0]
             start_hour = self.start_time.split()[1]

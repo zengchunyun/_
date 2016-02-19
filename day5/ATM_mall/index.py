@@ -20,6 +20,7 @@ def main(quit_atm):  # 程序入口
             quit_atm = atm_self_service(quit_atm)  # 进入ATM自助服务系统
         elif wait_choose == "2":
             quit_atm = shop_mall(quit_atm)  # 进入商城购物系统
+            pass
         elif str(wait_choose).lower() in ['q', 'quit', ]:  # 退出
             quit_atm = True
             print("谢谢使用,再见 !")

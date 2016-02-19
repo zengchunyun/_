@@ -4,7 +4,6 @@
 @author: zengchunyun
 """
 
-
 def get_diff_days(start_time, end_time):
     """
     :param start_time: 开始日期
@@ -12,16 +11,15 @@ def get_diff_days(start_time, end_time):
     :return: 相差天数
     """
     import datetime
+    import re
+    date_format = "%Y-%m-%d"
+    start_time = re.sub("[/]+", "-", str(start_time))
+    end_time = re.sub("[/]+", "-", str(end_time))
     try:
-        start_time = datetime.datetime.strptime(str(start_time), "%Y-%m-%d")
-        end_time = datetime.datetime.strptime(str(end_time), "%Y-%m-%d")
+        start_time = datetime.datetime.strptime(str(start_time), date_format)
+        end_time = datetime.datetime.strptime(str(end_time), date_format)
         differ = end_time - start_time
-        differ = str(differ)
-        differ_list = differ.split(",")
-        if len(differ_list) == 2:
-            days = differ_list[0].split()[0]
-        else:
-            days = 0
+        days = differ.days
     except ValueError:
         return False
     return str(days)
@@ -62,7 +60,3 @@ def withdraw_money(money, commission, days, flag=False):
     else:
         total_interest = money * commission + money + money * 0.0005 * days  # 计算本息
     return total_interest
-
-
-days = get_diff_days("2015-7-1", "2015-8-1")
-print(withdraw_money(2000, 0.05, int(days)))

@@ -7,14 +7,16 @@ from publicAPI import register_account, for_super_admin_change_password, for_adm
 from record_log import Logger
 from publicAPI import change_user_credit_line, show_account_info, for_owner_change_password
 from publicAPI import transfer_cash, search_history_log
-bank_log_file = "china_bank.log"
+from publicAPI import for_admin_withdraw_money
+bank_log_file = "china_bank.log"  # 银行基本日志
+sold_log_file = "sold_bank.log"  # 用户交易日志
 
 
-def update_info(user_info_dict):  # 接收一个字典字符串,然后写入到文件,把一个字典类型参数写入文件
+def update_info(user_info_dict, file_path="./config/settings.py", name="user_info = "):  # 接收一个字典字符串,然后写入到文件,把一个字典类型参数写入文件
     import re
-    write_data = re.findall('["\'\w,:\s=\d@.\-]+\{*|\}', 'user_info = '+str(user_info_dict).replace("'", '"'))
+    write_data = re.findall('["\'\[\]\w,:\s=\d@.\-]+\{*|\}', name + str(user_info_dict).replace("'", '"'))
     count = 0
-    with open('./config/settings.py', 'w') as database:
+    with open(file_path, 'w') as database:
         for content in write_data:
             if content.find('{') != -1:
                 database.write('%s%s\n' % (str(count * '\t').expandtabs(4), content))
@@ -116,12 +118,19 @@ def public_user_system(user, quit_user_system=False, log_file=None):
                 user_info["user_bank"] = get_database
                 update_info(user_info)
         elif wait_choose == "3":
-            get_database = transfer_cash(user_database, user, log_file=log_file)
+            get_database = transfer_cash(user_database, user, log_file=log_file, sold_log=sold_log_file)
             if type(get_database) == dict:
                 user_info["user_bank"] = get_database
                 update_info(user_info)
-        if wait_choose == "6":
-            search_history_log(user, log_file)
+        elif wait_choose == "4":
+            get_database = for_admin_withdraw_money(user_database, user, log_file=log_file, sold_log= sold_log_file)
+            if type(get_database) == dict:
+                user_info["user_bank"] = get_database
+                update_info(user_info)
+        elif wait_choose == "6":
+            search_history_log(user, log_file=log_file, sold_log=sold_log_file, is_sold=True)
+        elif wait_choose == "7":
+            search_history_log(user, log_file=log_file)
         elif str(wait_choose).lower() in ['q', 'quit', ]:
             quit_user_system = True
             print("谢谢使用,再见 !")
@@ -205,6 +214,10 @@ def admin_management(admin_name, quit_admin_management=False, log_file=None):  #
             if type(get_database) == dict:
                 user_info["user_bank"] = get_database
                 update_info(user_info)
+        elif wait_choose == "3":
+            print("该功能暂未开放")
+        elif wait_choose == "4":
+            print("该功能暂未开放")
         elif wait_choose.lower() == "s":
             show_account_info(user_database, admin_name, is_admin=True, log_file=log_file)
         elif wait_choose == "5":
