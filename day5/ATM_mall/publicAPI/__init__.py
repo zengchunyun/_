@@ -669,30 +669,45 @@ def search_history_log(user_name, log_file, sold_log=None, is_sold=False):
 
 
 def for_admin_withdraw_money(database, user_name, log_file, sold_log, is_admin=False):
+    count = 0
     if is_admin:
         select_user = str(input("请输入需要取现的用户名: "))
     else:
         select_user = user_name
     get_select_user_db = search_account_info(database, select_user)
     if type(get_select_user_db) == dict:
-        while True:
+        while count < 3:
+            count += 1
             current_money = get_select_user_db["cash_advance_limit"]
             wait_choose = str(input("请输入取现金额:"))
             try:
                 get_money = float(wait_choose)
+                total = get_money * 1.05
+                print("手续费为金额的%5,实际扣除金额为[{0}]".format(total))
                 current_money = float(current_money)
-                if current_money < get_money:
+                if current_money < total:
                     print("取现金额不足,请重新输入")
                     continue
                 elif get_money % 100 != 0:
                     print("取现金额只能为100整数")
                     continue
-                break
-            except ValueError:
+                while True:
+                    choose = str(input("确认取钱吗? yes/no: "))
+                    if choose.lower() in ["y", "yes"]:
+                        get_money = total
+                        reduce_money = current_money - get_money
+                        get_select_user_db["cash_advance_limit"] = reduce_money
+                        print("您已取现[%s],剩余可用现金额度[%s]元" % (get_money, reduce_money))
+                        Logger(log_file).write_log(user=user_name, status="True", event="取现成功,取现金额[%s]元,剩余[%s]元" % (get_money, reduce_money))
+                        Logger(sold_log).write_log(user=user_name, status=get_money, event="取现成功,取现金额[%s]元,剩余[%s]元" % (get_money, reduce_money), date_format="/")
+                        return database
+                    else:
+                        count += 3
+                        print("操作取消")
+                        break
+                else:
+                    break
+            except KeyError:
                 print("输入错误,金额不能是非数字类型")
-        reduce_money = current_money - get_money
-        get_select_user_db["cash_advance_limit"] = reduce_money
-        print("您已取现[%s],剩余可用现金额度[%s]元" % (get_money, reduce_money))
-        Logger(log_file).write_log(user=user_name, status="True", event="取现成功,取现金额[%s]元,剩余[%s]元" % (get_money, reduce_money))
-        Logger(sold_log).write_log(user=user_name, status=get_money, event="取现成功,取现金额[%s]元,剩余[%s]元" % (get_money, reduce_money), date_format="/")
-        return database
+
+

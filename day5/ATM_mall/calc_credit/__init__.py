@@ -60,3 +60,4 @@ def withdraw_money(money, commission, days, flag=False):
     else:
         total_interest = money * commission + money + money * 0.0005 * days  # 计算本息
     return total_interest
+
