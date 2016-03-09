@@ -87,8 +87,6 @@ class FTPServer(object):
             self.shutdown_request()
         except BrokenPipeError:
             self.shutdown_request()
-        finally:
-            print("testing ...")
 
     def handle(self):
         """
