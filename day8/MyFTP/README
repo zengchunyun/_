@@ -1,0 +1,114 @@
+本程序运行在python3.X上
+采用CS架构,可以启用多个客户端程序进行连接
+本程序结构目录
+   FTP
+    |_bin|
+    |    |_ftpclient.py    客户端程序   独立使用,不依赖服务端其它组件
+    |    |_ftp.py     服务端程序
+    |_core
+    |    |
+    |    |
+    |    |_ftpserver.py  服务端核心类
+    |    |_userverify.py    用户验证类
+    |_settings  存放服务配置
+    |    |_database.db  用户数据储存
+    |    |_init_database.py     初始化用户数据
+    |    |_settings.py 可以针对服务器设置一些基本属性
+
+
+服务端
+
+服务端,支持两种认证模式
+匿名模式
+    通过settings文件设置,匿名方式认证,启用为True,不启用为False
+    ENABLE_ANONYMOUS = True
+身份认证模式
+    只需将上面的字段设置为False
+
+所以这点可以看出,目前服务器暂时不支持两种身份机制通存
+
+
+
+磁盘配额功能
+    匿名认证是没有这个功能
+
+    服务器针对用户默认启用磁盘配额功能
+    通过settings
+    为所有用户配置磁盘配额,匿名用户不生效,单位字节
+        QUTOTA_SIZE = 1000000
+
+     如果
+        database = os.path.join(BASE_DIR, "settings/database")
+     以上数据库中包含用户配额字段,则优先使用单独配置.
+
+
+服务端的日志默认未启用日志文件记录到文本,如果需要启用记录日志到文本功能,需要指定日志存放文件位置即可,
+默认只打印日志输出到屏幕
+通过settings文件可以控制日志输出级别,服务器端建议使用INFO级别日志,DEBUG输出过于频繁,影响服务性能,仅供调试使用
+
+
+如果是非匿名设置
+服务端在对进行第一次连接对客户端会强制要求登陆验证,未经过验证的客户端不会继续处理请求
+初始两个账户 zengchunyun 密码123
+            oldboy  密码123
+
+
+客户端
+
+当第一次启动时,需要按任意非空格键触发请求连接服务端,这时服务端才会发起认证功能,按照提示输入正确信息,即可登陆服务器
+目前仅支持:
+        ls 查看当前目录
+        info 显示当前用户使用空间状态
+        cd dir 进入远程主机目录
+        dir 查看当前目录
+        chmod file-name [mode] 设置远程主机的文件权限 ,默认755,mode只能是三位数字权限,最大777,读4,写2,执行1
+        bye 注销当前用户
+        rm remote-file  删除远程主机的文件,不能删除目录
+        rmdir remote-dir  删除远程主机目录
+        get remote-files [local-file]    将远程文件下载到本地
+        put local-file [remote-file]    将本地文件上传到服务器
+        pwd 查看当前目录
+        quit 退出FTP会话,同bye
+        mkdir folder_name [mode] 创建目录 默认权限755,mode只能是三位数字权限,最大777,读4,写2,执行1
+
+
+客户端由于是独立的,也可以启用日志功能,需要指定日志文件位置即可使用
+
+
+
+
+
+
+
+以下为服务器涉及到的返回代码
+ERROR_CODE = {
+        100: "Entering Passive Mode .",
+        101: "Service ready for new user.",
+        102: "Not logged in.",
+        103: "User Logged out ",
+        104: "User logged in, proceed.",
+        105: "User name okay, need password.",
+        106: "Need account for storing files.",
+        107: "Need account for login.",
+        200: "Command okay.",
+        201: "Syntax error in parameters or arguments.",
+        202: "Command not implemented.",
+        203: "File status.",
+        204: 'Directory created.',
+        205: "Requested file action okay, completed.",
+        206: "Requested file action not taken.",
+        207: "Data connection open; no transfer in progress.",
+        208: "Data connection already open; transfer starting.",
+        209: "Requested file action pending further information",
+        450: "Requested action not taken. File unavailable (e.g., file not found, no access).",
+        451: "Requested action aborted. Data type unknown.",
+        452: "Requested action not taken. File name not allowed",
+        453: "Closing data connection. Requested file action successful (for example, file transfer or file abort).",
+        454: "Requested file action aborted. Exceeded storage allocation (for current directory or dataset).",
+        455: "Requested action not taken. Insufficient storage space in system.File unavailable (e.g., file busy).",
+        500: "Requested action aborted. Local error in processing.",
+        501: "Can't open data connection.",
+        502: "Connection closed; transfer aborted.",
+        503: "Service not available, closing control connection",
+        504: "Service closing control connection.",
+    }
