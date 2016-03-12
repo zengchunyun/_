@@ -72,7 +72,7 @@ class Role(object):
 
 
 class Soldier(Role):
-    def __init__(self, name, level, exp, hp, strength=100, hurt=1):
+    def __init__(self, name, level=1, exp=0, hp=100, strength=100, hurt=1):
         """
         :param name: 角色名
         :param level:等级
@@ -101,7 +101,7 @@ class Soldier(Role):
 
 
 class MagicMaster(Role):
-    def __init__(self, name, level, exp, hp, magic=100, hurt=2):
+    def __init__(self, name, level=1, exp=0, hp=100, magic=100, hurt=2):
         """
         :param name: 角色名
         :param level: 等级

@@ -1,0 +1,49 @@
+本程序运行在python3.X上
+
+本程序结构目录
+   MySSH
+    |_bin|
+    |    |_ansible_server.py 批量管理服务器工具
+    |    |
+    |_core
+    |    |
+    |    |
+    |    |_ansible.py  核心程序,包含了对服务器地址合法校验,上传下载文件,执行命令等操作
+    |    |
+    |_settings  存放服务配置
+    |    |_settings.ini     存放服务器分组数据
+    |    |_conf_template.py  生成配置文件模版工具
+    |    |_
+
+
+
+
+通过ansible可以对服务器进行批量管理
+可以对单台多多组服务器进行批量对操作,如上传,下载文件,执行命令
+工具使用说明:
+    --server  选项后面需要指定具体的IP地址,该IP地址程序会对该地址合法性检验   管理单个服务器[ip]
+        如:  --server 127.0.0.1
+    --servers 管理一组或多组服务器(通过配置文件定义好分组
+        如:  --servers webgroup  nginxgroup    通过对settings里对settings.ini文件配置分组
+
+    -e  对服务器所执行对操作,如果命令包含参数,请用双引号引起 command|[get|put]
+        上传文件使用put
+        下载文件使用get
+        上传下载,需要指定文件名,通过选项 -f指定
+        如:  -e "ls -al"
+            -e put -f localfile remotepath
+            -e get -f remotefile    localpath
+
+    -f  上传或下载对文件名 local remote | remote local
+        该选项结合-e 使用
+
+    -u  user name for remote server
+        指定连接远程服务器对用户名
+
+    -p  required password for remote user
+        指定连接远程服务器对密码
+
+
+    -h  查看帮助信息
+
+

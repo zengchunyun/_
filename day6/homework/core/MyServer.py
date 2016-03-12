@@ -6,6 +6,8 @@
 import threading
 import socket
 import selectors
+import socketserver
+socketserver.TCPServer
 Selector = selectors.SelectSelector
 
 
@@ -27,21 +29,17 @@ class MyServer(object):
         try:
             self.server_bind()
             self.socket.listen(self.request_queue_size)
-        except KeyboardInterrupt:
+        except OSError:
             self.socket.close()
-            raise
 
     def server_bind(self):
         """绑定监听地址
         :return:
         """
-        try:
-            if self.allow_reuse_address:
-                self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 设置地址复用
-            self.socket.bind(self.server_address)
-            self.server_address = self.socket.getsockname()
-        except OSError:
-            pass
+        if self.allow_reuse_address:
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 设置地址复用
+        self.socket.bind(self.server_address)
+        self.server_address = self.socket.getsockname()
 
     def server_start(self, interval=0.4):
         """
@@ -57,7 +55,7 @@ class MyServer(object):
                     if ready:
                         self.handle_request()
         finally:
-            self.__shutdown_request = True
+            self.__shutdown_request = False
             self.__shutdown.set()  # 将线程事件设置为不阻塞
 
     def handle_request(self):
@@ -67,6 +65,9 @@ class MyServer(object):
         try:
             request, client_address = self.socket.accept()
             self.all_user_list.append(request)
+        except OSError:
+            return
+        try:
             self.process_request(request, client_address)
         except OSError:
             self.shutdown_request(request)
@@ -103,8 +104,7 @@ class MyServer(object):
             request.close()
         except OSError:
             pass
-        except AttributeError:
-            pass
+        request.close()
 
     def fileno(self):
         return self.socket.fileno()  # selector会获取该套接字文件描述符

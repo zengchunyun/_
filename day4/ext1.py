@@ -226,3 +226,19 @@ Created on 2016年1月9日
     # print(len(first))
     # print(len(second))
     # print(len(express))
+
+
+def myljust(column, string):
+    import re
+    string_column = re.findall("[\u4e00-\u9fa5]+", string)
+    length_column = len(str(column))
+    length_string = len(str(string).encode("gbk"))
+    if string_column and not str(string).isdigit():
+        length_string += 4
+    else:
+        length_string += 2
+    if length_string >= length_column:
+        length_string = length_string - (length_string - length_column) - 5
+    else:
+        length_string += length_column - length_string - 4
+    return length_string

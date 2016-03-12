@@ -19,10 +19,12 @@ def initdb():
                  "failed": "\n登陆失败\n",
                  "role": "\n请输入角色名称:\n",
                  "role_job": "\n请选择职业\n1\t战士\n2\t魔法师\n",
-                 "role_info": "\n等级{}  EXP{}  HP{}  \n",
+                 "role_info": "\n角色名[{}]  EXP[{}]  HP[{}]  \n",
+                 "role_account": "\n角色名称[{}]\n职业[{}]\n",
                  "over": "\n珍爱生命,远离游戏\n",
                  "play": "历史",
                  "error": "\n输入错误\n",
+                 "ask": "\n是否确认保存\nyes/no:\n",
                  }
     skills = {"soldier": [{"name": "狂暴", "attr": "Battle Shout", "hurt": "-0.05", "sleep": 0.01},
                           {"name": "英勇一击", "attr": "Heroic Strike", "hurt": "-0.1", "sleep": 0.05},
@@ -37,8 +39,7 @@ def initdb():
     create_database = shelve.open("database")
     user_info = {"oldboy": {"password": "484d81f3893c04df63dc6bd2aedc917c", "store": True},
                  "zengchunyun": {"password": "86a5897e933c466bb2b6c945845ab76b", "store": False}}
-    print(create_database["data"])
-    # create_database["data"] = user_info
+    create_database["data"] = user_info
     create_database["skills"] = skills
     create_database["show_list"] = show_list
     create_database.close()

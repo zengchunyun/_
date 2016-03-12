@@ -243,7 +243,7 @@ class MyFTPClient(object):
                 self.logger.debug("md5值异常")
                 return 451
             else:
-                print(data.decode())
+                print(str(data, self.encoding))
 
     def sendall(self, code, json_data):
         """

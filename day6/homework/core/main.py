@@ -9,6 +9,7 @@ from core.MyServer import MyServer
 from core.game import Soldier, MagicMaster
 import shelve
 import logging
+import time
 
 host, port = "0.0.0.0", 9999  # 定义服务器监听端口
 connect_database = shelve.open("../database/database")  # 打开可持久化数据文件
@@ -20,7 +21,7 @@ logger = logging.getLogger(__name__)  # 创建一个日志名为Game
 logger.setLevel(logging.INFO)  # 日志级别为INFO
 con_handler = logging.StreamHandler()  # 创建控制台流处理日志
 con_handler.setLevel(logging.DEBUG)  # 设置控制台日志输出级别
-file_handler = logging.FileHandler(filename="../database/access.log", encoding="utf8", delay=False)  # 设置记录日志文件属性
+file_handler = logging.FileHandler(filename="../database/access.log", encoding="utf8")  # 设置记录日志文件属性
 file_handler.setLevel(logging.INFO)  # 设置记录日志级别
 formatter = logging.Formatter("%(asctime)s  -  %(name)s   -  %(levelname)s  - %(message)s")  # 设置日志格式
 con_handler.setFormatter(fmt=formatter)  # 设置控制台输出日志格式
@@ -66,12 +67,14 @@ class MyHandlerRequest(MyServer, UserVerify):
         while self.retry_count > 0:
             self.send_message(request, show_list["login"])
             received = self.recv_message(request)  # 尝试从该socket客户端接收数据
+            print("[%s]no data" % received)
+            request
             action = self.auth_menu.get(received)
             if action:
                 if str(received) == "q":
                     self.send_message(request, show_list["over"])
                     self.retry_count = 0
-                    logger.info("来自客户端[{}:{}]已下线 ...".format(client_address[0], client_address[1]))
+                    logger.info("来自客户端[{}:{}]已下线 ...".format(*client_address))
                     return False
                 self.send_message(request, show_list["name"])
                 username = self.recv_message(request)
@@ -82,15 +85,14 @@ class MyHandlerRequest(MyServer, UserVerify):
                     get_result[username]["store"] = False
                     connect_database["data"] = get_result
                 if get_result:
-                    self.send_message(request, show_list["welcome"])
-                    logger.info("来自客户端[{}:{}]用户名[{}]登陆成功 ...".format(client_address[0], client_address[1], username))
+                    logger.info("来自客户端[{}:{}]用户名[{}]登陆成功 ...".format(*client_address, username))
                     return username
                 elif str(get_result) == str(None):
-                    logger.info("来自客户端[{}:{}]用户名[{}]不存在,登陆失败 ...".format(client_address[0], client_address[1], username))
+                    logger.info("来自客户端[{}:{}]用户名[{}]不存在,登陆失败 ...".format(*client_address, username))
                 else:
-                    logger.info("来自客户端[{}:{}]用户名[{}]登陆失败 ...".format(client_address[0], client_address[1], username))
+                    logger.info("来自客户端[{}:{}]用户名[{}]登陆失败 ...".format(*client_address, username))
             else:
-                logger.info("来自客户端[{}:{}]输入错误,登陆失败 ...".format(client_address[0], client_address[1]))
+                logger.info("来自客户端[{}:{}]输入错误,登陆失败 ...".format(*client_address))
             self.send_message(request, show_list["failed"])
             self.retry_count -= 1
         else:
@@ -104,10 +106,10 @@ class MyHandlerRequest(MyServer, UserVerify):
         """
         get_user_info = connect_database["data"].get(username)
         if get_user_info["store"]:
-            self.send_message(request, show_list["continue"])
+            self.send_message(request, "%s%s" % (show_list["welcome"], show_list["continue"]))
             self.begin_menu["c"] = self.start_game
         else:
-            self.send_message(request, show_list["new"])
+            self.send_message(request, "%s%s" % (show_list["welcome"], show_list["new"]))
         self.retry_count = 10
         while self.retry_count > 0:
             action = self.recv_message(request)
@@ -123,7 +125,8 @@ class MyHandlerRequest(MyServer, UserVerify):
     def new_role(self, request, username):
         self.send_message(request, show_list["role"])
         role_name = self.recv_message(request)
-        connect_database["data"][username]["role_name"] = role_name
+        new_data = connect_database["data"]
+        new_data[username]["role_name"] = role_name
         self.send_message(request, show_list["role_job"])
         while True:
             role_job = self.recv_message(request)
@@ -131,12 +134,29 @@ class MyHandlerRequest(MyServer, UserVerify):
                 self.send_message(request, "%s%s" % (show_list["error"], show_list["role_job"]))
             else:
                 break
-        connect_database["data"][username]["role_job"] = role_job
-        print(connect_database["data"])
-
-
+        new_data[username]["role_job"] = role_job
+        if str(role_job) == "1":
+            role_job_name = "战士"
+            create_role = Soldier(role_name)
+            role_info_list = [create_role.name, create_role.level, create_role.exp, create_role.hp, create_role.strength]
+        else:
+            role_job_name = "魔法师"
+            create_role = MagicMaster(role_name)
+            role_info_list = [create_role.name, create_role.level, create_role.exp, create_role.hp, create_role.magic]
+        role_info = str(show_list["role_account"]).format(role_name, role_job_name)
+        while True:
+            role_info_detail = str(show_list["role_info"]).format(*role_info_list[:3])
+            print(role_info_detail)
+            self.send_message(request, "%s%s" %(role_info, show_list["ask"]))
+            confirm = self.recv_message(request)
+            if str(confirm).lower() in ["y", "yes"]:
+                connect_database["data"] = new_data
+                break
+            elif str(confirm).lower() in ["n", "no"]:
+                break
 
     def start_game(self, request, username):
+        # role_info =
         self.send_message(request, show_list["play"])
         pass
 
@@ -167,11 +187,17 @@ def run():
     调用父类server_start()方法启动服务端
     :return:
     """
-    try:
-        server_address = ("0.0.0.0", 9999)
-        server = MyHandlerRequest(server_address, database)
-        server.allow_reuse_address = True
-        logger.info("服务器初始化完成 ...")
-        server.server_start(1)
-    except KeyboardInterrupt:
-        logger.info("服务器已退出 ...")
+    while True:
+        try:
+            server_address = ("0.0.0.0", 9999)
+            server = MyHandlerRequest(server_address, database)
+            server.allow_reuse_address = True
+            logger.info("服务器初始化完成 ...")
+            server.server_start(1)
+        except KeyboardInterrupt:
+            logger.info("服务器已退出 ...")
+            server.socket.close()
+        except ValueError:
+            time.sleep(2)
+            logger.info("服务器启动遇到地址占用,正在重试重启 ...")
+            time.sleep(2)

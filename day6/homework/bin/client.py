@@ -34,12 +34,19 @@ def connect_server(sock=None):
     :return: 返回建立连接的socket
     """
     if sock:
-        sock.shutdown(socket.SHUT_WR)
-        sock.close()
+        shutdown_sock(sock)
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(2)
     sock.connect((host, port))
     return sock
+
+
+def shutdown_sock(sock):
+    try:
+        sock.shutdown(socket.SHUT_RDWR)
+        sock.close()
+    except OSError:
+        sock.close()
 
 if __name__ == "__main__":
     host, port = "127.0.0.1", 9999
@@ -50,7 +57,7 @@ if __name__ == "__main__":
         while count < 60:
             try:
                 sock = connect_server()
-                client()
+                # client()
                 while not quit_game:
                     rlist = [sys.stdin, sock]  # 设置读取列表
                     read_list, write_list, error_list = select.select(rlist, [], [], 1)
@@ -70,7 +77,6 @@ if __name__ == "__main__":
                         else:
                             data = sys.stdin.readline()
                             sock.sendall(bytes(data, "utf-8"))
-                            client()
             except ConnectionRefusedError:
                 logger.info("服务器不可达 ...")
                 time.sleep(count)
