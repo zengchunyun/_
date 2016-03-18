@@ -1,150 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/day9/thread_ext1.py" description="def sayhi(num):&#10;    print(&quot;running on number: %s&quot; ..." line="43" />
+    <bookmark url="file://$PROJECT_DIR$/day9/temp/thread_ext1.py" description="def sayhi(num):&#10;    print(&quot;running on number: %s&quot; ..." line="43" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc5a37be-7d77-4993-9b26-a6b1c0164134" name="Default" comment="2016-02-16&#10;增加挂失操作">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/readme.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/homework/Gaming.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/new_test.tar.gz" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/new_test.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/test5" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/class.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/newpng.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/newpng0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP_zengchunyun.tar.gz" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/ATM_mall/blogUrl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/conf/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/conf/errorcode.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/conf/settings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/conf/template.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/database/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/database/creditcard.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/database/init_db.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/database/shoppingmark.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/database/users.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/day5_credit_card.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/dbhelper/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/dbhelper/dbapi.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/logs/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/modules/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/modules/common.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/modules/creditcard.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/modules/report.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/modules/shopping.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/modules/users.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/report/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/report/report_bill" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/report/shopping_history" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/Day5/CreditCard/report/statement_1001012345" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/char.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/re_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/sobridge.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day5/telnet.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/homework/blogUrl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/aa" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/configparser_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/cs_game.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/example.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/example2.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/ext_01.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/hashlib_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/log_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/output.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/pickle_test" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/shelve_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/shelve_file.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/shelve_read.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/shelve_test.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/subprocess_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/test" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/test.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/test3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/test4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/test_.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/tmp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/xml_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day6/tmp/xmltest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/FTP/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/FTP/bin/ftpclient.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/FTP/bin/index.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/FTP/core/ftpserver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/FTP/core/userverify.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/FTP/database/database.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/FTP/database/init_database.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/cs/client.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/cs/server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/FTPServer/FTPServer/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/FTPServer/FTPServer/server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/FTPServer/bin/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/FTPServer/bin/ftp_client.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/FTPServer/database/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/client.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/cmd_tab.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/epoll_server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/ext1.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/ftpserver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/home_ext2.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/io_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/list_for.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/poll_server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/select_server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/sys_cmd_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/temp_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day7/temp/ter_curses.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MyFTP/settings/conf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MyFTP/settings/database.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/bin/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/bin/ansible_server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/core/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/core/ansible.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/logs/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/settings/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/settings/conf_template.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/MySSH/settings/settings.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyClient.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP/bin/ftp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP/bin/ftpclient.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP/core/ftpserver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP/core/userverify.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP/settings/conf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP/settings/database.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP/settings/init_database.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyFTP/settings/settings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/MyServer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/SSHClient.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/create_conf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/ext1.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/homework_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day8/temp/thread_ext1.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/genevt_client.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/gevent_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/gevent_server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/produce_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/queue_ext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/thread_ext1.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day6/ext_01.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../myUtility/main/myClient.py" afterPath="$PROJECT_DIR$/../myUtility/main/myClient.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/s12.iml" afterPath="$PROJECT_DIR$/.idea/s12.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/salt.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/salt_source/salt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt_master.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt_minion.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/config/master.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/config/minion.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/database/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/database/conf.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/database/init_database.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/log/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/master_command.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/master_daemon.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/minion_daemon.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/salt_mq.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/select_apply/client.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/homework/select_apply/server.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/c1.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/c2.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/c3.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/config.yaml.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/ext/ext2.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/ext/fort.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/ext/ip_ext.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/ext/twisted_client.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/ext/twisted_ext.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/p1.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/queue_producer.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/rabb.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/rabbit_mq_client.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/rabbit_mq_server.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/salt_mq_client.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/salt_server.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/day9/temp/test.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/day9/genevt_client.py" afterPath="$PROJECT_DIR$/day9/temp/genevt_client.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/day9/gevent_ext.py" afterPath="$PROJECT_DIR$/day9/temp/gevent_ext.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/day9/gevent_server.py" afterPath="$PROJECT_DIR$/day9/temp/gevent_server.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/day9/produce_ext.py" afterPath="$PROJECT_DIR$/day9/temp/produce_ext.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/day9/queue_ext.py" afterPath="$PROJECT_DIR$/day9/temp/queue_ext.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/day9/thread_ext1.py" afterPath="$PROJECT_DIR$/day9/temp/thread_ext1.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day4/day5ext.py" afterPath="$PROJECT_DIR$/day4/day5ext.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day4/ext1.py" afterPath="$PROJECT_DIR$/day4/ext1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day6/homework/bin/client.py" afterPath="$PROJECT_DIR$/day6/homework/bin/client.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day6/homework/core/MyServer.py" afterPath="$PROJECT_DIR$/day6/homework/core/MyServer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day6/homework/core/game.py" afterPath="$PROJECT_DIR$/day6/homework/core/game.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day6/homework/core/main.py" afterPath="$PROJECT_DIR$/day6/homework/core/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day6/homework/database/database.db" afterPath="$PROJECT_DIR$/day6/homework/database/database.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day6/homework/database/init_database.py" afterPath="$PROJECT_DIR$/day6/homework/database/init_database.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day8/MyFTP/bin/ftpclient.py" afterPath="$PROJECT_DIR$/day8/MyFTP/bin/ftpclient.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day8/MySSH/core/ansible.py" afterPath="$PROJECT_DIR$/day8/MySSH/core/ansible.py" />
     </list>
     <ignored path="s12.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -158,25 +66,33 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/s12$client.coverage" NAME="client Coverage Results" MODIFIED="1457074473109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7/cs" />
+    <SUITE FILE_PATH="coverage/s12$client.coverage" NAME="client Coverage Results" MODIFIED="1458011638418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/select_app" />
     <SUITE FILE_PATH="coverage/s12$settings.coverage" NAME="settings Coverage Results" MODIFIED="1457153847174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MyFTP/settings" />
+    <SUITE FILE_PATH="coverage/s12$salt_mq_client.coverage" NAME="salt_mq_client Coverage Results" MODIFIED="1458112024861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq" />
     <SUITE FILE_PATH="coverage/s12$ftpserver__1_.coverage" NAME="ftpserver (1) Coverage Results" MODIFIED="1456998387605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7/FTP/core" />
     <SUITE FILE_PATH="coverage/s12$tmp.coverage" NAME="tmp Coverage Results" MODIFIED="1456298297834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day6/tmp" />
-    <SUITE FILE_PATH="coverage/s12$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1455518371014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day5/ATM_mall/record_log" />
+    <SUITE FILE_PATH="coverage/s12$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1458197517124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9" />
     <SUITE FILE_PATH="coverage/s12$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1455782504686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day5/ATM_mall/publicAPI" />
     <SUITE FILE_PATH="coverage/s12$sys_cmd_ext.coverage" NAME="sys_cmd_ext Coverage Results" MODIFIED="1457024959007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7/temp" />
+    <SUITE FILE_PATH="coverage/s12$config_yaml.coverage" NAME="config.yaml Coverage Results" MODIFIED="1458049259969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/temp" />
     <SUITE FILE_PATH="coverage/s12$homework_ext.coverage" NAME="homework_ext Coverage Results" MODIFIED="1457577103004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/temp" />
+    <SUITE FILE_PATH="coverage/s12$salt_mq.coverage" NAME="salt_mq Coverage Results" MODIFIED="1458118287170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq" />
+    <SUITE FILE_PATH="coverage/s12$c1.coverage" NAME="c1 Coverage Results" MODIFIED="1458225841318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules" />
     <SUITE FILE_PATH="coverage/s12$ftp.coverage" NAME="ftp Coverage Results" MODIFIED="1457519999512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MyFTP/bin" />
     <SUITE FILE_PATH="coverage/s12$genevt_client.coverage" NAME="genevt_client Coverage Results" MODIFIED="1457773550428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9" />
     <SUITE FILE_PATH="coverage/s12$MyServer.coverage" NAME="MyServer Coverage Results" MODIFIED="1457148542563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/temp" />
+    <SUITE FILE_PATH="coverage/s12$rabbit_mq_client.coverage" NAME="rabbit_mq_client Coverage Results" MODIFIED="1458106853057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_server" />
     <SUITE FILE_PATH="coverage/s12$MyClient.coverage" NAME="MyClient Coverage Results" MODIFIED="1457244794336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/temp" />
     <SUITE FILE_PATH="coverage/s12$cmd_tab.coverage" NAME="cmd_tab Coverage Results" MODIFIED="1456885024492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7" />
+    <SUITE FILE_PATH="coverage/s12$p1.coverage" NAME="p1 Coverage Results" MODIFIED="1458225837032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules" />
     <SUITE FILE_PATH="coverage/s12$test.coverage" NAME="test Coverage Results" MODIFIED="1457440397867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MyFTP/core" />
     <SUITE FILE_PATH="coverage/s12$__init____2_.coverage" NAME="__init__ (2) Coverage Results" MODIFIED="1455767152761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day5/ATM_mall/calc_credit" />
-    <SUITE FILE_PATH="coverage/s12$server.coverage" NAME="server Coverage Results" MODIFIED="1457074459728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7/cs" />
     <SUITE FILE_PATH="coverage/s12$ftpserver.coverage" NAME="ftpserver Coverage Results" MODIFIED="1457462229621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MyFTP/core" />
+    <SUITE FILE_PATH="coverage/s12$server.coverage" NAME="server Coverage Results" MODIFIED="1458011635306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/select_app" />
     <SUITE FILE_PATH="coverage/s12$temp.coverage" NAME="temp Coverage Results" MODIFIED="1455804589422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day5/ATM_mall" />
     <SUITE FILE_PATH="coverage/s12$ftpclient__1_.coverage" NAME="ftpclient (1) Coverage Results" MODIFIED="1457499659426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/temp/MyFTP/bin" />
+    <SUITE FILE_PATH="coverage/s12$ip_ext.coverage" NAME="ip_ext Coverage Results" MODIFIED="1457919039847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/temp/ext" />
+    <SUITE FILE_PATH="coverage/s12$salt_minion.coverage" NAME="salt_minion Coverage Results" MODIFIED="1458267497368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin" />
     <SUITE FILE_PATH="coverage/s12$io_ext.coverage" NAME="io_ext Coverage Results" MODIFIED="1456628696790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7" />
     <SUITE FILE_PATH="coverage/s12$ftpclient.coverage" NAME="ftpclient Coverage Results" MODIFIED="1457516059399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MyFTP/bin" />
     <SUITE FILE_PATH="coverage/s12$init_db.coverage" NAME="init_db Coverage Results" MODIFIED="1455884965524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day5/Day5/CreditCard/database" />
@@ -193,17 +109,24 @@
     <SUITE FILE_PATH="coverage/s12$__init____3_.coverage" NAME="__init__ (3) Coverage Results" MODIFIED="1455788218494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day5/ATM_mall/mall" />
     <SUITE FILE_PATH="coverage/s12$Unittests_in_shelve_ext.coverage" NAME="Unittests in shelve_ext Coverage Results" MODIFIED="1455941647775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day6" />
     <SUITE FILE_PATH="coverage/s12$configparser_ext.coverage" NAME="configparser_ext Coverage Results" MODIFIED="1455952678388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day6" />
+    <SUITE FILE_PATH="coverage/s12$c2.coverage" NAME="c2 Coverage Results" MODIFIED="1458110738840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq" />
     <SUITE FILE_PATH="coverage/s12$day5ext.coverage" NAME="day5ext Coverage Results" MODIFIED="1455780724558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day4" />
     <SUITE FILE_PATH="coverage/s12$server__1_.coverage" NAME="server (1) Coverage Results" MODIFIED="1456659125047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7/FTPServer/FTPServer" />
     <SUITE FILE_PATH="coverage/s12$poll_server.coverage" NAME="poll_server Coverage Results" MODIFIED="1456760594486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7" />
+    <SUITE FILE_PATH="coverage/s12$master_command.coverage" NAME="master_command Coverage Results" MODIFIED="1458232521612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules" />
     <SUITE FILE_PATH="coverage/s12$thread_ext1.coverage" NAME="thread_ext1 Coverage Results" MODIFIED="1457749330754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9" />
     <SUITE FILE_PATH="coverage/s12$gevent_ext.coverage" NAME="gevent_ext Coverage Results" MODIFIED="1457766659818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9" />
     <SUITE FILE_PATH="coverage/s12$gevent_server.coverage" NAME="gevent_server Coverage Results" MODIFIED="1457773528656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9" />
+    <SUITE FILE_PATH="coverage/s12$rabbit_mq_server.coverage" NAME="rabbit_mq_server Coverage Results" MODIFIED="1458105125207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_server" />
     <SUITE FILE_PATH="coverage/s12$sock_client2.coverage" NAME="sock_client2 Coverage Results" MODIFIED="1456904012242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/s12day7代码/day7code_on_linux" />
+    <SUITE FILE_PATH="coverage/s12$salt_master.coverage" NAME="salt_master Coverage Results" MODIFIED="1458235469071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin" />
     <SUITE FILE_PATH="coverage/s12$create_conf.coverage" NAME="create_conf Coverage Results" MODIFIED="1457589674974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MySSH/settings" />
+    <SUITE FILE_PATH="coverage/s12$queue_producer.coverage" NAME="queue_producer Coverage Results" MODIFIED="1458085647017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_server" />
     <SUITE FILE_PATH="coverage/s12$shelve_read.coverage" NAME="shelve_read Coverage Results" MODIFIED="1455942032760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day6" />
     <SUITE FILE_PATH="coverage/s12$day5_credit_card.coverage" NAME="day5_credit_card Coverage Results" MODIFIED="1455884677778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day5/Day5/CreditCard" />
+    <SUITE FILE_PATH="coverage/s12$twisted_client.coverage" NAME="twisted_client Coverage Results" MODIFIED="1457890532923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/temp/ext" />
     <SUITE FILE_PATH="coverage/s12$SSHClient.coverage" NAME="SSHClient Coverage Results" MODIFIED="1457608119341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MySSH/core" />
+    <SUITE FILE_PATH="coverage/s12$salt.coverage" NAME="salt Coverage Results" MODIFIED="1458267547500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin" />
     <SUITE FILE_PATH="coverage/s12$epoll_server.coverage" NAME="epoll_server Coverage Results" MODIFIED="1456741861234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7" />
     <SUITE FILE_PATH="coverage/s12$conf_template.coverage" NAME="conf_template Coverage Results" MODIFIED="1457664649234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MySSH/settings" />
     <SUITE FILE_PATH="coverage/s12$ftp__1_.coverage" NAME="ftp (1) Coverage Results" MODIFIED="1457499642791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/temp/MyFTP/bin" />
@@ -211,10 +134,12 @@
     <SUITE FILE_PATH="coverage/s12$main.coverage" NAME="main Coverage Results" MODIFIED="1456223863967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day6/homework/core" />
     <SUITE FILE_PATH="coverage/s12$client__1_.coverage" NAME="client (1) Coverage Results" MODIFIED="1456566851719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7" />
     <SUITE FILE_PATH="coverage/s12$select_server.coverage" NAME="select_server Coverage Results" MODIFIED="1456742055015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7" />
-    <SUITE FILE_PATH="coverage/s12$init_database.coverage" NAME="init_database Coverage Results" MODIFIED="1457467035213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MyFTP/settings" />
+    <SUITE FILE_PATH="coverage/s12$init_database.coverage" NAME="init_database Coverage Results" MODIFIED="1458232797126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq/database" />
     <SUITE FILE_PATH="coverage/s12$re_ext.coverage" NAME="re_ext Coverage Results" MODIFIED="1455872818099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day5" />
+    <SUITE FILE_PATH="coverage/s12$ext2.coverage" NAME="ext2 Coverage Results" MODIFIED="1458002205508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/temp/ext" />
     <SUITE FILE_PATH="coverage/s12$log_ext.coverage" NAME="log_ext Coverage Results" MODIFIED="1455958313145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day6" />
     <SUITE FILE_PATH="coverage/s12$queue_ext.coverage" NAME="queue_ext Coverage Results" MODIFIED="1457760524043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9" />
+    <SUITE FILE_PATH="coverage/s12$master_daemon.coverage" NAME="master_daemon Coverage Results" MODIFIED="1458178351090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/homework/salt_rabbitmq/salt/master" />
     <SUITE FILE_PATH="coverage/s12$home_ext2.coverage" NAME="home_ext2 Coverage Results" MODIFIED="1456736681325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day7" />
     <SUITE FILE_PATH="coverage/s12$sock_server2.coverage" NAME="sock_server2 Coverage Results" MODIFIED="1456903546607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads/s12day7代码/day7code_on_linux" />
     <SUITE FILE_PATH="coverage/s12$ext1.coverage" NAME="ext1 Coverage Results" MODIFIED="1457673289003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/temp" />
@@ -222,6 +147,8 @@
     <SUITE FILE_PATH="coverage/s12$myClient.coverage" NAME="myClient Coverage Results" MODIFIED="1456237506797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../myUtility/main" />
     <SUITE FILE_PATH="coverage/s12$ansible.coverage" NAME="ansible Coverage Results" MODIFIED="1457597675416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day8/MySSH/core" />
     <SUITE FILE_PATH="coverage/s12$ext.coverage" NAME="ext Coverage Results" MODIFIED="1456363618733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day6" />
+    <SUITE FILE_PATH="coverage/s12$fort.coverage" NAME="fort Coverage Results" MODIFIED="1457882837503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/temp/ext" />
+    <SUITE FILE_PATH="coverage/s12$twisted_ext.coverage" NAME="twisted_ext Coverage Results" MODIFIED="1457890492778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/day9/temp/ext" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
@@ -231,30 +158,7 @@
     <favorites_list name="s12" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gevent_server.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/day9/gevent_server.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="genevt_client.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/day9/genevt_client.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13056093">
-              <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-              <folding>
-                <element signature="e#76#89#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -269,48 +173,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/day7/cmd_tab.py" />
-        <option value="$PROJECT_DIR$/day7/FTPServer/bin/cmd.sh" />
-        <option value="$USER_HOME$/Downloads/s12day7代码/day7code_on_linux/sock_client2.py" />
-        <option value="$PROJECT_DIR$/day7/temp_test.py" />
-        <option value="$PROJECT_DIR$/day7/FTPServer/FTPServer/server.py" />
-        <option value="$PROJECT_DIR$/day7/FTPServer/bin/ftp_client.py" />
-        <option value="$PROJECT_DIR$/day7/FTP/ftpclient.py" />
-        <option value="$PROJECT_DIR$/day7/FTP/ftpserver.py" />
-        <option value="$PROJECT_DIR$/day7/FTP/bin/index.py" />
-        <option value="$PROJECT_DIR$/day7/FTP/core/userverify.py" />
-        <option value="$PROJECT_DIR$/day7/FTP/database/init_database.py" />
-        <option value="$PROJECT_DIR$/day7/temp/sys_cmd_ext.py" />
-        <option value="$PROJECT_DIR$/day7/FTP/bin/ftpclient.py" />
-        <option value="$PROJECT_DIR$/day7/FTP/core/ftpserver.py" />
-        <option value="$PROJECT_DIR$/day7/FTP/README" />
-        <option value="$PROJECT_DIR$/day7/cs/server.py" />
-        <option value="$PROJECT_DIR$/day7/cs/client.py" />
-        <option value="$PROJECT_DIR$/day7/temp/ext1.py" />
-        <option value="$PROJECT_DIR$/day8/FTP/client.py" />
-        <option value="$PROJECT_DIR$/day8/FTP/server.py" />
-        <option value="$PROJECT_DIR$/day8/temp/MyServer.py" />
-        <option value="$PROJECT_DIR$/day8/FTP/core/ftpserver.py" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/settings/conf.py" />
-        <option value="$PROJECT_DIR$/day8/temp/MyClient.py" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/bin/ftp.py" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/settings/conf/zengchunyun.py" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/core/test.py" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/settings/init_database.py" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/README" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/settings/settings.py" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/core/ftpserver.py" />
-        <option value="$PROJECT_DIR$/day8/MySSH/core/Server.py" />
-        <option value="$PROJECT_DIR$/day8/MyFTP/bin/ftpclient.py" />
-        <option value="$PROJECT_DIR$/day8/temp/homework_ext.py" />
-        <option value="$PROJECT_DIR$/day8/MySSH/settings/create_conf.py" />
-        <option value="$PROJECT_DIR$/day8/MySSH/settings/example.ini" />
-        <option value="$PROJECT_DIR$/day8/MySSH/settings/settinfs.ini" />
-        <option value="$PROJECT_DIR$/day8/MySSH/core/SSHClient.py" />
-        <option value="$PROJECT_DIR$/day8/MySSH/bin/ansible_server.py" />
-        <option value="$PROJECT_DIR$/day8/MySSH/settings/conf_template.py" />
         <option value="$PROJECT_DIR$/day8/MySSH/settings/settings.ini" />
-        <option value="$PROJECT_DIR$/day8/MySSH/core/ansible.py" />
         <option value="$PROJECT_DIR$/day8/MySSH/README" />
         <option value="$PROJECT_DIR$/day8/temp/thread_ext1.py" />
         <option value="$PROJECT_DIR$/day8/temp/ext1.py" />
@@ -320,6 +183,47 @@
         <option value="$PROJECT_DIR$/day9/gevent_ext.py" />
         <option value="$PROJECT_DIR$/day9/gevent_server.py" />
         <option value="$PROJECT_DIR$/day9/genevt_client.py" />
+        <option value="$PROJECT_DIR$/day9/temp/ext/fort.py" />
+        <option value="$PROJECT_DIR$/day8/MySSH/settings/conf_template.py" />
+        <option value="$PROJECT_DIR$/day9/temp/ext/twisted_ext.py" />
+        <option value="$PROJECT_DIR$/day9/temp/ext/twisted_client.py" />
+        <option value="$PROJECT_DIR$/day9/temp/ext/ip_ext.py" />
+        <option value="$PROJECT_DIR$/day8/MySSH/core/ansible.py" />
+        <option value="$PROJECT_DIR$/day9/temp/ext/ext2.py" />
+        <option value="$PROJECT_DIR$/day9/homework/select_app/client.py" />
+        <option value="$PROJECT_DIR$/day9/homework/select_app/server.py" />
+        <option value="/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/salt/auth/__init__.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_server/salt_server.py" />
+        <option value="$PROJECT_DIR$/day9/temp/config.yaml.py" />
+        <option value="$PROJECT_DIR$/day9/temp/test.yaml" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_server/queue_producer.py" />
+        <option value="$PROJECT_DIR$/day9/temp/rabb.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_server/rabbit_mq_client.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_server/rabbit_mq_server.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/c2.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/salt_mq_client.py" />
+        <option value="$PROJECT_DIR$/day9/temp/c2.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/salt_mq.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/config/minion_settings.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/salt/master/salt-master.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/salt/minion/salt-minion.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/salt/master/master_daemon.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/salt-minion.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/config/master.yaml" />
+        <option value="$PROJECT_DIR$/day9/__init__.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/config/minion.yaml" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/c3.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/p1.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/c1.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/salt_mq.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/minion_daemon.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/database/init_database.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/master_daemon.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt_master.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt_minion.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/master_command.py" />
+        <option value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/README" />
       </list>
     </option>
   </component>
@@ -329,9 +233,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="85" />
+    <option name="x" value="868" />
     <option name="y" value="23" />
-    <option name="width" value="1097" />
+    <option name="width" value="988" />
     <option name="height" value="1152" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -396,128 +300,117 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="s12" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="s12" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="day9" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.accepted" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/day8/temp" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/day8/MyFTP/core" />
       <recent name="$PROJECT_DIR$/day8/MyFTP/userdata/zengchunyun" />
       <recent name="$PROJECT_DIR$/day7/temp" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/day9/temp" />
+      <recent name="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules" />
+      <recent name="$PROJECT_DIR$/day8/temp" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.genevt_client">
-    <configuration default="false" name="queue_ext" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.salt">
+    <configuration default="false" name="salt_minion" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="s12" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/queue_ext.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt_minion.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="produce_ext" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="init_database" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/database" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="s12" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/produce_ext.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/database/init_database.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="gevent_ext" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="salt" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="s12" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/gevent_ext.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="gevent_server" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="salt_master" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="s12" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/gevent_server.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt_master.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="genevt_client" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="master_command" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="s12" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/genevt_client.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/master_command.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -716,19 +609,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.queue_ext" />
-      <item index="1" class="java.lang.String" itemvalue="Python.produce_ext" />
-      <item index="2" class="java.lang.String" itemvalue="Python.gevent_ext" />
-      <item index="3" class="java.lang.String" itemvalue="Python.gevent_server" />
-      <item index="4" class="java.lang.String" itemvalue="Python.genevt_client" />
+      <item index="0" class="java.lang.String" itemvalue="Python.salt_minion" />
+      <item index="1" class="java.lang.String" itemvalue="Python.init_database" />
+      <item index="2" class="java.lang.String" itemvalue="Python.salt" />
+      <item index="3" class="java.lang.String" itemvalue="Python.salt_master" />
+      <item index="4" class="java.lang.String" itemvalue="Python.master_command" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.genevt_client" />
-        <item index="1" class="java.lang.String" itemvalue="Python.gevent_server" />
-        <item index="2" class="java.lang.String" itemvalue="Python.gevent_ext" />
-        <item index="3" class="java.lang.String" itemvalue="Python.produce_ext" />
-        <item index="4" class="java.lang.String" itemvalue="Python.queue_ext" />
+        <item index="0" class="java.lang.String" itemvalue="Python.salt" />
+        <item index="1" class="java.lang.String" itemvalue="Python.salt_minion" />
+        <item index="2" class="java.lang.String" itemvalue="Python.salt_master" />
+        <item index="3" class="java.lang.String" itemvalue="Python.init_database" />
+        <item index="4" class="java.lang.String" itemvalue="Python.master_command" />
       </list>
     </recent_temporary>
   </component>
@@ -863,12 +756,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="85" y="23" width="1097" height="1152" extended-state="0" />
+    <frame x="868" y="23" width="988" height="1152" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28625593" sideWeight="0.48210922" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22267206" sideWeight="0.48210922" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943293" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.279646" sideWeight="0.5021299" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2787652" sideWeight="0.5021299" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06726908" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.06873823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -880,9 +773,9 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34745762" sideWeight="0.5449554" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24007387" sideWeight="0.55212015" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32768363" sideWeight="0.4550446" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32686982" sideWeight="0.44787985" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34664536" sideWeight="0.49574015" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -892,16 +785,16 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.279646" sideWeight="0.5021299" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2787652" sideWeight="0.5021299" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06726908" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.06873823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21939737" sideWeight="0.51789075" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32686982" sideWeight="0.55212015" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32853284" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19648562" sideWeight="0.48210922" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25265017" sideWeight="0.48210922" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32768363" sideWeight="0.47071353" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32686982" sideWeight="0.44787985" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -953,370 +846,374 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/day7/FTP/bin/ftpclient.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6005917">
-          <caret line="74" column="37" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm50/python_stubs/776880377/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35502958">
-          <caret line="492" column="7" selection-start-line="492" selection-start-column="7" selection-end-line="492" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day8/temp/MyClient.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3106509">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ntpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47547683">
-          <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../myUtility/main/myClient.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5323911">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm50/python_stubs/776880377/_socket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5519054">
-          <caret line="200" column="16" selection-start-line="200" selection-start-column="16" selection-end-line="200" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45335084">
-          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/hashlib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.323615">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day7/FTP/core/ftpserver.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/dnsmasq.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="310" column="66" selection-start-line="286" selection-start-column="4" selection-end-line="310" selection-end-column="66" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MyFTP/settings/conf.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/dig.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MyFTP/core/userverify.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/dnsutil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/os.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56374806">
-          <caret line="225" column="33" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socketserver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.90106004">
-          <caret line="387" column="0" selection-start-line="387" selection-start-column="0" selection-end-line="387" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MyFTP/settings/init_database.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7243714">
-          <caret line="52" column="54" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day7/FTP/README">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/esxi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="34" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MyFTP/settings/conf/zengchunyun.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12064343">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.84">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MyFTP/settings/settings.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/grains.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6179625">
-          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/paramiko/ssh_exception.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/hadoop.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49731904">
-          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/paramiko/auth_handler.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/htpasswd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.144773">
-          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Crypto/Cipher/AES.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/hosts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1715817">
-          <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/paramiko/transport.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/lvs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.310991">
-          <caret line="1075" column="23" selection-start-line="1075" selection-start-column="23" selection-end-line="1075" selection-end-column="23" />
+        <state vertical-scroll-proportion="-2.0133333">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/paramiko/__init__.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/puppet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13538875">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm50/python_stubs/776880377/posix.py">
+    <entry file="file://$PROJECT_DIR$/day9/salt_source/salt/salt/modules/drbd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8552279">
-          <caret line="603" column="8" selection-start-line="603" selection-start-column="8" selection-end-line="603" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MyFTP/core/ftpserver.py">
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.406166">
-          <caret line="836" column="0" selection-start-line="836" selection-start-column="0" selection-end-line="836" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MyFTP/bin/ftpclient.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8042895">
-          <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day8/temp/create_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23592493">
-          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/argparse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.7600536">
-          <caret line="565" column="41" selection-start-line="565" selection-start-column="41" selection-end-line="565" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm50/python_stubs/776880377/parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3726542">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/subprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71447724">
-          <caret line="570" column="55" selection-start-line="570" selection-start-column="55" selection-end-line="570" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day8/temp/SSHClient.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.01650165">
-          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/re.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.739274">
-          <caret line="169" column="37" selection-start-line="169" selection-start-column="37" selection-end-line="169" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/day8/MyFTP/bin/ftp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.06666667">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="13" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MySSH/bin/ansible_server.py">
+    <entry file="file://$PROJECT_DIR$/day9/temp/test.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1980198">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MySSH/settings/settings.ini">
+    <entry file="file://$PROJECT_DIR$/day9/temp/salt_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24752475">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MyFTP/README">
+    <entry file="file://$PROJECT_DIR$/day9/temp/rabb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38943896">
-          <caret line="82" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="113" selection-end-column="5" />
+        <state vertical-scroll-proportion="-1.9020172">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MySSH/README">
+    <entry file="file://$PROJECT_DIR$/day9/temp/queue_producer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8085809">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/temp/thread_ext1.py">
+    <entry file="file://$PROJECT_DIR$/day9/temp/queue_ext.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91749173">
-          <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/MySSH/settings/conf_template.py">
+    <entry file="file://$PROJECT_DIR$/day9/temp/produce_ext.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9129594">
-          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/temp/homework_ext.py">
+    <entry file="file://$PROJECT_DIR$/day9/temp/gevent_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2234043">
-          <caret line="143" column="45" selection-start-line="143" selection-start-column="45" selection-end-line="143" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day8/temp/ext1.py">
+    <entry file="file://$PROJECT_DIR$/day9/temp/gevent_ext.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4352031">
-          <caret line="202" column="12" selection-start-line="202" selection-start-column="12" selection-end-line="202" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/temp/config.yaml.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day8/MyFTP/settings/init_database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.115030676">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day7/FTP/core/ftpserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12569833">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/database/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23537803">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/select_apply/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.15549216">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/select_apply/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9843081">
+          <caret line="104" column="26" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/temp/rabbit_mq_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.027104137">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/temp/rabbit_mq_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/config/minion.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.052878965">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/temp/salt_mq_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12338425">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/threading.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.039097745">
-          <caret line="761" column="16" selection-start-line="761" selection-start-column="16" selection-end-line="761" selection-end-column="16" />
+        <state vertical-scroll-proportion="-0.5672609">
+          <caret line="992" column="51" selection-start-line="992" selection-start-column="51" selection-end-line="992" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/multiprocessing/pool.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons/multiprocessing/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.5353384">
-          <caret line="523" column="0" selection-start-line="523" selection-start-column="0" selection-end-line="523" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33225283">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/temp/c3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/temp/c1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8541329">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/temp/p1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8298217">
+          <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/pika/adapters/blocking_connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43601894">
+          <caret line="1465" column="13" selection-start-line="1465" selection-start-column="13" selection-end-line="1465" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/database/init_database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85157233">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/minion_daemon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018867925">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#77#86#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day8/MySSH/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.056603774">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/config/master.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3018868">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/master_daemon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018867925">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+          <folding>
+            <element signature="e#76#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/day8/MySSH/core/ansible.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7518797">
-          <caret line="252" column="11" selection-start-line="252" selection-start-column="11" selection-end-line="252" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day9/thread_ext1.py">
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt_minion.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding>
-            <element signature="e#76#92#0" expanded="false" />
+            <element signature="e#76#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day9/queue_ext.py">
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/master_command.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7358491">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="e#76#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day9/produce_ext.py">
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt_master.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="2" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.28301886">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day9/gevent_ext.py">
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/bin/salt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65413535">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.13207547">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/day9/gevent_server.py">
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.11320755">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day9/homework/salt_rabbitmq/modules/salt_mq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04265403">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/gevent/socket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/gevent/_socket3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.661654">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#79#88#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/day9/genevt_client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13056093">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-          <folding>
-            <element signature="e#76#89#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

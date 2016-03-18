@@ -209,14 +209,9 @@ def check_ip(ip_address):
     :return:
     """
     import re
-    result = re.match("([0-2]?[0-9]?[0-9]\.){3}([0-2]?[0-9]?[0-9])", ip_address)
-    if result:
-        repeat_filter = re.match("([2]+[5-9]+[6-9])", result.group())
-        if repeat_filter:
-            return False
-        if result.group() != ip_address:
-            return False
-        return True
+    pattern = "(2(5[0-5]|[0-4][0-9])|1\d{2}|[1-9]\d|[0-9])(\.(2(5[0-5]|[0-4][0-9])|1\d{2}|[1-9]\d|[0-9])){3}$"
+    result = re.match(pattern, ip_address)
+    return True if result else False
 
 
 def parser_host(cluster):
@@ -232,7 +227,10 @@ def parser_host(cluster):
     host_list = []
     for node in cluster:
         for key in new_conf.read(node):
-            host_list.append(new_conf.read(node, key))
+            print(key)
+            host = new_conf.read(node, key)
+            if check_ip(host):
+                host_list.append(host)
     return host_list
 
 
@@ -242,10 +240,9 @@ def main(maxpool=10):
         if not check_ip(server):
             print("ip address is invaild")
             return False
-        get_host_list = str(servers).split()
+        get_host_list.append(server)
     if servers:
         get_host_list.extend(parser_host(servers))
-
     pool = Pool(maxpool)
     for host in get_host_list:
         pool.apply_async(func=exec_management, args=(host,))

@@ -1,0 +1,41 @@
+本程序运行在python3.X上
+
+version: 0.1
+author: chunyunzeng@hotmail.com
+
+本程序采用了rabbitmq 3.6.1作为主要的通信桥梁,
+shelve数据作为可持久化数据桥梁,存储基本授权信息
+通过配置yaml文件,对已授权客户端进行批量操作
+
+本程序结构目录
+   salt_rabbitmq
+    |_bin|_salt.py  专门负责授权的程序,需要一直运行,目前只能通过独立的控制台去给未授权的客户端授权
+    |    |_salt_master.py 通过该程序,对客户端发起指令请求
+    |    |_salt_minion.py 客户端程序
+    |_config
+    |    |_master.yaml 服务端基本配置文件
+    |    |_minion.yaml 客户端基本配置文件
+    |_database
+    |    |_master.db  服务端记录授权客户端信息,通过配置文件,可以指定存放位置, 授权后才会生成
+    |    |_minion.db 客户端记录授权状态信息,通过配置文件,可以指定存放位置,授权后才会生成
+    |_log
+    |    |  存放日志文件位置
+    |    |
+    |_modules
+    |    |_master_command.py 负责发布指令的模块
+    |    |_master_daemon.py 服务端授权模块
+    |    |_minion_daemon.py 客户端请求授权的模块
+
+
+
+
+第一次使用时,必须在master端先启用salt授权服务端,如果minion端先启用,需要minion端重新启动一次,然后salt才能进行授权
+操作
+当salt授权后,minion需要再次重启一次,目前时间关系,这个BUG暂时找不到方法处理
+
+通过salt_master.py文件可以对已授权对客户端发送指令
+    目前仅支持python3.5 salt_master.py --server [具体授权的客户端ID]|[* (*表示任意授权客户端)] -e "发送的命令"
+
+目前bug还有很多需要改进对地方,在执行上面这条命令前,请先启动好minion端的salt_minion.py文件
+
+默认已

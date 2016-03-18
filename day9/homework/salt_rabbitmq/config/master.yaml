@@ -1,0 +1,16 @@
+  master: 127.0.0.1
+  publish_port: 5672
+  auth_db: database/master
+  file_roots:
+    base:
+      - /srv/salt
+  pillar_roots:
+    base:
+      - /srv/pillar
+  log_file: /var/log/salt/master
+  log_level: debug
+  log_level_logfile: info
+  log_fmt_console: '[%(levelname)-8s] %(message)s'
+  log_fmt_logfile: '%(asctime)s,%(msecs)03.0f [%(name)-17s][%(levelname)-8s] %(message)s'
+  nodegroups:
+    group1: L@127.0.0.1, 192.168.11.3
