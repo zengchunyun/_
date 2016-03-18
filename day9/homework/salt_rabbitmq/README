@@ -2,6 +2,8 @@
 
 version: 0.1
 author: chunyunzeng@hotmail.com
+url = 'http://www.cnblogs.com/zengchunyun/tag/python/'
+gitUrl = 'https://github.com/zengchunyun/'
 
 本程序采用了rabbitmq 3.6.1作为主要的通信桥梁,
 shelve数据作为可持久化数据桥梁,存储基本授权信息
