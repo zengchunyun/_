@@ -1,0 +1,39 @@
+bind1:
+  hostname: mac os x
+  groupname: DBA
+
+bind2:
+  hostname: mac os x
+  groupname: Web
+
+bind3:
+  hostname: web
+  groupname: Web
+
+bind4:
+  hostname: mysql
+  groupname: Web
+
+bind5:
+  hostname: mysql
+  groupname: DBA
+
+bind6:
+  hostname: mysql
+  groupname: Dev
+
+bind7:
+  hostname: mysql
+  groupname: OP
+
+bind8:
+  hostname: master
+  groupname: OP
+
+bind9:
+  hostname: master
+  groupname: Web
+
+bind10:
+  hostname: master
+  groupname: Dev

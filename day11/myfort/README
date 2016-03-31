@@ -1,0 +1,61 @@
+本程序运行在python3.X上
+
+version: 0.1
+author: chunyunzeng@hotmail.com
+url = 'http://www.cnblogs.com/zengchunyun/tag/python/'
+gitUrl = 'https://github.com/zengchunyun/'
+
+本程序依赖sqlalchemy, sqlalchemy_utils, pymysql(3.x连接mysql), mysql数据库
+
+为方便统一管理
+    此堡垒主机管理的所有的主机,采用统一认证方式,即,如果用户名相同,则其对应密码也必须相同
+        如果希望每台主机使用独立密码,可以采用
+
+            新建不同账户方式解决
+
+    这么做是为了避免重复性修改不同主机密码,造成改密码任务强度加大,当然这个问题也可以通过密钥方式处理
+
+注意: 此次发布版本暂不支持密钥方式认证,如果需使用该功能,请自行实现,或等待后期更新
+
+本程序结构目录
+   myfort
+    |_bin|_
+    |    |_myfort.py 执行该程序,实现对堡垒主机对基本管理操作,如初始化数据库,增加用户主机信息等操作
+    |    |_
+    |_conf
+    |    |_account.yaml 新增堡垒主机账户对模版,可通过myfort程序指定参数-f插入
+    |    |_groups.yaml 对主机进行分组模版,添加不同对组,使用-f参数插入
+    |    |_host_group.yaml 将主机绑定到不同对组
+    |    |_host_to_user.yaml 绑定系统用户与主机关系对应
+    |    |_host_user.yaml 添加系统用户
+    |    |_hosts.yaml 添加主机
+    |    |_account_groups.yaml 堡垒用户关联到主机组
+    |    |_settings 服务端基本配置文件
+    |_db
+    |    |_models.py 数据库模版
+    |    |_
+    |_core
+    |    |_management.py 处理命令行参数
+    |    |_shortcuts.py 负责执行命令行参数
+    |    |_views.py 根据命令行参数分发到不同的功能执行
+    |    |_
+
+堡垒配置流程
+cd 到堡垒程序bin目录,依次执行以下命令,即可完成初步配置
+
+python3.5 myfort.py makemigrations
+
+python3.5 myfort.py create_hosts -f ../conf/hosts.yaml
+
+python3.5 myfort.py create_users -f ../conf/host_user.yaml
+
+python3.5 myfort.py create_groups -f ../conf/groups.yaml
+
+python3.5 myfort.py create_fort_user -f ../conf/account.yaml
+
+python3.5 myfort.py bind_host_user -f ../conf/host_to_user.yaml
+
+python3.5 myfort.py bind_host_group -f ../conf/host_group.yaml
+
+python3.5 myfort.py bind_user_group -f ../conf/account_groups.yaml
+

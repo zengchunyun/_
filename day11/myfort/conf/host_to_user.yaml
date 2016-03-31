@@ -1,0 +1,19 @@
+bind1:
+  hostname: web
+  username: zengchunyun
+
+bind2:
+  hostname: oracle
+  username: zengchunyun
+
+bind3:
+  hostname: mac os x
+  username: zengchunyun
+
+bind4:
+  hostname: master
+  username: root
+
+bind5:
+  hostname: mysql
+  username: root

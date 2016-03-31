@@ -1,0 +1,23 @@
+bind1:
+  username: zengchunyun
+  groupname: Web
+
+bind2:
+  username: zengchunyun
+  groupname: DBA
+
+bind3:
+  username: zengchunyun
+  groupname: OP
+
+bind4:
+  username: zengchunyun
+  groupname: Dev
+
+bind5:
+  username: oldboy
+  groupname: Web
+
+bind6:
+  username: oldboy
+  groupname: DBA

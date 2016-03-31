@@ -1,0 +1,11 @@
+group1:
+  groupname: Web
+
+group2:
+  groupname: DBA
+
+group3:
+  groupname: OP
+
+group4:
+  groupname: Dev

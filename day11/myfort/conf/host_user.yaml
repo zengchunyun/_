@@ -1,0 +1,15 @@
+zengchunyun:
+    auth_type: password
+    password: " "
+
+oldboy:
+    auth_type: password
+    password: 123
+
+root:
+    auth_type: password
+    password: P@ssw0rd
+
+alex:
+    auth_type: password
+    password: alex123

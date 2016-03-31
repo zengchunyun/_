@@ -1,0 +1,19 @@
+web:
+  ipaddress: 192.168.11.2
+  port: 22
+
+oracle:
+  ipaddress: 192.168.11.1
+  port: 22
+
+mac os x:
+  ipaddress: 127.0.0.1
+  port: 22
+
+master:
+  ipaddress: 192.168.11.9
+  port: 22
+
+mysql:
+  ipaddress: 192.168.11.10
+  port: 22
