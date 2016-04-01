@@ -9,6 +9,7 @@ import sys
 import os
 import traceback
 import time
+import datetime
 from binascii import hexlify
 from paramiko.py3compat import u
 from paramiko.py3compat import input
@@ -29,9 +30,16 @@ class Shell(object):
         self.password = password
         self.transport = None
         self.channel = None
+        self.logfile = "../logs/myfort.log"
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        if not os.path.exists(os.path.dirname(os.path.abspath(self.logfile))):
+            os.makedirs(os.path.dirname(os.path.abspath(self.logfile)))
 
     def agent_auth(self):
+        """
+        代理授权,使用如果存在密钥,则优先使用密钥文件
+        :return:
+        """
         agent = paramiko.Agent()
         agent_keys = agent.get_keys()
         if len(agent_keys) == 0:
@@ -45,6 +53,10 @@ class Shell(object):
                 print('... nope.')
 
     def manual_auth(self):
+        """
+        手动授权,默认使用密码认证方式
+        :return:
+        """
         default_auth = 'p'
         auth = default_auth
         # auth = input('Auth by (p)assword, (r)sa key, or (d)ss key? [%s] ' % default_auth)
@@ -74,7 +86,11 @@ class Shell(object):
             self.transport.auth_password(self.username, self.password)
 
     def run(self):
-        paramiko.util.log_to_file("../logs/myfort.log")
+        """
+        启动连接远程服务器
+        :return:
+        """
+        paramiko.util.log_to_file(self.logfile)
         try:
             self.socket.connect((self.hostname, self.port))
         except TimeoutError:
@@ -115,24 +131,42 @@ class Shell(object):
             self.transport.close()
 
     def interactive_shell(self):
+        """
+        交互shell,判断系统环境
+        :return:
+        """
         if has_termios:
             self.posix_shell()
         else:
             self.windows_shell()
 
     def posix_shell(self):
+        """
+        通用Linux shell
+        :return:
+        """
         import select
         oldtty = termios.tcgetattr(sys.stdin)
         try:
             tty.setraw(sys.stdin.fileno())
             tty.setcbreak(sys.stdin.fileno())
             self.channel.settimeout(0.0)
-            cmd = ""
+            cmdlog = ''
+            flag = False
+            log = open("../logs/log.txt", 'a+')
+            import re
             while True:
                 r, w, e = select.select([self.channel, sys.stdin], [], [])
                 if self.channel in r:
                     try:
                         x = u(self.channel.recv(1024))
+                        if flag:
+                            result = re.findall(r"[\x1b[A\x00\x03\x07\x08\x0a\x0b\x0d\x1c\x1d\x1e\x1f\x20\x7f]", x)
+                            if result:
+                                flag = False
+                                if not re.findall(r"\r\n$", x):
+                                    if x != "\x7f":
+                                        cmdlog += x
                         if len(x) == 0:
                             sys.stdout.write('\r\n*** EOF\r\n')
                             break
@@ -145,10 +179,26 @@ class Shell(object):
                     if len(x) == 0:
                         print("reak")
                         break
-                    if x != "\r":
-                        cmd += x
+                    if x != '\r':
+                        if x == '\t':
+                            flag = True
+                        else:
+                            cmdlog += x
                     else:
-                        print(x)
+                        del_count = cmdlog.count('\x7f')
+                        if del_count:
+                            if len(cmdlog.split()[0]) >= del_count:
+                                cmdlog_before = cmdlog[0:-del_count]
+                                cmdlog = cmdlog_before + cmdlog.split('\x7f')[-1]
+                            else:
+                                cmdlog = cmdlog.split('\x7f')[-1]
+                            if len(cmdlog) > del_count:
+                                cmd_list = re.split(r'\x7f', cmdlog)
+                                cmdlog = cmd_list[0][0:-del_count]
+                        log.write("{} {}\n".format(datetime.datetime.now(), cmdlog))
+                        log.flush()
+                        cmdlog = ''
+
                     self.channel.send(x)
         finally:
             termios.tcsetattr(sys.stdin, termios.TCSADRAIN, oldtty)
@@ -164,6 +214,10 @@ class Shell(object):
             sys.stdout.flush()
 
     def windows_shell(self):
+        """
+        windows下调用的shell
+        :return:
+        """
         import threading
         sys.stdout.write("Line-buffered terminal emulation. Press F6 or ^Z to send EOF.\r\n\r\n")
         writer = threading.Thread(target=self.writeall, args=(self.channel,))
