@@ -177,24 +177,24 @@ class Shell(object):
                 if sys.stdin in r:
                     x = sys.stdin.read(1)
                     if len(x) == 0:
-                        print("reak")
                         break
                     if x != '\r':
                         if x == '\t':
                             flag = True
                         else:
+                            if re.findall(r"\x15", x):
+                                cmdlog = ""
                             cmdlog += x
                     else:
                         del_count = cmdlog.count('\x7f')
                         if del_count:
-                            if len(cmdlog.split()[0]) >= del_count:
-                                cmdlog_before = cmdlog[0:-del_count]
-                                cmdlog = cmdlog_before + cmdlog.split('\x7f')[-1]
-                            else:
-                                cmdlog = cmdlog.split('\x7f')[-1]
-                            if len(cmdlog) > del_count:
-                                cmd_list = re.split(r'\x7f', cmdlog)
-                                cmdlog = cmd_list[0][0:-del_count]
+                            cmd_list = cmdlog.split()
+                            cmdlog = cmd_list[0]
+                            for index in range(len(cmd_list)):
+                                if index > 0:
+                                    del_count = cmd_list[index].count('\x7f')
+                                    if not del_count:
+                                        cmdlog += " {}".format(cmd_list[index])
                         log.write("{} {}\n".format(datetime.datetime.now(), cmdlog))
                         log.flush()
                         cmdlog = ''
