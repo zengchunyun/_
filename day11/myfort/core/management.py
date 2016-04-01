@@ -33,10 +33,14 @@ class ManagementUtility(object):
         parser.add_argument('args', nargs='*')
         try:
             args = parser.parse_known_args(self.argv[2:])
-            if len(self.argv) < 2:
-                self.error_msg()
-            elif subcommand not in subcommands.values():
-                raise CommandError("\033[31;1mCommand not found\033[0m\n")
+            try:
+                if len(self.argv) < 2:
+                    self.error_msg()
+                elif subcommand not in subcommands.values():
+                    raise CommandError("\033[31;1mCommand not found\033[0m\n")
+            except NameError:
+                print("\033[31;1m[subcommands] is not define ,please check the settings\033[0m")
+                return False
 
             handle_default_options(self.argv[2:], subcommand)
         except CommandError as e:

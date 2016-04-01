@@ -21,3 +21,14 @@ if __name__ == '__main__':
         print()
     except exc.ProgrammingError:
         print("\033[31;1mdatabase has not initialization\033[0m")
+    except exc.InternalError:
+        print("\033[31;1mUnknow database,please check database has been created\033[0m")
+    except exc.UnboundExecutionError:
+        print("\033[31;1mCould not use database engine on this Session\033[0m")
+    except exc.OperationalError:
+        print("\033[31;1mCan not to connect MySQL server,"
+              "\n\tOperation time out"
+              "\nor "
+              "\n\tAccess denied for user"
+              "\nor"
+              "\n\tConnection refused, Maybe port cant't be used\033[0m")

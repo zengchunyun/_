@@ -123,7 +123,11 @@ def select_engine():
     选择数据引擎
     :return: 返回引擎对象
     """
-    database_string = DATABASES['default']
+    try:
+        database_string = DATABASES['default']
+    except NameError:
+        print("\033[31;1m[DATABASE] is not defined,please check the settings\033[0m")
+        exit(1)
     if database_string.get('ENGINE') == 'mysql':
         db = database_string.get('NAME')
         host = database_string.get('HOST')
