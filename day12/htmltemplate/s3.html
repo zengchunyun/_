@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>摆渡</title>
+    <link type="text/css" href="common.css" rel="stylesheet">
+    <style>
+        .cc{
+            color: #00A000;
+            font-size: 24px;
+        }
+        .cc2{
+            color: purple;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+<div style="background-color: purple;height: 40px">zhu</div>
+<div style="width: 20%;background-color: #00A000;float: left;height: 1000px">
+    aa
+</div>
+<div style="width: 80%;background-color: #9B1C2E;float: left;height: 1000px">
+    bb
+
+<form action="http://10.0.4.42:8000/django_form/" enctype="multipart/form-data" method="post">
+    <p>
+        <input type="text" name="host" value="10.0.4.42"/>
+        <input type="password" name="pwd" value="你懂得"/>
+    </p>
+
+    <div style="background-color:rosybrown;color: white">
+        <h6>爱好</h6>
+        篮球:<input name="favor" type="checkbox" value="1">
+        足球:<input name="favor" type="checkbox" value="2">
+        排球:<input name="favor" type="checkbox" value="3">
+    </div>
+    <div class="cc2 cc">
+        <h6>性别</h6>
+        男:<input type="radio" name="gender" value="1">
+        女:<input type="radio" name="gender" value="0">
+    </div>
+    <div class="cc">
+        <h6>城市</h6>
+        <select name="city">
+            <optgroup label="北京">
+                <option value="1">海淀</option>
+                <option value="1">朝阳</option>
+                <option value="1">西城</option>
+            </optgroup>
+        </select>
+    </div>
+    <div class="cc3">
+        <textarea name="mono">默认内容</textarea>
+    </div>
+    <h4 id="login">文件</h4>
+    <div>
+        <input type="file" name="file_name">
+    </div>
+    <div>
+        <input type="submit" value="提交">
+    </div>
+    <div></div>
+</form>
+    </div>
+<div style="width: 50%;background-color: rebeccapurple">
+    <div style="width: 30%;background-color: red;float: left;cursor: pointer">
+        11
+    </div>
+    <div style="background-color: gold;width: 66%;float: left">
+        22
+    </div>
+    <div style="background-color: lawngreen;width: 3%;float: right">
+        33
+    </div>
+    <div style="clear: both"></div>
+
+</div>
+    <div style="position: fixed; bottom: 30px;right: 20px"> 返回顶部
+        <div style="position: relative;bottom: 30px;right: 30px;background-color: #00A000;width: 400px;height: 500px">
+            好
+            <div style="position: absolute;bottom: 20px;right: 20px">可以</div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+<div>
+
+</div>
+</body>
+</html>

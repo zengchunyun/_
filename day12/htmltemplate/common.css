@@ -1,0 +1,16 @@
+.cc3{
+    color: greenyellow;
+    font-size: 24px;
+    background-color: peru;
+}
+input{
+    color: #0e90d2;
+}
+
+input[type="text"]{
+    color: olive;
+}
+
+#login{
+    color: #5cb85c;
+}

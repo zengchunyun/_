@@ -162,16 +162,24 @@ class Shell(object):
                         x = u(self.channel.recv(1024))
                         if flag:
                             result = re.findall(r"[\x1b[A\x00\x03\x07\x08\x0a\x0b\x0d\x1c\x1d\x1e\x1f\x20\x7f]", x)
+                            over = re.findall(r'\x1b', x)
+                            if over:
+                                flag = False
+                                result = None
                             if result:
                                 flag = False
                                 if not re.findall(r"\r\n$", x):
                                     if x != "\x7f":
                                         cmdlog += x
+                                log.write("{} {}\n".format(datetime.datetime.now(), [cmdlog]))
+                                log.flush()
                         if len(x) == 0:
                             sys.stdout.write('\r\n*** EOF\r\n')
                             break
-                        sys.stdout.write(x)
-                        sys.stdout.flush()
+                        over = re.findall(r'\x1b', x)
+                        if not over:
+                            sys.stdout.write(x)
+                            sys.stdout.flush()
                     except socket.timeout:
                         pass
                 if sys.stdin in r:
@@ -195,7 +203,7 @@ class Shell(object):
                                     del_count = cmd_list[index].count('\x7f')
                                     if not del_count:
                                         cmdlog += " {}".format(cmd_list[index])
-                        log.write("{} {}\n".format(datetime.datetime.now(), cmdlog))
+                        log.write("{} {}\n".format(datetime.datetime.now(), [cmdlog]))
                         log.flush()
                         cmdlog = ''
 

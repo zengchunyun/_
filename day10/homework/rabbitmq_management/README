@@ -1,0 +1,57 @@
+本程序运行在python3.X上
+
+version: 0.1
+author: chunyunzeng@hotmail.com
+url = 'http://www.cnblogs.com/zengchunyun/tag/python/'
+gitUrl = 'https://github.com/zengchunyun/'
+
+本程序采用了rabbitmq 3.6.1作为主要的通信桥梁,
+
+本程序结构目录
+   rabbitmq_management
+    |_bin|_
+    |    |_controller.py 通过该程序,对客户端发起指令请求
+    |    |_client.py 客户端程序,需要提前启动
+    |_config
+    |    |_
+    |    |_settings 服务端基本配置文件
+    |_database
+    |    |_
+    |    |_
+    |_logs
+    |    |_rabbitmq.log  记录用户基本操作
+    |    |
+    |_modules
+    |    |_rabbitmq_core.py 负责发布指令的模块
+    |    |_
+    |    |_rabbitmq_client.py 客户端处理任务模块
+
+
+
+
+
+
+本程序既支持命令行参数,也支持写配置文件
+首先需要配置客户端,将客户端连接地址改为rabbitmq的服务器地址,
+默认为localhost,如果需要变更配置,需要修改settings.py文件配置 server字段
+端口默认为5672 ,对应配置的 port字段
+
+也可以对任务进行超时时间设置,默认15秒,对应配置文件字段 timeout
+
+设置日志级别,及日志存放目录,默认存放于程序同级目录下的logs目录rabbitmq.log文件内
+
+客户端可以监听不同类型的消息,可以通过启动客户端时参数指定,也可以通过控制台输入
+    默认控制台输入的优先
+    默认类型
+        remote.call
+
+为了辨别客户端类型,采用了默认方式识别客户端的ID,以IP为主要ID,也可以通过配置文件指定唯一ID,
+    对应字段 host_id
+    该字段优先于默认配置
+
+
+服务器发布任务时,可以指定事件类型,默认为
+        remote.call
+
+        通过选项--bind指定一个类型
+        通过选项--exec  "command args1 ..."  执行任务操作
