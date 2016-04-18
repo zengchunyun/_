@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="https://www.sogou.com/web" method="get">
+        <input type="text" name="query">
+        <input type="submit" onclick="return MySubmit();">
+    </form>
+
+    <script>
+        function MySubmit() {
+            var q = document.getElementsByName('query')[0];
+            if(q.value.trim()){
+                return true
+            }else {
+                alert("内容不能为空");
+                return false
+            }
+        }
+
+    </script>
+</body>
+</html>

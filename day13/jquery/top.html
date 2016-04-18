@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .back{
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            cursor: pointer;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 2000px;"></div>
+    <div onclick="GoTop()" class="back hide">返回顶部</div>
+    <script src="jquery-2.2.3.js"></script>
+    <script>
+        function GoTop() {
+            $(window).scrollTop(0);
+        }
+        $(function () {
+            $(window).scroll(function () {
+                var top = $(window).scrollTop();
+                if(top>100){
+                    $('.back').removeClass('hide');
+                }else {
+                    $('.back').addClass('hide');
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>

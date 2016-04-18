@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三甲一样sasasasasasas</title>
+</head>
+<body>
+    <input type="button" onclick="Stopt();">
+    <script>
+        function Stopt() {
+            clearInterval(obj1);
+        }
+//        obj1 = setTimeout('RunT()',3000);
+
+        obj1 = setInterval('RunT()', 1000);
+        function RunT() {
+            var title = document.title;
+//            var first = title[0];
+            var first = title.charAt(0);
+            var aftertext = title.substring(1,title.length);
+            var newstr = aftertext + first;
+            document.title = newstr;
+        }
+    </script>
+</body>
+</html>

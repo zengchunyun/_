@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p id="p1">1</p>
+    <input type="button" onclick="Add()" value="点我"/>
+    <!--<div>-->
+        <!--<div id="n1">c1</div>-->
+        <!--<a>asasasas</a>-->
+    <!--</div>-->
+    <!--<ul>-->
+        <!--<li>123</li>-->
+        <!--<li>123</li>-->
+        <!--<li>123</li>-->
+        <!--<li>123</li>-->
+        <!--<li>123</li>-->
+        <!--<li>123</li>-->
+    <!--</ul>-->
+    <!--<div>-->
+        <!--<div class="c1">1</div>-->
+        <!--<div class="c1">2</div>-->
+        <!--<div class="c1">3</div>-->
+        <!--<div class="c1">4</div>-->
+    <!--</div>-->
+    <!--<form>-->
+        <!--<p>用户名:<input name="username" value="123"/></p>-->
+        <!--<p>密码:<input name="pwd" value="456"/></p>-->
+    <!--</form>-->
+    <script>
+        function Add() {
+            var nid = document.getElementById('p1');
+            var text = nid.innerText;
+            text = parseInt(text);
+            text += 1;
+            nid.innerText = text;
+        }
+        /*
+        var nid = document.getElementById('n1');
+        nid.innerText="alex";
+
+        var lis = document.getElementsByTagName('li');
+        for(var i in lis){
+            var item = lis[i];
+            item.innerText = i;
+        }
+        var list = document.getElementsByClassName('c1');
+        for(var i in list){
+            var item = list[i];
+            item.innerText = i
+        }
+
+        var username = document.getElementsByName('username')[0];
+        var pwd = document.getElementsByName('pwd')[0];
+        console.log(username.value,pwd)
+        */
+    </script>
+</body>
+</html>

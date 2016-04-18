@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input id='search' type="text" value="请输入关键字" onfocus="Focus();" onblur="Blur();" />
+    <script>
+        function Focus() {
+            var nid = document.getElementById('search');
+            if(nid.value == "请输入关键字"){
+                nid.value = "";
+            }
+        }
+        function Blur() {
+            var nid = document.getElementById('search');
+            if(!nid.value.trim()){
+                nid.value = "请输入关键字";
+                console.log(nid.innerHTML)
+            }
+        }
+    </script>
+</body>
+</html>

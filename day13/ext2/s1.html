@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myweb</title>
+</head>
+<body>
+    <h2 class="centered">
+        Hey, check out <a href="http://www.pixel.mu/" id="redirect"> my cat's Web site</a>.
+        <!--<a href="http://www.baidu.com" id="redirect">Welcome to our</a>-->
+    </h2>
+<!--<h1 id="helloMessage"></h1>-->
+<!--<script src="js1.js"></script>-->
+
+    <!--<script>-->
+        <!--window.onload = function () {-->
+            <!--document.getElementById("myMessage").innerHTML = "Hello, Cleveland!";-->
+        <!--};-->
+        <!--var x = 5;-->
+        <!--var y = x&#45;&#45;;-->
+        <!--console.log(y, x);-->
+        <!--document.write('hello');-->
+    <!--</script>-->
+    <!--<noscript>-->
+        <!--<h2>This page requires ja</h2>-->
+    <!--</noscript>-->
+    <script>
+        window.onload = initALL;
+        function initALL() {
+            document.getElementById("redirect").onclick = initRedirect;
+        }
+        function initRedirect() {
+            alert("We are not responsible for the content of pages outside our site");
+            document.write(this);
+//            window.location = this;
+//            window.location = "http://www.baidu.cc";
+            return false
+        }
+//        var ans = prompt("Are you sure you want to do that?");
+//        if(ans){
+//            alert('you said' + ans);
+//        }else {
+//            alert("you said");
+//        }
+//        if(confirm("yes no?")){
+//            alert("yes");
+//        }else{
+//            alert("no");
+//        }
+//        confirm("yes") ? alert("yes") : alert("no");
+    </script>
+
+</body>
+</html>

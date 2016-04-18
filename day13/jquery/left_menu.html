@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hide{
+            display: none;
+        }
+        .container{
+            width: 300px;
+            height: 600px;
+            background-color: #ddd;
+            border: 1px solid #999;
+        }
+        .container .title{
+            height: 38px;
+            font-size: 28px;
+            line-height: 38px;
+            background-color: #777777;
+            cursor: pointer;
+        }
+        .container .body{
+            background-color: #ddd;
+        }
+        .container .body a{
+            display: block;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <div class="title">资产管理</div>
+            <div class="body">
+                <a href="#">资产概要</a>
+                <a href="#">资产列表</a>
+                <a href="#">资产变更</a>
+            </div>
+        </div>
+
+        <div>
+            <div class="title">用户中心</div>
+            <div class="body hide">
+                <a href="#">个人信息</a>
+                <a href="#">修改个人信息</a>
+                <a href="#">修改身份验证</a>
+            </div>
+        </div>
+
+        <div>
+            <div class="title">系统设置</div>
+            <div class="body hide">
+                <a href="#">初始化设置</a>
+                <a href="#">重启系统</a>
+                <a href="#">更新系统</a>
+            </div>
+        </div>
+
+        <div>
+            <div class="title hide">审计管理</div>
+            <div class="body hide">
+                <a href="#">常规日志</a>
+                <a href="#">操作日志</a>
+                <a href="#">导出日志</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery-2.2.3.js"></script>
+    <script>
+        $(function () {
+            $(".title").click(function () {
+                $(this).parent().siblings().children('.body').addClass('hide');
+                $(this).next().removeClass('hide');
+            })
+        })
+    </script>
+</body>
+</html>

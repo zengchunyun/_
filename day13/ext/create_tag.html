@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="container"></div>
+    <a href="http://www.baidu.com" onclick="return CreateTag();return False;">矫情</a>
+
+    <script>
+        function CreateTag() {
+            var nid = document.getElementById('container');
+            var tag = "<input type='text'/>";
+
+            //nid.innerHTML = tag;
+//            container.insertAdjacentHTML("beforeBegin",tag);
+            var createObj = document.createElement('a');
+            createObj.href = "http://www.baidu.com";
+            createObj.innerText = "百度";
+//             nid.innerHTML= createObj;
+//            nid.appendChild(createObj);
+            return false
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Check</title>
+    <style>
+        body{
+            color: #000;
+            background-color: #fff;
+        }
+        input.invalid{
+            background-color: #ff9;
+            border: 2px red inset;
+        }
+        label.invalid{
+            color: #f00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<form action="#">
+    <p><label for="userName">Your name:<input type="text" size="30" id="userName" class="reqd"></label></p>
+    <p><label for="passwd1">Your password:<input type="password" id="passwd1" class="reqd"></label></p>
+    <p><label for="passwd2">Verify password:<input type="password" id="passwd2" class="reqd passwd1"></label></p>
+    <p><input type="submit" value="Submit">&nbsp;<input type="reset"></p>
+</form>
+<script>
+    window.onload = initForms;
+    function initForms() {
+        for(var i=0;i<document.forms.length;i++){
+            document.forms[i].onsubmit = validForm;
+        }
+    }
+    function validForm() {
+        var allGood = true;
+        var allTags = document.getElementsByTagName("*");
+        for(var i=0;i<allTags.length;i++){
+            if(!validTag(allTags[i])){
+                allGood = false;
+            }
+        }
+        return allGood;
+        function validTag(thisTag) {
+            var outClass = "";
+            var allClasses = thisTag.className.split(" ");
+            for(var j=0;j<allClasses.length;j++){
+                outClass += validBaseOnClass(allClasses[j]) + " ";
+        }
+            thisTag.className = outClass;
+            if(outClass.indexOf("invalid") > -1){
+                thisTag.focus();
+                if(thisTag.nodeName == "INPUT"){
+                    thisTag.select();
+                }
+                return false;
+            }
+            return true;
+            function validBaseOnClass(thisClass) {
+                var classBack = "";
+                switch (thisClass){
+                    case "":
+                    case "invalid":
+                        break;
+                    case "reqd":
+                        if(allGood &&thisTag.value == ""){
+                            classBack = " invalid";
+                        }
+                        classBack += thisClass;
+                        break;
+                    default:
+                        classBack += thisClass;
+                }
+                return classBack;
+            }
+    }
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market</title>
+    <style>
+        body{
+            margin: 0 auto;
+            font-family: Arial;
+            font-size: 12px;
+        }
+        body,div{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 1190px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .tab-menu-box1{
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .tab-menu-box1 .menu{
+            line-height: 33px;
+            height: 33px;
+            background-color: #F5F5F5;
+        }
+        .tab-menu-box1 .content{
+            min-height: 100px;
+            border-top: 1px solid #ddd;
+            background-color: white;
+        }
+        .tab-menu-box1 .menu ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .tab-menu-box1 .menu ul li{
+            position: relative;
+            float: left;
+            font-size: 14px;
+            font-family: 'Microsoft YaHei','SimHei';
+            text-align: center;
+            font-weight: bold;
+            border-right: 1px solid #ddd;
+            padding: 0 18px;
+            cursor: pointer;
+        }
+        .tab-menu-box1 .menu ul li:hover{
+            color: #c9033b;
+        }
+        .tab-menu-box1 .menu .current{
+            margin-top: -1px;
+            color: #c9033b;
+            background: #fff;
+            height: 33px;
+            border-top: 2px solid #c9033b;
+            z-index: 10;
+        }
+        .tab-menu-box1
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tab-menu-box1">
+            <div class="menu">
+                <ul id="tab-menu-title">
+                    <li class="current" content-to="1">价格趋势</li>
+                    <li content-to="2">市场分析</li>
+                    <li content-to="3">其它</li>
+                </ul>
+            </div>
+
+            <div id="tab-menu-body" class="content">
+                <div content="1">content1</div>
+                <div content="2" class="hide">content2</div>
+                <div content="3" class="hide">content3</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery-2.2.3.js"></script>
+    <script>
+        $(function () {
+            ChangeTab('#tab-menu-title', '#tab-menu-body');
+        });
+        function ChangeTab(title,body) {
+            $(title).children().bind('click',function () {
+                $menu = $(this);
+                $content = $(body).find('div[content="' + $(this).attr("content-to") + '"');
+                $menu.addClass('current').siblings().removeClass('current');
+            })
+        }
+    </script>
+
+</body>
+</html>

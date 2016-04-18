@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <style>
+        .edit-mode{
+            background-color: #b3b3b3;
+            padding: 8px;
+            text-decoration: none;
+            color: white;
+        }
+        .editing{
+            background-color: #f0ad4e;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="button" onclick="CheckAll('#edit_mode', '#tb1');" value="全选" />
+        <input type="button" onclick="CheckReverse('#edit_mode', '#tb1');" value="反选" />
+        <input type="button" onclick="CheckCancel('#edit_mode', '#tb1');" value="取消" />
+        <a id="edit_mode" class="edit-mode" href="javascript:void(0);"
+           onclick="EditMode(this, '#tb1');">进入编辑模式</a>
+    </div>
+
+    <table style="margin-top: 20px;" border="1">
+        <thead>
+            <tr>
+                <th>选择</th>
+                <th>主机名</th>
+                <th>端口</th>
+                <th>业务</th>
+                <th class="tb1">状态</th>
+            </tr>
+        </thead>
+        <tbody id="tb1">
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td edit="true">111 </td>
+                <td>v11</td>
+                <td edit="true" edit-type="select" global-key="BUSINESS"  select-val="2" >二手车</td>
+                <td edit="true" edit-type="select" global-key="STATUS"  select-val="1" >在线</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td edit="true">v1</td>
+                <td>v11</td>
+                <td edit="true" edit-type="select" global-key="BUSINESS"  select-val="3">大保健</td>
+                <td edit="true" edit-type="select" global-key="STATUS"  select-val="1">在线</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td edit="true">v1</td>
+                <td>v11</td>
+                <td edit="true" edit-type="select" global-key="BUSINESS" select-val="3" >大保健</td>
+                <td edit="true" edit-type="select" global-key="STATUS" select-val="2">下线</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="../cmdb/hostm/jquery-2.2.3.js"></script>
+    <script>
+        /**
+ * Created by luo_t on 3/1/2016.
+ */
+
+STATUS = [
+    {'id': 1, 'text': "在线"},
+    {'id': 2, 'text': "下线"}
+];
+
+BUSINESS = [
+    {'id': 1, 'text': "车上会"},
+    {'id': 2, 'text': "二手车"},
+    {'id': 3, 'text': "大保健"}
+];
+
+
+$(function(){
+    // checkbox默认事件优先，然后执行自定义的事件
+    $('#tb1').find(':checkbox').click(function(){
+        var tr = $(this).parent().parent();
+        if($("#edit_mode").hasClass('editing')){
+            if($(this).prop('checked')){
+                // 当前行进入编辑状态
+                RowIntoEditMode(tr);
+            }else{
+                // 当前行退出编辑状态
+                RowOutEditMode(tr);
+            }
+        }
+    });
+});
+
+
+
+
+//退出编辑模式，函数（被下面掉用）
+function RowOutEditMode(tr){
+    tr.children().each(function(){  //tr下面的自标签
+        var td = $(this);
+        if(td.attr('edit') == 'true'){ //如果在编辑状态
+            var inp  = td.children(':first');//获取td里面的第一个元素
+            var input_value = inp.val();//取出里面的值
+            td.text(input_value);//并复制给td标签
+        }
+    });
+}
+
+//进入编辑模式，函数（被下面掉用）
+function RowIntoEditMode(tr){
+    tr.children().each(function(){ //获取tr下面的所有td，循环
+        var td = $(this);
+        if(td.attr('edit') == 'true'){ //判断是否为可编辑状态
+            if(td.attr('edit-type') == "select"){  //判断是否为input的select标签
+                var all_values = window[td.attr('global-key')]; //获取全局变量判断获取当前的项目类型，
+                var select_val = td.attr('select-val'); //获取当前类型的下的值
+                select_val = parseInt(select_val); //把字符串转换为数字
+                var options = "";//定义一个空值，把标签循环加上。
+                $.each(all_values, function(index, value){ //循环这个项目类型
+                    if(select_val == value.id){ //判断，当前选中的值和项目类型的ID的值是否相等，如果相等使用这个值
+                        options += "<option selected='selected'>" + value.text + "</option>";
+                    }else{//没有，使用默认的项目类型
+                        options += "<option>" + value.text + "</option>";
+                    }
+                });
+                //当input标签，类型为select的标签发生改变时执行
+                var temp = "<select onchange='MultiChange(this);'>" + options + "</select>";
+                td.html(temp);
+            }else{ //如果不是select类型的那么
+                var text = td.text(); //获取td里的val值
+                var temp = "<input type='text' value='"  + text+    "' />";  //把值赋给input标签的value
+                td.html(temp);
+            }
+        }
+    })
+}
+
+
+
+
+globalCtrlKeyPress = false;
+// 如果按下键盘的任意键，执行 function
+window.onkeydown = function(event){
+    console.log(event.keyCode);
+    //如果按下ctrl键
+    if(event && event.keyCode == 17){
+        //设置globalCtrlKeyPress为true
+        window.globalCtrlKeyPress = true;
+    }else{
+        //按下其他的键盘为false
+        window.globalCtrlKeyPress = false;
+    }
+};
+
+//如果任意键放开执行function
+window.onkeyup = function (event) { //这里需要传入evnent
+    //如果ctrl键up
+    if(event && event.keyCode == 17 ){
+        //设置globalCtrlKeyPress为false
+        window.globalCtrlKeyPress = false;
+    }
+};
+
+//提升逼格多行修改
+function MultiChange(ths){
+    // 检测是否按下ctr键
+    if(window.globalCtrlKeyPress == true){
+        // 获取当前td所在的tr中的索引位置
+        var index = $(ths).parent().index();
+        //获取当前td内的值
+        var value = $(ths).val();
+        //找到当前td下的所有的选中的(tr)标签，并循环
+        $(ths).parent().parent().nextAll().find("td input[type='checkbox']:checked").each(function(){
+            //找到当前选中标签（:checked）的上面获取的index索引值的的td标签，的子标签的值。
+            $(this).parent().parent().children().eq(index).children().val(value);
+        });
+
+    }
+}
+
+
+
+
+//进入编辑模式 按钮触发功能
+function EditMode(ths, tb){ //ths & tb 就是在html页面中我们传入的参数：onclick="EditMode(this, '#tb1');"
+    // ths =this,
+    var isEditing = $(ths).hasClass('editing');  //判断是否有这个editing的样式
+    if(isEditing){  //如果有说明当前是编辑状态，那么点击的时候应该退出编辑状态
+        // 退出编辑模式
+        $(ths).text('进入编辑模式');  //修改他的内容，提升逼格用的。
+        $(ths).removeClass('editing'); //移除这个editing样式
+        $(tb).children().each(function(){ //获取这个form表单下的所有tr，并循环
+             var tr = $(this); //当前的tr
+            if(tr.find(':checkbox').prop('checked')){ //找到当选中的行
+                // 当前行，推出编辑状态
+                RowOutEditMode(tr);  //这里我们把代码进行了缩写，可以理解为python中调用函数的意思，我传入参数执行函数
+            }
+
+        });
+    }else{
+        // 进入编辑模式
+        $(ths).text('退出编辑模式'); //修改他的内容，提升逼格用的。
+        $(ths).addClass('editing'); //添加这个这个editing样式
+        $(tb).children().each(function(){ //找到每个一个form表单下面的tr循环
+            // $(this) 表示循环过程中,每一个tr，每一行数据
+            var tr = $(this);
+            var isChecked = $(this).find(':checkbox').prop('checked'); //获取当前tr下的checkbox的checked属性，用来判断是否为选中状态
+            if(isChecked==true){//如果为选中状态
+                // 当前行进入编辑状态
+                RowIntoEditMode(tr);//我们可以把重复的代码进行简化，类似于python中的函数！
+            }
+        });
+    }
+}
+
+//设置全选功能
+function CheckAll(mode, tb){
+    // 1、选中checkbox
+    // 2、如果已经进入编辑模式，让选中行进入编辑状态
+    // tb = #tb1
+    //$(tb) = $('#tb1')
+    $(tb).children().each(function(){//找到tb下面的所有tr，循环
+        // $(this) 表示循环过程中,每一个tr，每一行数据
+        var tr = $(this);
+        var isChecked = $(this).find(':checkbox').prop('checked');//找到所有选中的tr标签
+        if(isChecked==true){//如果选中什么都不做
+        }else{//如果没有选中
+            $(this).find(':checkbox').prop('checked',true);//如果没有选中首先把他设置为选中状态
+            // 如果已经进入编辑模式，让选中行进入编辑状态
+            var isEditMode = $(mode).hasClass('editing');
+            if(isEditMode){
+                // 当前行进入编辑状态
+                RowIntoEditMode(tr);
+            }
+        }
+    });
+}
+
+//设置反选功能
+function CheckReverse(mode, tb){
+    // 是否进入了编辑模式
+    if($(mode).hasClass('editing')){//如果进入编辑模式
+        $(tb).children().each(function(){//循环所有的tr
+            // 遍历所有tr
+            var tr = $(this);
+            var check_box = tr.children().first().find(':checkbox');//找到所有的input的checkbox标签
+            if(check_box.prop('checked')){  //判断如果选中
+                check_box.prop('checked',false);//给他取消
+                RowOutEditMode(tr);//并退出编辑模式
+            }else{//如果没有选中
+                check_box.prop('checked',true);//给他选中
+                RowIntoEditMode(tr);//并进入编辑模式
+            }
+        });
+    }else{//如果没有进入编辑模式
+        $(tb).children().each(function(){ //找到所有的tr并循环
+            var tr = $(this);
+            var check_box = tr.children().first().find(':checkbox');//周到所有的checkbox标签
+            if(check_box.prop('checked')){ //判断是否选中
+                check_box.prop('checked',false);//如果选中，给他设置为为选中
+            }else{
+                check_box.prop('checked',true);//如果没有选中，给他设置为选中
+            }
+        });
+    }
+}
+
+//设置取消功能
+function CheckCancel(mode, tb){
+    // 1、取消选中checkbox
+    // 2、如果已经进入编辑模式，行退出编辑状态
+    $(tb).children().each(function(){ //渠道所有的tr标签，并循环
+        var tr = $(this);
+        if(tr.find(':checkbox').prop('checked')){//找到所有选中的checked标签
+            // 移除选中
+            tr.find(':checkbox').prop('checked', false);
+            //获取是否为编辑状态
+            var isEditing = $(mode).hasClass('editing');
+            if(isEditing == true){ //如果为编辑状态
+                // 当前行，推出编辑状态
+                RowOutEditMode(tr);
+            }
+        }
+    });
+}
+    </script>
+</body>
+</html>

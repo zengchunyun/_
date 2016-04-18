@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Famous Presidential Quotes</h2>
+    <form action="#">
+        <input type="button" id="Lincoln" value="Lincoln" />
+        <input type="button" id="Kennedy" value="Kennedy" />
+        <input type="button" id="Nixon" value="Nixon" />
+    </form>
+
+    <script>
+        window.onload = initAll;
+         function initAll() {
+             document.getElementById("Lincoln").onclick=saySomething;
+             document.getElementById("Kennedy").onclick=saySomething;
+             document.getElementById("Nixon").onclick=saySomething;
+         }
+         function saySomething() {
+             console.log(this.id);
+             switch(this.id) {
+                 case "Lincoln":
+                     alert("Four score and seven years ago...");
+                     break;
+                 case "Kennedy":
+                     alert("Ask not what your country can do for you...");
+                     break;
+                 case "Nixon":
+                     alert("I am not a crook!");
+                     break;
+                 default:
+             }
+         }
+    </script>
+</body>
+</html>

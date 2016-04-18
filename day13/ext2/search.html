@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+    <style>
+        .gray{
+            color: gray;
+        }
+        .black{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="gray" id="tip" value="请输入关键字" onfocus="Enter();" onblur="Level();">
+
+    <script>
+        function Level() {
+            var id = document.getElementById('tip');
+            var value = id.value;
+            if(value.length == 0||id.value.trim() ==""){
+                id.value = "请输入关键字";
+                id.className = 'gray';
+            }else {
+                id.className = 'black';
+            }
+        }
+        function Enter() {
+            var id = document.getElementById('tip');
+            id.className = 'black';
+            if (id.value=="请输入关键字"||id.value.trim()==""){
+                id.value = "";
+            }
+
+        }
+    </script>
+</body>
+</html>

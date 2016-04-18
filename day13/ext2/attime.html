@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎光临小黑屋</title>
+</head>
+<body>
+    <input type="button" value="清除定时器" id="clear" onclick="clearI()">
+<script>
+    function clearI() {
+        document.getElementById('clear').onclick = clearInterval(obj);
+    }
+    obj = setInterval('Go()',1000);
+
+    function Go() {
+        var content = document.title;
+        var firstChar = content[0];
+        var sub = content.substring(1, content.length);
+        document.title = sub + firstChar;
+    }
+
+</script>
+
+</body>
+</html>

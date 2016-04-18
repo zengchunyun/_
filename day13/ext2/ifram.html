@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframes 1</title>
+    <style>
+        body{
+            background-color: #fff;
+        }
+        iframe#icontent{
+            float: right;
+            border: 1px solid black;
+            width: 350px;
+            height: 300px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="iframe01.html" name="icontent" id="icontent"></iframe>
+    <h1>Main Content Area</h1>
+    <h2>
+        <a href="case.html">Link 1</a><br/>
+        <a href="page2.html">Link 2</a><br/>
+        <a href="page3.html">Link 3</a><br/>
+    </h2>
+    <script>
+        window.load = initLinks;
+        function initLinks() {
+            for(var i=0;i<document.links.length;i++){
+                document.links[i].onclick = setContent;
+//                document.links[i].target = "icontent";
+            }
+        }
+        function setContent() {
+            document.getElementById("icontent").contentWindow.document.location.href = this.href;
+            return false;
+        }
+    </script>
+</body>
+</html>

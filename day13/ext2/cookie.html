@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="cookieForm" action="#">
+    <h1>Enter your name:<input type="text" id="nameField"></h1>
+    <input type="submit" value="提交">
+</form>
+<script src="jquery-2.2.3.js"></script>
+    <script>
+        window.onload = nameFieldInit;
+        function nameFieldInit() {
+            var userName = "l";
+            if(document.cookie != ""){
+                userName = document.cookie.split("=")[1];
+            }
+            $("#nameField").value = userName;
+            console.log(userName);
+            $("#nameField").onblur = setCookie;
+            $("#cookieForm").onsubmit = setCookie;
+        }
+        function setCookie() {
+            var expireDate = new Date();
+            expireDate.setMonth(expireDate.getMonth()+6);
+            var userName = $("#nameField").value;
+            document.cookie = "userName=" + userName + ";expires=" + expireDate.toGMTString();
+            $("#nameField").blur();
+            return false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>host</title>
+</head>
+<body>
+    <div class="root">
+        <div class="pg-top">
+        <!--头部内容-->
+            <div class="pg-header">
+                <div class="header-left">自动化运维系统</div>
+                <div class="header-right">admin</div>
+            </div>
+
+
+            <div class="pg-container">
+            <!--左侧内容-->
+                <div class="pg-left">
+                    <div class="pg-list">主机管理</div>
+                    <div class="left-list hide">
+                        <ul>
+                            <li id="addHost">添加主机</li>
+                            <li id="showHost">修改主机</li>
+                            <li>查看机房分布</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="pg-list">资产管理</div>
+                    <div class="left-list hide">
+                        <ul>
+                            <li>添加资产</li>
+                            <li>查看资产</li>
+                            <li>资产报表</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="pg-list">系统设置</div>
+                    <div class="left-list hide">
+                        <ul>
+                            <li>用户配置</li>
+                            <li>系统日志</li>
+                            <li>重启系统</li>
+                            <li>安全配置</li>
+                            <li>初始化系统</li>
+                        </ul>
+                    </div>
+
+                </div>
+            <!--右侧内容-->
+                <div id="pg-right" class="pg-right">
+                    <div id="hostMent" class="host-m hide">
+                        <!--主机修改页面-->
+                        <form action="#">
+                            <div class="host-button">
+                                <input name="selectAll" type="button" value="全选" />
+                                <input name="reverseAll" type="button" value="反选" />
+                                <input name="unSelect" type="button" value="取消" />
+                                <input id="edit-list" name="edit" type="button" value="进入编辑模式" />
+                            </div>
+                            <div id="host-list" class="host-list">
+                                <ul>
+                                    <li id="changeMenu">
+                                        <label id="changeHost">选择</label>
+                                        <label id="changeHostname">主机名</label>
+                                        <label id="changePort">端口</label>
+                                        <label id="changeStatus">状态</label>
+                                    </li>
+
+                                    <li>
+                                        <label name="changeHost"><input type="checkbox" /></label>
+                                        <input name="changeHostname" type="text" readonly="readonly"/>
+                                        <input name="changePort" type="text" readonly="readonly"/>
+                                        <select name="changeStatus">
+                                            <option value="1" >在线</option>
+                                            <option value="0" >下线</option>
+                                        </select>
+                                    </li>
+
+                                    <li>
+                                        <label name="changeHost"><input type="checkbox" /></label>
+                                        <input name="changeHostname" type="text" readonly="readonly"/>
+                                        <input name="changePort" type="text" readonly="readonly"/>
+                                        <select name="changeStatus">
+                                            <option value="1" >在线</option>
+                                            <option value="0" >下线</option>
+                                        </select>
+                                    </li>
+
+                                    <li>
+                                        <label name="changeHost"><input type="checkbox" /></label>
+                                        <input name="changeHostname" type="text" readonly="readonly"/>
+                                        <input name="changePort" type="text" readonly="readonly"/>
+                                        <select name="changeStatus">
+                                            <option value="1" >在线</option>
+                                            <option value="0" >下线</option>
+                                        </select>
+                                    </li>
+
+                                    <li>
+                                        <label name="changeHost"><input type="checkbox" /></label>
+                                        <input name="changeHostname" type="text" readonly="readonly"/>
+                                        <input name="changePort" type="text" readonly="readonly"/>
+                                        <select name="changeStatus">
+                                            <option value="1" >在线</option>
+                                            <option value="0" >下线</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!--添加主机页面-->
+                    <form action="#" method="post">
+                        <div id="ModifyHost" class="hide">
+                            <div class="modify-button">
+                                <input name="add" type="button" value="添加" />
+                                <input name="delete" type="button" value="删除" />
+                                <input name="modify" type="button" value="修改" />
+                                <input name="each" type="button" value="批量修改模式" />
+                            </div>
+                            <div class="mdifyHostList">
+                                <ul id="modifyList">
+                                    <li id="modifyMenu">
+                                        <label id="selectModify">选择</label>
+                                        <label id="addHostname">主机名</label>
+                                        <label id="addAddress">IP</label>
+                                        <label id="addPort">端口</label>
+                                        <label id="addConfig">配置</label>
+                                        <label id="doEdit">操作</label>
+                                    </li>
+
+                                    <li>
+                                        <label name="selectModify"><input type="checkbox" /></label>
+                                        <input name="addHostname" type="text" readonly="readonly" />
+                                        <input name="addAddress" type="text" readonly="readonly" />
+                                        <input name="addPort" type="text" readonly="readonly" />
+                                        <input name="addConfig" type="text" readonly="readonly" />
+                                        <input name="doEdit" type="button" value="编辑"/>
+                                    </li>
+
+                                    <li>
+                                        <label name="selectModify"><input type="checkbox" /></label>
+                                        <input name="addHostname" type="text" readonly="readonly" />
+                                        <input name="addAddress" type="text" readonly="readonly" />
+                                        <input name="addPort" type="text" readonly="readonly" />
+                                        <input name="addConfig" type="text" readonly="readonly" />
+                                        <input name="doEdit" type="button" value="编辑"/>
+                                    </li>
+
+                                    <li>
+                                        <label name="selectModify"><input type="checkbox" /></label>
+                                        <input name="addHostname" type="text" readonly="readonly" />
+                                        <input name="addAddress" type="text" readonly="readonly" />
+                                        <input name="addPort" type="text" readonly="readonly" />
+                                        <input name="addConfig" type="text" readonly="readonly" />
+                                        <input name="doEdit" type="button" value="编辑"/>
+                                    </li>
+
+                                    <li>
+                                        <label name="selectModify"><input type="checkbox" /></label>
+                                        <input name="addHostname" type="text" readonly="readonly" />
+                                        <input name="addAddress" type="text" readonly="readonly" />
+                                        <input name="addPort" type="text" readonly="readonly" />
+                                        <input name="addConfig" type="text" readonly="readonly" />
+                                        <input name="doEdit" type="button" value="编辑"/>
+                                    </li>
+
+                                    <li>
+                                        <label name="selectModify"><input type="checkbox" /></label>
+                                        <input name="addHostname" type="text" readonly="readonly" />
+                                        <input name="addAddress" type="text" readonly="readonly" />
+                                        <input name="addPort" type="text" readonly="readonly" />
+                                        <input name="addConfig" type="text" readonly="readonly" />
+                                        <input name="doEdit" type="button" value="编辑"/>
+                                    </li>
+
+                                    <li>
+                                        <label name="selectModify"><input type="checkbox" /></label>
+                                        <input name="addHostname" type="text" readonly="readonly" />
+                                        <input name="addAddress" type="text" readonly="readonly" />
+                                        <input name="addPort" type="text" readonly="readonly" />
+                                        <input name="addConfig" type="text" readonly="readonly" />
+                                        <input name="doEdit" type="button" value="编辑"/>
+                                    </li>
+
+                                    <li>
+                                        <label name="selectModify"><input type="checkbox" /></label>
+                                        <input name="addHostname" type="text" readonly="readonly" />
+                                        <input name="addAddress" type="text" readonly="readonly" />
+                                        <input name="addPort" type="text" readonly="readonly" />
+                                        <input name="addConfig" type="text" readonly="readonly" />
+                                        <input name="doEdit" type="button" value="编辑"/>
+                                    </li>
+
+
+
+
+
+                                </ul>
+                            </div>
+                            <div class="modify-button-bottom">
+                                <input name="selectAll" type="button" value="全选" />
+                                <input name="reverseAll" type="button" value="反选" />
+                                <input name="unSelect" type="button" value="取消" />
+                            </div>
+                        </div>
+                    </form>
+                    <div class="popPage hide">
+                        <form action="#">
+                            <ul>
+                                <li>
+                                    <label>主机名:<input id="getHostname" type="text"></label>
+                                </li>
+                                <li>
+                                    <label>IP:<input id="getAddress" type="text"></label>
+                                </li>
+                                <li>
+                                    <label>端口:<input id="getPort" type="text"></label>
+                                </li>
+                                <li>
+                                    <label>配置:<input id="getConfig" type="text"></label>
+                                </li>
+                                <li name="updatePage">
+                                    <input name="updateHost" type="submit" value="提交" />
+                                    <input type="reset" value="重置" />
+                                    <input name="cancel" type="button" value="取消" />
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer">
+
+                <div class="links">
+                    <a href="#">关于我们</a>
+                    <a href="#">联系我们</a>
+                    <a href="#">人才招聘</a>
+                    <a href="#">友情链接</a>
+                </div>
+                <div class="copyright">
+                    Copyright&copy;2015-2016&nbsp;&nbsp;运维自动化forts.cc&nbsp;版权所有
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-2.2.3.js"></script>
+    <script src="js/host.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="checklist">
+        <input type="checkbox" value="1" />篮球
+        <input type="checkbox" value="2" />足球
+        <input type="checkbox" value="3" />羽毛球
+    </div>
+    <input type="button" value="全选" id="selectAll" />
+    <input type="button" value="不选" id="unselectAll" />
+    <input type="button" value="反选" id="reverseAll" />
+
+    <script src="jquery-2.2.3.js"></script>
+    <script>
+        $(function () {
+            $('#selectAll').click(function () {
+                $('#checklist :checkbox').prop('checked',true);
+            });
+            $('#unselectAll').click(function () {
+               $('#checklist :checkbox').prop('checked',false);
+            });
+            $('#reverseAll').click(function () {
+                $('#checklist :checkbox').each(function () {
+                    $(this).prop('checked',!$(this).prop('checked'));
+                });
+            })
+        })
+    </script>
+</body>
+</html>

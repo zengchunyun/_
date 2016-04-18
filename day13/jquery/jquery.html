@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .body{
+            color: #0e90d2;
+            height: 2000px;
+        }
+
+        .selected{
+            color: red;
+        }
+        .size{
+            font-size: 20px;
+        }
+
+        p{
+            border: 1px solid red;
+            /*height: 0px;*/
+        }
+        .entered{
+            background-color: #ffff99;
+        }
+        .highlight{
+            background-color: springgreen;
+        }
+
+    </style>
+</head>
+<body>
+    <select id="single">
+      <option>Single</option>
+      <option>Single2</option>
+    </select>
+    <select id="multiple" multiple="multiple">
+      <option selected="selected">Multiple</option>
+      <option>Multiple2</option>
+      <option selected="selected">Multiple3</option>
+    </select><br/>
+    <input type="checkbox" value="check1"/> check1
+    <input type="checkbox" value="check2"/> check2
+    <input type="radio" value="radio1"/> radio1
+    <input type="radio" value="radio2"/> radio2
+
+
+    <p><input type="text" /> <span>focusout fire</span></p>
+<p><input type="password" /> <span>focusout fire</span></p>
+
+<button id="old">.trigger("focus")</button>
+<button id="new">.triggerHandler("focus")</button><br/><br/>
+<input type="text" value="To Be Focused"/>
+
+    <div class="body">
+        <h1>登录表单</h1>
+        <form id="[search]" action="https://www.sogou.com/web" name="query">
+            <br id="br">
+            <p>用户名:<input id="user" name="user" type="text"></p>
+            <p>密码:<input name="pwd1" type="password"></p>
+            <div>test</div>
+            <p>确认密码:<input name="pwd2" type="password" ></p>
+            <span>dd</span>
+            <input type="checkbox" />
+            <input type="submit" value="登录">
+            <input type="reset" value="重置">
+            <span>test</span>
+            <label></label>
+
+
+        </form>
+        <h2>登录</h2>
+    </div>
+    <div id="n1">
+        <p id="n2" class="demo test" data-key="UUID" data_value="1235456465">CodePlayer</p>
+    </div>
+    <script src="jquery-2.2.3.js"></script>
+
+    <script>
+        //选择器
+//        $("#\\[search\\]").submit(); //通过#操作对应ID的元素
+//        console.log($('#\\[search\\]')); //匹配特殊字符的ID
+//        console.log($('input'));  //通过元素名称匹配选择标签
+//        console.log($('.body')); //通过搜索应用的类选择标签
+//        console.log($("*")); //找到所有的元素
+//        console.log($(".body ,#\\[search\\] , input:text")); //一次性匹配多个元素,一:应用了css类body的元素;二:id为[search]
+//        的元素;三:input属性为text的元素,注意,如果是查找某个元素自身的属性,中间不能有空格,如果是查找某个元素下子元素包含这个属性的元素,需要空格
+//        console.log($('form :password')); //:为找属性值为某种类型的元素,
+//        console.log($('form > input'));  //查找子级同级别为input元素
+//        console.log($("p + input"));  //查找p标签后紧跟input的这个input标签,非p标签的子级,同级关系
+//        console.log($("p ~ input"));  //找到所有与p标签同级的INPUT标签
+//        console.log($('input:first')); //查找第一个input标签
+//        console.log($("input:not(:password)")); //查找所有input标签除了属性是密码类型的input标签
+//        console.log($("input:even"));  //匹配所有input标签顺序是偶数的,从0开始
+//        console.log($("input:odd"));  //匹配所有input标签索引是奇数的,下标从0开始
+//        console.log($("input:eq(2)")); //匹配所有input标签,且下标为2
+//        console.log($("input:gt(2)")); //匹配所有input标签,且下标大于2
+//        console.log($("input:last")); //匹配所有INPUT标签,索引排序最后的一个
+//        console.log($("input:lt(2)")); //匹配索引input标签,且索引小于2
+//        console.log($(":header")); //匹配所有标题元素,如h1,h2...
+//        console.log($("form:has(p)"));  //查找所有包含p标签的form元素,
+
+        //筛选
+//        console.log($("p").eq(1)); //获取所有P标签,下标为1的jquery对象,类似于get(index),但是get返回的dom对象
+//        console.log($("p").first());  //获取所有P标签,下标为0的元素
+//        console.log($("input").last());  //获取所有input标签中最后一个元素
+
+//        console.log($('form').children()); //匹配form元素下所有的子标签,注意,不包括子元素下的子标签
+//        console.log($("p").find("input"));  //搜索所有P标签下包含input的input元素,与$("p input")相同
+//        console.log($("p").next());  //返回所有p标签后面紧邻的每一个同级元素的第一个元素,
+//        console.log($("p").nextAll());  //返回所有与第一个p标签同级的后面所有同级标签
+//        console.log($("p").nextUntil("input"));  //查找到第一个P标签后,开始.从P标签后面的所有标签到遇到input标签为止的区间标签
+//        console.log($('p').parent());  //查找所有P标签的父元素
+//        console.log($("input").parents('p'));  //查找所有input标签的父标签是p的p元素
+//        console.log($("input").parentsUntil('form'));  //查找所有input标签的祖先标签到form标签为止就不查了,注意,不能将util到父标签,这样就是除了父标签的所有祖先标签
+//        console.log($("p").prev());  //获取每一个包含P标签的同级的前一个元素集合
+//        console.log($("p").prevAll()); // 获取最后一个P标签之前对所有同级标签
+//        console.log($("p").prevUntil('#br'));  //获取最后一个P标签之前的所有同级元素,到id为br元素后一个为止
+//        console.log($("input").siblings());  //将input标签的同辈所有标签获取,如果同辈标签含有INPUT子标签,则优先找父辈标签
+
+        //属性
+//        console.log($("input").attr({style:"color:red;"}));
+        // $("p").attr("style","color:red;");//对指定标签设置属性
+//        console.log($("input").attr("style"));  //获取某个元素对属性值
+//        console.log($("p").removeAttr("style")); //移除指定标签对样式属性值
+//        console.log($("input[type='text']").prop("name")); //获取指定标签对name属性值
+//        $("input[type=checkbox]").prop('checked',true);  //设置指定标签属性
+//        $("input[type=checkbox]").prop({'style':"height:40px"});  //设置指定标签属性
+
+
+//         var $x = $("label");
+//        $x.prop("check","checked");
+//        $x.append("<input type='checkbox'  "+$x.prop("check")+"/>");  //查看并设置添加属性
+//        $x.removeProp("check");  //移除属性
+//        $x.append("<input type='checkbox'  "+$x.prop("check")+"/>");  //移除后,属性变为为定义
+
+
+
+//        console.log($("p").addClass("selected"));//添加一个样式
+//        $("p").addClass("selected size");//添加多个样式
+//        console.log($("p").removeClass("selected"));  //移除一个样式
+
+//        console.log($("p").html("<br/>")); //这样做会直接覆盖原来的标签
+//        (function () {
+//            var tag_list = $("p").html();
+//            console.log(tag_list);
+//                var before = tag_list;
+//                console.log(before);
+//                $("p").html(before + "<br/>");
+//        })();
+//
+//        $("p").html(function(n){
+//    return "这个 p 元素的 index 是：" + n;
+//    });
+
+
+//        console.log($("p").text('hao')); //修改p标签内部的文本内容
+//        $("p").text(function (index,text) {  //此函数返回一个字符串。接受两个参数，index为元素在集合中的索引位置，text为原先的text值。
+//            return "hao"+text;
+//        });
+
+
+//        console.log($("p input").val('h'));
+//        $("p input").val(function (index,value) {//此函数返回一个要设置的值。接受两个参数，index为元素在集合中的索引位置，text为原先的text值
+//            return "hello" + value;
+//        });
+//        $('input:text.items').val(function() {
+//  return this.value + ' ' + this.className;
+//});
+//        $("#single").val("Single2");
+//$("#multiple").val(["Multiple2", "Multiple3"]);
+//$("input").val(["check2", "radio1"]);
+
+
+//        $("#single").val("Single2");
+//$("#multiple").val(["Multiple2", "Multiple3"]);
+//$("input").val(["check2", "radio1"]); //将value值对应check2,radio1选中
+
+
+//        console.log($("p").css('color')); //获取所有P标签的CSS颜色
+//        $("p").css('color','red');//设置颜色
+//        $("p").css({'color':'red','font-size':'24px'});//设置颜色并设置字体大小
+//        $("p").click(function () {
+//            $(this).css({
+//                color:"red", //当单击事件时,颜色变红
+//                "font-size": function (index,value) {
+//                    return parseFloat(value) * 1.5;
+//                }
+//            })
+//        });
+
+//        var p = $("p:last"); //获取最后一个p标签
+//        p.offset({top:90,left:500});
+////        var offset = p.offset();//获取坐标值top:value,left:value
+//        p.html( "left: " + p.offset().left + ", top: " + p.offset().top );
+//        console.log(offset);
+
+//        console.log($("form").offset());
+//
+//        var p = $("p:first");
+//        var position = p.position(); //Object {top: 186.875, left: 8} //仅仅用来获取元素的偏移
+//        p.html("left:"+position.left+",top"+position.top);
+//
+//        console.log(position);
+
+//        $("p:first").scrollTop(900);
+//        $("p:first").scrollLeft(70);
+//        console.log($("p:first").scrollTop()); //获取匹配元素相对滚动条的偏移,此方法对可见和隐藏元素均有效。
+
+
+//        console.log($("p").height()); //获取指定P元素的高度
+//        $("p").height(30); //设定p元素的高度
+//        $("input").click(function () {
+//            $(this).height(function (index,height) {
+//                return height + 300;
+//            })
+//        });
+
+
+
+//        $("p").width(30); //设定p元素的高度
+//        $("input").click(function () {
+//            $(this).width(function (index,width) {
+//                console.log($(this).width());
+//                return width + 3000000;
+//            })
+//        });
+//        console.log($("p").width()); //获取指定P元素的宽度,相对于当前窗口而言,因为P是块标签
+
+
+
+//        console.log($("p:last").innerHeight()); //获取p标签内部高度
+//        console.log($("p:last").innerWidth()); //获取P标签的内部宽度
+//        var p = $("p:first");
+//        console.log(p.outerHeight(),p.outerHeight(true));  //获取标签外部高度,包括补白和边框,理解不够透???
+//        console.log($("p:first").outerWidth()); //算上边框和补白
+//        console.log($("p:first").outerWidth(true));
+//        $("p:last").text( "outerWidth:" + p.outerWidth() + " , outerWidth(true):" + p.outerWidth(true) );
+
+
+//内部插入
+//        console.log($("p").append("<b>hello</b>"));  //指定元素添加新元素,在p元素里添加新元素
+
+
+//        console.log($("p").appendTo("#n2"));  //将所有的P标签添加到IDn2元素内
+
+
+//        console.log($("p").prepend("<b>hello</b>"));  //将元素插入到P元素内部的前面
+
+//        console.log($("p").prependTo("#n2"));  //将p元素插入到idn2元素内的前面
+
+
+
+
+//        console.log($("p").after("<b>hello</b>")); //在每个P标签后插入一个新元素.外部插入
+
+//        console.log($("p").before("<b>hello</b>"));  //在每个P标签前面插入一个新元素,外部插入
+//        console.log($("p").insertAfter("#n2"));  //将所有P标签插入到ID N2后,外部插入
+//        console.log($("p").insertBefore("#n2"));  //将所有P标签插入到ID N2前,外部插入
+
+
+//        console.log($("p").empty());  //清空所有P标签内部内容
+//        console.log($("p").remove());  //将匹配的P标签从DOM里删除,
+//        console.log($("p").detach());  //与remove类似,但是它会保留所有绑定的事件,附加数据等
+//        console.log($("p input").detach());
+//        console.log($("p").clone());
+//        console.log($("p").clone(true));  //clone默认参数false,指事件处理函数是否被复制
+//        console.log($("p").clone().prependTo("#n2"));  //将所有等P标签克隆一份并插入到ID N2内部前面
+
+
+
+        //事件
+//        $(":checkbox").ready(function () {
+//            $(":checkbox").prop("checked",true); //注意,这里不能使用this,
+//            $(":radio").attr("checked","checked")
+//        });
+
+
+//        console.log($("p").on("click",function () {
+//            alert('ok')
+//        }));
+//        $("p").off( "click", "**" );
+//        function myHandler(event) {
+//            alert(event.data.do);  //弹出事件消息
+//        }
+//        $("p").on("click", {do: "bar"}, myHandler); //定义事件消息do
+//
+//        $("p").on("click", function(){
+//            alert( $(this).text() ); //触发点击鼠标事件时,显示p标签对文本内容
+//        });
+//
+//        $("form").on("submit", false);  //在提交表单时触发提交事件
+
+
+//        $("p").off();  //移除P标签上所有事件,
+//
+//        var foo = function () {
+//            alert($(this).text);
+//            // code to handle some kind of event
+//        };
+//
+//        // ... now foo will be called when paragraphs are clicked ...
+//        $("body").on("click", "p", foo);
+//                // ... foo will no longer be called.
+//        $("body").off("click", "p", foo);
+
+
+
+//        var validate = function () {
+//          // code to validate form entries
+//            alert('hello');
+//        };
+//
+//        // delegate events under the ".validator" namespace
+//        $("form").on("click.validator", "button", validate);  //绑定button元素鼠标点击事件,
+//
+//        $("form").on("keypress.validator", "input[type='text']", validate);
+//
+//        // remove event handlers in the ".validator" namespace
+//
+//        $("form").off(".validator"); //移除所有这个命名空间事件
+
+
+
+        //bind
+
+//        $("p").bind("click", function(){
+//            alert( $(this).text() );  //绑定p标签上的click事件,然后执行相应处理方法
+//        });
+
+//        $('#n2').bind('mouseenter mouseleave', function() {
+//            $(this).toggleClass('entered');  //绑定多个事件,当鼠标放到指定位置,就添加相应的css类,当鼠标移走,触发离开事件,toggleClass判断如果指定的CSS类存在就删除,不存在就添加
+//        });
+//
+//          var count = 1;
+//          $("p").click(function(){
+//              $(this).toggleClass("highlight", count++ % 3 == 0);  //每点击3次触发一次点击事件
+//          });
+
+//        $("form").bind("submit", function() { return false; })
+
+//        $("form").bind("submit", function(event){
+//          event.preventDefault();  //取消默认行为
+//        });
+//
+//        $("form").bind("submit", function(event){
+//          event.stopPropagation();  //阻止一个事件起泡,当
+//        });
+//
+//        function handler(event) {
+//          alert(event.data.foo);
+//        }
+//        $("p").bind("click", {foo: "bar"}, handler);
+//
+//        $("button").bind({
+//          click:function(){$("p").slideToggle();},
+//          mouseover:function(){$("body").css("background-color","red");},
+//          mouseout:function(){$("body").css("background-color","#FFFFFF");}
+//        });
+
+
+//        $("p").one("click", function(){  //当鼠标第一次点击时,触发一次事件,再次点击不触发
+//          alert( $(this).text() );
+//        });
+
+//        $("form:first").trigger("submit");  //不用通过submit,只要执行这个代码,自动提交表单
+
+//        $("p").click( function (event, a, b) {
+//          // 一个普通的点击事件时，a和b是undefined类型
+//          // 如果用下面的语句触发，那么a指向"foo",而b指向"bar"
+//            console.log(a,b);
+//        } ).trigger("click", ["foo", "bar"]);
+
+//        $("p").bind("myEvent", function (event, message1, message2) {  //p标签绑定事件,触发一个hello world消息
+//          alert(message1 + ' ' + message2);
+//        });
+//        $("p").trigger("myEvent", ["Hello","World!"]);
+
+
+//        $("#old").click(function(){
+//          $("input").trigger("focus");  //会触发默认事件
+//        });
+//        $("#new").click(function(){
+//          $("input").triggerHandler("focus"); //只触发你绑定的动作,,浏览器默认动作不触发
+//        });
+//        $("input").focus(function(){
+//          $("<span>Focused!</span>").appendTo("body").fadeOut(1000);
+//        });
+//
+//        $("input").unbind();  //从每一个匹配的元素中删除绑定的事件
+
+
+//        $("p").blur();
+//        $("p").blur( function () { alert("Hello World!"); } );  //当元素失去焦点时触发 blur 事件。
+
+
+//        $("input[type='text']").change( function() {  //当元素的值发生改变时，会发生 change 事件
+//            alert(22);
+//        // 这里可以写些验证代码
+//        });
+
+//        $("p").click( function () { $(this).hide(); });  //将页面内所有段落点击后隐藏。
+//
+////        $("p").dblclick( function () { alert("Hello World!"); }); //给页面上每个段落的双击事件绑上 "Hello World!" 警告框
+//
+//
+//        $(window).error(function(){  //隐藏JavaScript错误:
+//          return true;
+//        });
+//
+//        $("img").error(function(){  //给你IE的用户隐藏无效的图像:
+//          $(this).hide();
+//        });
+//
+//
+//        $(window).error(function(msg, url, line){  //在服务器端记录JavaScript错误日志:
+//          jQuery.post("js_error_log.php", { msg: msg, url: url, line: line });
+//        });
+
+
+        //当元素获得焦点时，触发 focus 事件。
+//        $(document).ready(function(){  //当页面加载后将 id 为 'user' 的元素设置焦点:
+//          $("#user").focus();
+//        });
+//
+//        $("input[type=text]").focus(function(){
+//          this.blur();  //使人无法使用文本框:
+//        });
+//当元素获得焦点时，触发 focusin 事件。
+
+//获得焦点后会触发动画:
+        $("p").focusin(function() {
+          $(this).find("span").css('display','inline').fadeOut(1000);
+        });
+
+
+//        当元素失去焦点时触发 focusout 事件。
+        $("p").focusout(function() {
+          $(this).find("span").css('display','inline').fadeOut(1000);
+        });
+
+
+//        当键盘或按钮被按下时，发生 keydown 事件。
+        $(window).keydown(function(event){
+          switch(event.keyCode) {
+            // ...
+            // 不同的按键可以做不同的事情
+            // 不同的浏览器的keycode不同
+            // 更多详细信息:     http://unixpapa.com/js/key.html
+            // 常用keyCode： 空格 32   Enter 13   ESC 27
+          }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        window.onload = initAll;
+        function initAll() {
+            var ans = prompt("Enter a number");
+            try{
+                if(!ans || isNaN(ans) || ans<0){
+                    throw new Error("Not a valid number");
+                }
+                alert("the square root of " + ans + " is " + Math.sqrt(ans));
+            }
+            catch (errMsg){
+                alert(errMsg.message);
+            }
+        }
+    </script>
+</body>
+</html>

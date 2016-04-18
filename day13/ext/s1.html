@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>my</title>
+    <!--最好不要在html顶部放置js代码,这样会导致页面加载耗时,导致用户体验不好-->
+    <script src="s1.js"></script>
+</head>
+<body>
+
+index
+<script>
+    function f1(){
+        alert("hello")
+    }
+    //f1();
+    //f2();
+    /*
+    var name = Number("111");
+    console.log(name);
+    console.log(name, typeof name);
+    name = parseInt(name);
+    console.log(name, typeof name);
+    var age = "222";
+    console.log(age, typeof age);
+    age = parseFloat(age);
+    console.log(age, typeof age);
+
+    var name="1";
+    switch (name){
+        case "1":
+            console.log('111');
+            break;
+        case 2:
+            console.log('222');
+            break;
+        default:
+            console.log('333');
+    }
+    while (true){
+        console.log(111);
+        break
+    }
+    if(name == 1){
+        console.log("true")
+    }else if(name != 1){
+        console.log(222)
+    }
+
+    try{
+        if(name==1){
+            console.log(111)
+        }
+    }catch (e){
+        console.log(222)
+    }finally{
+
+    }
+
+    //普通函数
+    function fus() {
+        console.log('fus');
+        return '222'
+    }
+    var a = fus();
+    console.log(a);
+    function aaa(arg) {
+        console.log(arg);
+    }
+    aaa(222)
+
+    var aas = function (arg) {
+        console.log(arg);
+    };
+    aas(333);
+    (function (arg) {
+        console.log(arg)
+    })(223)
+    */
+
+    function myfunc(name,age) {
+        this.Name = name;
+        this.Age = age;
+        this.Func = function (arg) {
+            return this.Name + arg;
+        }
+
+    }
+    var sa = new myfunc('alex',11);
+    console.log(sa.Name);
+    console.log(sa.Age);
+    var ret = sa.Func('sb');
+    console.log(ret);
+</script>
+</body>
+</html>

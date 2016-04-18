@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        <div id="currentPosition" style="position: fixed;top: 0px;right: 0px;"></div>
+        <div>
+            <div class="chapter" style="height: 500px;">
+                <h1>第一张</h1>
+            </div>
+
+            <div class="chapter" style="height: 1500px;">
+                <h1>第二张</h1>
+            </div>
+
+            <div class="chapter" style="height: 30px;">
+                <h1>第三张</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="jquery-2.2.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(window).scroll(function(){
+                var scroll_top = $(window).scrollTop();
+                var list = [];
+                $.each($('.chapter'), function(i){
+                    var current_height = $($('.chapter')[i]).offset().top;
+                    list.push(current_height);
+                });
+                $.each(list,function(i){
+                    if (scroll_top+$(window).height() == $(document).height()){
+                        $('#currentPosition').text($('.chapter').last().text());
+                        return
+                    }
+                    if (scroll_top>list[i]){
+                        $('#currentPosition').text($($('.chapter')[i]).text());
+                        return
+                    }
+                })
+
+            })
+        });
+
+
+    </script>
+</body>
+</html>
