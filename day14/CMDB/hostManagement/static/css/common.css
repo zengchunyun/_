@@ -1,0 +1,21 @@
+.clearfix:after{
+    content: '.';
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+body{
+    margin: 0 auto;
+}
+
+.container{
+    width: 980px;
+    margin: 0 auto;
+}
+
+.hide{
+    display: none;
+}
+

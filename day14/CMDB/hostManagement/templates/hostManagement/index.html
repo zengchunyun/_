@@ -1,0 +1,21 @@
+{#{% extends "base.html" %}#}
+{% load mytag %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Host</title>
+</head>
+<body>
+{{ name }}
+<ul>
+    {% for item in user_list %}
+    <li>{{ item }},{{ forloop.first }}</li>
+    {% endfor %}
+</ul>
+
+{% my_simple_time 1 2 3 %}
+{% my_input 'id_username' 'hide' %}
+
+</body>
+</html>

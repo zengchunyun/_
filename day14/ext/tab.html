@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab</title>
+    <style>
+        .tab-box .tab-menu{
+            background-color: #dddddd;
+            border: 1px solid #dddddd;
+        }
+        .tab-box .tab-content{
+            border: 1px solid #dddddd;
+        }
+        .hide{
+            display: none;
+        }
+
+        .current{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-box">
+        <div class="tab-menu">
+            <a alex="c1" onclick="ChangeTab(this)">菜单一</a>
+            <a alex="c2" onclick="ChangeTab(this)">菜单二</a>
+            <a alex="c3" onclick="ChangeTab(this)">菜单三</a>
+        </div>
+        <div class="tab-content">
+            <div id="c1" >内容一</div>
+            <div id="c2" class="hide">内容二</div>
+            <div id="c3" class="hide">内容三</div>
+        </div>
+    </div>
+
+    <script src="jquery-2.2.3.js"></script>
+    <script>
+        function ChangeTab(ths) {
+            var contentId = $(ths).attr("alex");
+            var temp="#" + contentId;
+            $(temp).removeClass("hide").siblings().addClass('hide');
+
+            $(ths).addClass('current').siblings().removeClass('current');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+
+
+创建数据库
+CREATE SCHEMA `cmdb` DEFAULT CHARACTER SET utf8 ;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+
+<input type="button" value="提交" onclick="SubmitData()" />
+<form action=" " method="post">
+    <p><input type="text" name="user" /></p>
+    <p><input type="password" name="pwd" /></p>
+    <input type="submit" />
+</form>
+
+<input type="button" value="获取节目" onclick="SubmitData();">
+<div id="container"></div>
+
+<script src="jquery-2.2.3.js"></script>
+<script>
+    function SubmitData() {
+//        var inpVal = $()
+        $.ajax({
+            url:"http://www.jxntv.cn/data/jmd-jxtv2.html",
+            data:{},
+            type:"GET",
+            dataType:'jsonp',
+            jsonp:'callback',
+            jsonpCallback:'list',
+            success:function (arg) {
+                console.log(arg);
+                var jsonpArray = arg.data;
+                $.each(jsonpArray,function (k,v) {
+                    var week = v.week;
+                    var temp = "<h1>"+week+"</h1>";
+                    $('#container').append(temp);
+                    var listArray = v.list;
+                    $.each(listArray,function (kk,vv) {
+                        var link = vv.link;
+                        var name = vv.name;
+                        
+                        var tempNew = "<a href='"+link+"'>"+name+"</a><br/>";
+                        $("#container").append(tempNew);
+                    })
+                })
+            },
+            error:function () {
+                
+            }
+        })
+    }
+</script>
+
+</body>
+</html>

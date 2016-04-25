@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>top</title>
+    <style>
+        #goTop{
+            position: fixed;
+            background-color: #00A000;
+            height: 100px;
+            width: 100px;
+            right: 0;
+            bottom: 0;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="height: 2000px;background-color: #5C5C5C">顶部
+    <div id="inn" style="height: 200px;background-color: red;overflow: auto">
+        <p>p2</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+    </div>
+    </div>
+    <div id="goTop" class="hide" onclick="goTop()">返回顶部</div>
+
+
+    <script src="jquery-2.2.3.js"></script>
+    <script>
+        function goTop() {
+            $(window).scrollTop(0)
+        }
+
+        window.onscroll = function () {
+            var currentTop = $(window).scrollTop();
+            if(currentTop >100){
+                $("#goTop").removeClass('hide');
+            }else {
+                $("#goTop").addClass('hide')
+            }
+        }
+
+    </script>
+</body>
+</html>
